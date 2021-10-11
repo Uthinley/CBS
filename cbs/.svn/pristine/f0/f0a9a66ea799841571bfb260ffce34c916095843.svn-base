@@ -1,0 +1,88 @@
+package com.springapp.mvc.card;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+public class CardDTO {
+    private Integer id;
+    private String cid;
+    private String name;
+    private String cardType;
+    private String bank;
+    private BigDecimal sanctionAmt;
+    private String currency;
+    private String createdBy;
+    private Date createdDate;
+
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    public BigDecimal getSanctionAmt() {
+        return sanctionAmt;
+    }
+
+    public void setSanctionAmt(BigDecimal sanctionAmt) {
+        this.sanctionAmt = sanctionAmt;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+}

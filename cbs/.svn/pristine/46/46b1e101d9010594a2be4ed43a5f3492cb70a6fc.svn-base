@@ -1,0 +1,38 @@
+package com.springapp.mvc.card;
+
+import com.springapp.mvc.global.dto.ResponseMessage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+public class CardService {
+
+    @Autowired
+    private CardDAO cardDAO;
+
+    @Transactional
+    public List<CardDTO> search(String cid){
+        return cardDAO.search(cid);
+    }
+
+    /**
+     * Get bank-wise total cards information
+     * @return CardDTO list
+     */
+    @Transactional
+    public  List<CardDTO> totalCardsBankWise(){
+        return cardDAO.totalCardsBankWise();
+    }
+
+    /**
+     * Get all the cards information
+     * @return CardDTO list
+     */
+    @Transactional
+    public  List<CardDTO> getAllCardInfoList(){
+        return cardDAO.getAllCardInfoList();
+    }
+}

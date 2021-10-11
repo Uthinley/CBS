@@ -1,0 +1,19 @@
+package com.springapp.mvc.setup.card;
+
+import com.springapp.mvc.global.base.BaseDao;
+import com.springapp.mvc.setup.group.GroupSetup;
+import com.springapp.mvc.setup.group.GroupSetup_A;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
+
+@Repository
+public class CardSetupDao extends BaseDao {
+
+    @Transactional(rollbackFor = Exception.class)
+    public void save(CardSetup cardSetup) {
+        if (!StringUtils.isEmpty(cardSetup)) {
+            saveOrUpdate(cardSetup);
+        }
+    }
+}

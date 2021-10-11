@@ -1,0 +1,1 @@
+CardDao.getCardDetails= SELECT * from cardinfo WHERE cid=:cid

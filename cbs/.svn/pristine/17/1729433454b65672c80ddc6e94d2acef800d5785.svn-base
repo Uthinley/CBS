@@ -1,0 +1,4 @@
+userLogins.failed= Invalid Username or Password.
+userLogins.locked= Account is locked.
+userLogins.maxSession= User already logged in to another machine.
+userLogins.expired= Your password has been expired. Please renew it.

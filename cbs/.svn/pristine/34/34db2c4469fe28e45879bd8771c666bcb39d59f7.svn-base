@@ -1,0 +1,79 @@
+/**
+ * Created by RMA on 3/25/2020.
+ */
+
+card = (function () {
+    "use strict";
+    var formId1 = $('#searchCard');
+
+    function _baseURL() {
+        return nesGlobal.baseURL;
+    }
+
+    function save() {
+        $(formId).on('click', '#btnSave', function () {
+            $(formId).validate({
+                submitHandler: function (form) {
+                    var data = new FormData($(form)[0]);
+                    data.append('uploadFile', $('input[type=file]')[0].files[0]);
+                    $.ajax({
+                        url: _baseURL() + 'save',
+                        type: 'POST',
+                        data: data,
+                        enctype: 'multipart/form-data',
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            if (res.status == 1) {
+                                successMsg(res.text, _baseURL());
+                            } else {
+                                warningMsg(res.text);
+                            }
+                        }
+                    });
+                }
+            });
+        })
+    }
+
+    function search(){
+        $(formId1).on('click', '#searchBtn', function () {
+            $(formId1).validate({
+                submitHandler: function (form) {
+                    var cid = $('#cid').val();
+                    alert(cid);
+                    $.ajax({
+                        url: _baseURL() + 'card/search',
+                        type: 'GET',
+                        data: {
+                            cid : cid
+                        },
+                        success: function (res) {
+                            var row = "";
+                            for (var i in res){
+                                row = row + '<tr>'+
+                                    '<td>' + (parseInt(i)+1) + '</td>' +
+                                    '<td>' + (res[i].cardType) + '</td>' +
+                                    '<td>' + (res[i].sanctionAmt) + '</td>' +
+                                    '<td>' + (res[i].sanctionAmt) + '</td>' +
+                                    '</tr>'
+                            }
+                            var cardTable = $('#cardInfo');
+                            cardTable.find('tbody').empty().prepend(row);
+                        }
+                    });
+                }
+            });
+        })
+    }
+
+    return {
+        save: save,
+        search: search
+    };
+})();
+
+$(document).ready(function () {
+    card.search();
+
+});

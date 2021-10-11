@@ -1,0 +1,73 @@
+/**
+ * Created by RMA on 3/25/2020.
+ */
+
+transaction = (function () {
+    "use strict";
+
+    var formId = $('#bankDeposit');
+
+    function _baseURL() {
+        return nesGlobal.baseURL;
+    }
+
+    function save() {
+        $(formId).on('click', '#btnSave', function () {
+            $(formId).validate({
+                submitHandler: function (form) {
+                    var data = new FormData($(form)[0]);
+                    data.append('uploadFile', $('input[type=file]')[0].files[0]);
+                    $.ajax({
+                        url: _baseURL() + 'save',
+                        type: 'POST',
+                        data: data,
+                        enctype: 'multipart/form-data',
+                        contentType: false,
+                        processData: false,
+                        success: function (res) {
+                            if (res.status == 1) {
+                                successMsg(res.text, _baseURL());
+                            } else {
+                                warningMsg(res.text);
+                            }
+                        }
+                    });
+                }
+            });
+        })
+    }
+
+    function getTotalCardsBankWIse(){
+        alert();
+        $.ajax({
+            url: _baseURL() + 'getTotalCardsBankWise',
+            type: 'GET',
+            success: function (res) {
+                var row = "";
+                for (var i in res){
+                    row = row + '<tr>'+
+                        // '<td>' + (parseInt(i)+1) + '</td>' +
+                        '<td>' + (res[i].bank) + '</td>' +
+                        '<td>' + (res[i].cardType) + '</td>' +
+                        '<td>' + (res[i].usd_num) + '</td>' +
+                        '<td>' + (res[i].inr_num) + '</td>' +
+                        '<td>' + (res[i].usd_amt) + '</td>' +
+                        '<td>' + (res[i].inr_amt) + '</td>' +
+                        '</tr>'
+                }
+                var cardTable = $('#cardInfo');
+                cardTable.find('tbody').empty().prepend(row);
+            }
+        });
+    }
+
+    return {
+        save: save,
+        getTotalCardsBankWIse: getTotalCardsBankWIse
+    };
+})();
+
+$(document).ready(function () {
+    transaction.save();
+    transaction.getTotalCardsBankWIse();
+});

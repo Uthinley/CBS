@@ -1,0 +1,2 @@
+CardDao.getCardDetails= SELECT name, cid, cardType, sanctionAmt, currency, bank from cardinfo WHERE cid=:cid
+CardDao.getCardList = SELECT * from card_type_master

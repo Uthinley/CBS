@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="data:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bd2809dc-e547-42f7-b2a0-8d3766cbfe65" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Commander">
+    <leftPanel />
+    <rightPanel />
+    <splitter proportion="0.5" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="data" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="JsBowerSettings">
+    <exe-path />
+    <config-path />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\All Development\covid19\trunk\repository" />
+        <option name="userSettingsFile" value="D:\All Development\covid19\trunk\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bNyF9Xu2P2F79J6hd0NXLq6uuB" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
+    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="data" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
+    <property name="LayoutCode.rearrangeEntriesXML" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="dfrs/dfrs&#9;FILE&#9;file://D:/ALL DEVELOPMENT/covid19/trunk/data/src/main/webapp/WEB-INF/pages/data/dfrs/dfrs_input.jsp&#10;cic&#9;PSI&#9;JAVA://com.springapp.mvc.data.dcm.cic.DcmCICInputService&#10;comm&#9;FILE&#9;file://D:/ALL DEVELOPMENT/covid19/trunk/data/src/main/java/com/springapp/mvc/global/common/CommonService.java" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="options.lastSelected" value="MavenSettings" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.23793103" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\All Development\card\src\main\webapp\WEB-INF\pages" />
+      <recent name="D:\All Development\card\src\main\resources\sql" />
+      <recent name="D:\All Development\card\src\main\webapp\layout" />
+      <recent name="D:\All Development\card\src\main\java\com\springapp\mvc" />
+      <recent name="D:\All Development\card\src\main\webapp\WEB-INF\config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ALL DEVELOPMENT\covid19\trunk\data\src\main\webapp\WEB-INF\pages\data" />
+      <recent name="D:\ALL DEVELOPMENT\covid19\trunk\data\src\main\webapp\WEB-INF\pages" />
+      <recent name="D:\ALL DEVELOPMENT\covid19\trunk\data\src\main\webapp\WEB-INF\pages\menu" />
+      <recent name="D:\ALL DEVELOPMENT\covid19\trunk\data\src\main\webapp\resources\js\setup" />
+      <recent name="D:\ALL DEVELOPMENT\covid19\trunk\data\src\main\webapp\resources\excelFormat\dferm" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.springapp.mvc.controllers" />
+      <recent name="com.springapp.mvc.global.base" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.6">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java />
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
+      <option name="TESTING_TYPE" value="0" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <Java />
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="grailsApplicationRoot" value="" />
+      <setting name="launchBrowser" value="false" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 8.5.6" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.6" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8082" />
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <deployment>
+        <artifact name="data:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Tomcat_8_5_6_data" />
+        <option name="HTTP_PORT" value="8082" />
+        <option name="JNDI_PORT" value="10991" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62038" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="data:war exploded" />
+          <artifact name="data:war" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.AppTests" />
+      <item itemvalue="Tomcat Server.Tomcat 8.5.6" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bd2809dc-e547-42f7-b2a0-8d3766cbfe65" name="Default" comment="" />
+      <created>1584439404219</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584439404219</updated>
+      <workItem from="1584439407093" duration="12229000" />
+      <workItem from="1584458076054" duration="2323000" />
+      <workItem from="1584460450160" duration="1421000" />
+      <workItem from="1584500647739" duration="6796000" />
+      <workItem from="1584527442344" duration="5168000" />
+      <workItem from="1584544435846" duration="2795000" />
+      <workItem from="1584587410495" duration="13928000" />
+      <workItem from="1584957321457" duration="11505000" />
+      <workItem from="1584981695751" duration="9880000" />
+      <workItem from="1585019403944" duration="29179000" />
+      <workItem from="1585057229292" duration="3184000" />
+      <workItem from="1585105758975" duration="11096000" />
+      <workItem from="1585118481539" duration="19869000" />
+      <workItem from="1585192164295" duration="34152000" />
+      <workItem from="1585278637605" duration="6529000" />
+      <workItem from="1585297202586" duration="17209000" />
+      <workItem from="1585367445473" duration="21645000" />
+      <workItem from="1585453664973" duration="698000" />
+      <workItem from="1585537958936" duration="21698000" />
+      <workItem from="1585624021604" duration="3816000" />
+      <workItem from="1585652978600" duration="19101000" />
+      <workItem from="1585734477527" duration="3169000" />
+      <workItem from="1585737998621" duration="49852000" />
+      <workItem from="1585850538052" duration="24823000" />
+      <workItem from="1585923540616" duration="520000" />
+      <workItem from="1585973594964" duration="2269000" />
+      <workItem from="1585980618506" duration="24000" />
+      <workItem from="1585980684017" duration="15554000" />
+      <workItem from="1586078801402" duration="401000" />
+      <workItem from="1586084658375" duration="26000" />
+      <workItem from="1586087924493" duration="33000" />
+      <workItem from="1586088129537" duration="9000" />
+      <workItem from="1586142729324" duration="27068000" />
+      <workItem from="1586228398175" duration="6746000" />
+      <workItem from="1586235955940" duration="7510000" />
+      <workItem from="1586248294125" duration="32729000" />
+      <workItem from="1586342767302" duration="9030000" />
+      <workItem from="1586401393176" duration="32038000" />
+      <workItem from="1586448156123" duration="574000" />
+      <workItem from="1586448858265" duration="428000" />
+      <workItem from="1586488568753" duration="30054000" />
+      <workItem from="1586578119553" duration="1332000" />
+      <workItem from="1586592088406" duration="31000" />
+      <workItem from="1586747669884" duration="40800000" />
+      <workItem from="1586833981023" duration="19515000" />
+      <workItem from="1586871879519" duration="4301000" />
+      <workItem from="1586883105885" duration="6802000" />
+      <workItem from="1586920841891" duration="30111000" />
+      <workItem from="1586957215268" duration="1366000" />
+      <workItem from="1587008157308" duration="7337000" />
+      <workItem from="1587357035722" duration="10880000" />
+      <workItem from="1587523619094" duration="26588000" />
+      <workItem from="1587556664445" duration="5516000" />
+      <workItem from="1587698292101" duration="26488000" />
+      <workItem from="1587871572259" duration="14708000" />
+      <workItem from="1587957623326" duration="34492000" />
+      <workItem from="1588224194409" duration="6247000" />
+      <workItem from="1588315770651" duration="28000" />
+      <workItem from="1588328309555" duration="31000" />
+      <workItem from="1588328612934" duration="6632000" />
+      <workItem from="1588407905145" duration="1664000" />
+      <workItem from="1588486764159" duration="965000" />
+      <workItem from="1588494985615" duration="722000" />
+      <workItem from="1588495797750" duration="129000" />
+      <workItem from="1588496573050" duration="205000" />
+      <workItem from="1588497171263" duration="224000" />
+      <workItem from="1588500206384" duration="43000" />
+      <workItem from="1588500290273" duration="50000" />
+      <workItem from="1588508043020" duration="3543000" />
+      <workItem from="1588564030162" duration="1408000" />
+      <workItem from="1588565642066" duration="246000" />
+      <workItem from="1588566970094" duration="1481000" />
+      <workItem from="1588586783278" duration="16812000" />
+      <workItem from="1588823492397" duration="5669000" />
+      <workItem from="1588909328042" duration="14271000" />
+      <workItem from="1589004512737" duration="33000" />
+      <workItem from="1589085934909" duration="3270000" />
+      <workItem from="1589167377619" duration="1395000" />
+      <workItem from="1589168942798" duration="32000" />
+      <workItem from="1589170522746" duration="10431000" />
+      <workItem from="1589253884092" duration="15743000" />
+      <workItem from="1589338703457" duration="48555000" />
+      <workItem from="1589512709822" duration="35240000" />
+      <workItem from="1589726390631" duration="8465000" />
+      <workItem from="1589771118399" duration="43685000" />
+      <workItem from="1589944800042" duration="31877000" />
+      <workItem from="1590031661182" duration="85208000" />
+      <workItem from="1590293326223" duration="10407000" />
+      <workItem from="1590381103127" duration="36521000" />
+      <workItem from="1590463526832" duration="12882000" />
+      <workItem from="1590558925398" duration="4497000" />
+      <workItem from="1590590063487" duration="17142000" />
+      <workItem from="1590678159540" duration="7116000" />
+      <workItem from="1590721322209" duration="14339000" />
+      <workItem from="1590940905287" duration="4294000" />
+      <workItem from="1590981898870" duration="9460000" />
+      <workItem from="1591023771087" duration="352000" />
+      <workItem from="1591076994100" duration="3277000" />
+      <workItem from="1591113305868" duration="71000" />
+      <workItem from="1591114841443" duration="1557000" />
+      <workItem from="1591154649984" duration="8697000" />
+      <workItem from="1591187200602" duration="2006000" />
+      <workItem from="1591193475832" duration="253000" />
+      <workItem from="1591193765274" duration="211000" />
+      <workItem from="1591194222733" duration="1679000" />
+      <workItem from="1591240874548" duration="504000" />
+      <workItem from="1591241975295" duration="2478000" />
+      <workItem from="1591338604528" duration="1984000" />
+      <workItem from="1591526391980" duration="385000" />
+      <workItem from="1591527645359" duration="13353000" />
+      <workItem from="1591766288628" duration="157000" />
+      <workItem from="1591766595516" duration="6000" />
+      <workItem from="1591769586495" duration="847000" />
+      <workItem from="1591944018234" duration="1811000" />
+      <workItem from="1592026223983" duration="193000" />
+      <workItem from="1592067966669" duration="1203000" />
+      <workItem from="1592289744621" duration="1557000" />
+      <workItem from="1592365238755" duration="397000" />
+      <workItem from="1592375687970" duration="959000" />
+      <workItem from="1592393572489" duration="591000" />
+      <workItem from="1592453843492" duration="3178000" />
+      <workItem from="1592627639191" duration="142000" />
+      <workItem from="1592628048908" duration="298000" />
+      <workItem from="1592816167307" duration="1546000" />
+      <workItem from="1592820467299" duration="4000" />
+      <workItem from="1593146354803" duration="262000" />
+      <workItem from="1593146660203" duration="86000" />
+      <workItem from="1593149303271" duration="1472000" />
+      <workItem from="1593425826445" duration="1207000" />
+      <workItem from="1593661019298" duration="998000" />
+      <workItem from="1594197637410" duration="3215000" />
+      <workItem from="1594356279418" duration="2212000" />
+      <workItem from="1594546763615" duration="161000" />
+      <workItem from="1595306534550" duration="2882000" />
+      <workItem from="1596432817492" duration="109000" />
+      <workItem from="1597419588557" duration="702000" />
+      <workItem from="1597420473234" duration="1572000" />
+      <workItem from="1597631863928" duration="470000" />
+      <workItem from="1597653130482" duration="306000" />
+      <workItem from="1597656981724" duration="766000" />
+      <workItem from="1597667625157" duration="38000" />
+      <workItem from="1597685789068" duration="1911000" />
+      <workItem from="1597907568755" duration="1255000" />
+      <workItem from="1598241856468" duration="1514000" />
+      <workItem from="1598503044359" duration="1085000" />
+      <workItem from="1598875991676" duration="1445000" />
+      <workItem from="1599898134024" duration="274000" />
+      <workItem from="1599903289627" duration="59000" />
+      <workItem from="1600059184878" duration="2360000" />
+      <workItem from="1600070114080" duration="4979000" />
+      <workItem from="1600079933262" duration="1098000" />
+      <workItem from="1600151239622" duration="3831000" />
+      <workItem from="1600226710677" duration="817000" />
+      <workItem from="1600242424568" duration="11478000" />
+      <workItem from="1600312487550" duration="9869000" />
+      <workItem from="1600398325471" duration="12451000" />
+      <workItem from="1600412225025" duration="8544000" />
+      <workItem from="1630489080461" duration="9017000" />
+      <workItem from="1630557112620" duration="13872000" />
+      <workItem from="1631074492306" duration="1339000" />
+      <workItem from="1631246367064" duration="4430000" />
+      <workItem from="1631533395660" duration="64000" />
+      <workItem from="1631591515216" duration="6132000" />
+      <workItem from="1631601588755" duration="321000" />
+      <workItem from="1631612510557" duration="1074000" />
+      <workItem from="1631613709270" duration="2104000" />
+      <workItem from="1631681474410" duration="1361000" />
+      <workItem from="1631683482938" duration="1777000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.springapp.mvc.data.db.dto.BankDepositDTO" memberName="mcc" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+</project>

@@ -1,0 +1,3 @@
+CardDao.getCardDetails= SELECT * from cardinfo WHERE cid=:cid
+CardDao.getTotalCardsBankWise= call sp_get_total_cards_bank_wise()
+CardDao.getAllCardInfoList=SELECT cid, name, cardType, sanctionAmt, currency, bank from cardinfo

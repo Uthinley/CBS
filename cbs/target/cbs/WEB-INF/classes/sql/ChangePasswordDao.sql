@@ -1,0 +1,1 @@
+ChangePasswordDao.changePassword = UPDATE sa_user SET USRPASSWORD=:password WHERE USRUSERNAME=:userName

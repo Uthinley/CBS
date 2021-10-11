@@ -1,0 +1,1 @@
+ResearchDAO.getResearchList = SELECT research_id as researchId,research_topic as researchTopic, word_count as wordCount, file_path as filePath, CREATEDDATE as createdDate, status  from research_dtls where CREATEDBY =:userName
