@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: RMA
@@ -25,6 +26,7 @@
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
+<security:authorize access="hasAuthority('00-01-001-VIEW')">
     <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -33,8 +35,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Earnings (Monthly)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                Total Researcher</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">288</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -51,8 +53,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Annual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                Total Research Paper Submitted</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">215,000</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -68,7 +70,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Research Paper Reviewed
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
@@ -108,27 +110,31 @@
         </div>
     </div>
 
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Word count</th>
-            <th scope="col">Research paper</th>
-            <th scope="col">Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-        </tr>
-        </tbody>
-    </table>
-
+    <div class="card">
+            <div class="card-header">
+                Research Papers
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                <table class="table" id="researchTbl">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Research Topic</th>
+                        <th scope="col">File</th>
+                        <th scope="col">Word count</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Submitted On</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                </p>
+                <%--            <a href="#" class="btn btn-primary">Go somewhere</a>--%>
+            </div>
+        </div>
+</security:authorize>
 
 
 

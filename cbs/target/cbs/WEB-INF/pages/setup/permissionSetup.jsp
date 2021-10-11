@@ -56,9 +56,9 @@
                                                     <label>Screen Type</label>
                                                     <form:select id="screenType"
                                                                  class="form-control editable"
-                                                                 path="screenList">
+                                                                 path="screenTypeList">
                                                         <form:option value="">---Please select---</form:option>
-                                                        <form:options items="${screenList}" itemValue="value"
+                                                        <form:options items="${screenTypeList}" itemValue="value"
                                                                       itemLabel="text"/>
                                                     </form:select>
                                                 </div>

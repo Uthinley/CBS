@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
@@ -45,16 +46,16 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header text-white">Admin Panel</h6>
-                <security:authorize access="hasRole('01-01-001-VIEW')">
+                <security:authorize access="hasAuthority('01-01-001-VIEW')">
                     <a class="collapse-item" href="<c:url value="/groupSetup"/>">Group setup</a>
                 </security:authorize>
-                <security:authorize access="hasRole('01-01-002-VIEW')">
+                <security:authorize access="hasAuthority('01-01-002-VIEW')">
                     <a class="collapse-item" href="<c:url value="/passwordPolicy"/>">Password policy</a>
                 </security:authorize>
-                <security:authorize access="hasRole('01-01-003-VIEW')">
+                <security:authorize access="hasAuthority('01-01-003-VIEW')">
                     <a class="collapse-item" href="<c:url value="/usersetup"/>">User setup</a>
                 </security:authorize>
-                <security:authorize access="hasRole('01-01-004-VIEW')">
+                <security:authorize access="hasAuthority('01-01-004-VIEW')">
                     <a class="collapse-item" href="<c:url value="/permissionSetup"/>">Permission setup</a>
                 </security:authorize>
             </div>
@@ -72,13 +73,13 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <div class="sub-item">
 <%--                    <h6 class="collapse-header text-white">DFRS Operation</h6>--%>
-                    <security:authorize access="hasRole('00-01-002-VIEW')">
+                    <security:authorize access="hasAuthority('00-01-002-VIEW')">
                         <a class="collapse-item" href="<c:url value="/research"/>">Assignment</a>
                     </security:authorize>
-<%--                    <security:authorize access="hasRole('02-01-002-VIEW')">--%>
+<%--                    <security:authorize access="hasAuthority('02-01-002-VIEW')">--%>
 <%--                        <a class="collapse-item" href="<c:url value="/cardSetup"/>">Card Type Master</a>--%>
 <%--                    </security:authorize>--%>
-<%--                    <security:authorize access="hasRole('02-01-003-VIEW')">--%>
+<%--                    <security:authorize access="hasAuthority('02-01-003-VIEW')">--%>
 <%--                        <a class="collapse-item" href="<c:url value="/capitalEntry"/>">Capital Entry</a>--%>
 <%--                    </security:authorize>--%>
                 </div>

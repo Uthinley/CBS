@@ -20,6 +20,8 @@
         <security:intercept-url access="hasAuthority('01-01-005-VIEW')" pattern="/changePassword"/>
         <security:intercept-url access="hasAuthority('01-01-006-VIEW')" pattern="/branchSetup"/>
 
+        <security:intercept-url access="hasAuthority('00-01-002-VIEW')" pattern="/research" />
+
         <security:custom-filter position="CONCURRENT_SESSION_FILTER" ref="concurrentFilter"/>
         <security:custom-filter before="FORM_LOGIN_FILTER" ref="authFilter"/>
         <security:custom-filter after="EXCEPTION_TRANSLATION_FILTER" ref="ajaxTimeoutRedirectFilter"/>

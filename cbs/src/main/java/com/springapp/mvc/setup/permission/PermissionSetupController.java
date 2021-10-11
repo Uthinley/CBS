@@ -2,6 +2,7 @@ package com.springapp.mvc.setup.permission;
 
 import com.springapp.mvc.global.base.BaseController;
 import com.springapp.mvc.global.common.CommonService;
+import com.springapp.mvc.global.dto.DropdownDTO;
 import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.global.enumeration.ScreenNumber;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class PermissionSetupController extends BaseController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(HttpServletRequest request, Model model) {
         model.addAttribute("userGroupList", commonService.getUserGroupList());
+        model.addAttribute("screenTypeList", commonService.getScreenTypeList());
         model.addAttribute("screenList", commonService.getScreenList());
         model.addAttribute("SCREEN_ID", ScreenNumber.PERMISSION_SETUP.getValue());
         return "setup/permissionSetup";
@@ -80,5 +82,11 @@ public class PermissionSetupController extends BaseController {
     @RequestMapping(value = "/getPermissionList", method = RequestMethod.GET)
     public List getPermissionList(HttpServletRequest request, Integer groupId) throws Exception {
         return permissionSetupService.getPermissionList(groupId);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getScreenList", method = RequestMethod.GET)
+    public List<DropdownDTO> getScreenByTypeList(Character screenType) throws Exception {
+        return commonService.getScreenByTypeList(screenType);
     }
 }
