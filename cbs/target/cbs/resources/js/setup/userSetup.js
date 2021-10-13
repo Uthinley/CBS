@@ -89,16 +89,16 @@ userSetup = (function () {
             var userName = $(this).find('td:nth-child(2)').text();
             var fullName = $(this).find('td:nth-child(3)').text();
             var userId = $(this).find('#userId').val();
-            var agencyCode = $(this).find('#agencyCode').val();
-            var employeeCode = $(this).find('#employeeCode').val();
+            var emailId = $(this).find('#emailId').val();
+            var employeeId = $(this).find('#employeeId').val();
             var userStatus = $(this).find('#userStatus').val();
             var groupId = $(this).find('#groupId').val();
             var data = {
                 "userName": userName,
                 "fullName": fullName,
                 "userId": userId,
-                "agencyCode": agencyCode,
-                "employeeCode": employeeCode,
+                "employeeId": employeeId,
+                "emailId": emailId,
                 "userStatus": userStatus,
                 "groupId": groupId
             };

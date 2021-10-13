@@ -43,13 +43,6 @@ public class UserSetup extends BaseEntity implements Serializable {
     @Column(name = "USRPASSWORD")
     private String password;
 
-    @Column(name = "USREMPLOYEECODE")
-    private String employeeCode;
-
-    @NotNull
-    @Column(name = "USRAGENCYCODE")
-    private String agencyCode;
-
     @NotNull
     @Column(name = "USRUSERSTATUS")
     private String userStatus;
@@ -65,6 +58,13 @@ public class UserSetup extends BaseEntity implements Serializable {
     @NotNull
     @Column(name = "USRPASSEXPIRY")
     private Date passwordExpiryDate;
+
+
+    @Column(name = "USREMPLOYEEID")
+    private String employeeId;
+
+    @Column(name = "USREMAILID")
+    private String emailId;
     //endregion
 
     //region getters and setters
@@ -105,20 +105,28 @@ public class UserSetup extends BaseEntity implements Serializable {
         this.password = password;
     }
 
-    public String getEmployeeCode() {
-        return employeeCode;
+    public Boolean getBadCredential() {
+        return isBadCredential;
     }
 
-    public void setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
+    public void setBadCredential(Boolean badCredential) {
+        isBadCredential = badCredential;
     }
 
-    public String getAgencyCode() {
-        return agencyCode;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public void setAgencyCode(String agencyCode) {
-        this.agencyCode = agencyCode;
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public String getUserStatus() {
