@@ -5,6 +5,7 @@ import com.poiji.exception.PoijiExcelType;
 import com.poiji.option.PoijiOptions;
 import com.springapp.mvc.global.dto.CurrentUser;
 import com.springapp.mvc.global.dto.DropdownDTO;
+import com.springapp.mvc.global.enumeration.ApplicationStatusCode;
 import com.springapp.mvc.global.enumeration.ScreenType;
 import com.springapp.mvc.global.enumeration.StatusCode;
 import com.springapp.mvc.global.library.GlobalVariable;
@@ -78,6 +79,21 @@ public class CommonService {
             statusList.add(dropdownDTO);
         }
         return statusList;
+    }
+
+    /**
+     * To get application status list
+     *
+     * @return List<DropdownDTO>
+     */
+    public List<DropdownDTO> getApplicationStatusCode() {
+        List<DropdownDTO> applicationStatusCodeList = new ArrayList<>();
+        DropdownDTO dropdownDTO;
+        for (ApplicationStatusCode applicationStatusCode : ApplicationStatusCode.values()) {
+            dropdownDTO = new DropdownDTO(applicationStatusCode.getValue(), applicationStatusCode.getText());
+            applicationStatusCodeList.add(dropdownDTO);
+        }
+        return applicationStatusCodeList;
     }
 
     public List<DropdownDTO> getScreenTypeList() {

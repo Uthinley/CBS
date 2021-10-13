@@ -24,13 +24,13 @@ public class ResearchEntity extends BaseEntity {
     private String filepath;
 
     @Column(name = "status")
-    private String status;
+    private Integer status;
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

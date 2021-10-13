@@ -12,6 +12,15 @@ public class ResearchDTO {
     private String statusName;
     private String status;
     private Date createdDate;
+    private String createdBy;
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 
     public String getStatusName() {
         return statusName;

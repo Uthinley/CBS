@@ -155,7 +155,7 @@ public class UserSetupService extends BaseService {
         userSetup.setPassword(passwordEncoder.encode(userSetupDTO.getPassword()));
         userSetup.setFullName(userSetupDTO.getFullName());
         userSetup.setEmployeeCode(userSetupDTO.getEmployeeCode());
-        userSetup.setAgencyCode(userSetupDTO.getAgencyCode());
+//        userSetup.setAgencyCode(userSetupDTO.getAgencyCode());
         userSetup.setUserStatus(userSetupDTO.getUserStatus());
         userSetup.setGroupId(userSetupDTO.getGroupId());
         userSetup.setIsBadCredential(Boolean.TRUE);
@@ -177,7 +177,7 @@ public class UserSetupService extends BaseService {
 
         userSetup.setFullName(userSetupDTO.getFullName());
         userSetup.setEmployeeCode(userSetupDTO.getEmployeeCode());
-        userSetup.setAgencyCode(userSetupDTO.getAgencyCode());
+//        userSetup.setAgencyCode(userSetupDTO.getAgencyCode());
         userSetup.setUserStatus(userSetupDTO.getUserStatus());
         userSetup.setGroupId(userSetupDTO.getGroupId());
         userSetup.setIsBadCredential(Boolean.TRUE);

@@ -49,11 +49,12 @@ public class ResearchService extends BaseService {
         ResearchEntity researchEntity = new ResearchEntity();
         researchEntity.setResearchTopic(researchDTO.getResearchTopic());
         researchEntity.setFilepath(filePath);
-        researchEntity.setCreatedBy(currentUser.getUserName());
+        researchEntity.setCreatedBy(currentUser.getFullName());
         researchEntity.setCreatedDate(new Date());
         researchEntity.setWordCount(wordCount);
 //        researchEntity.setStatus(applicationStatusCode.find(1));
-        researchEntity.setStatus("SUBMITTED");
+//        researchEntity.setStatus("SUBMITTED");
+        researchEntity.setStatus(1);
         return researchEntity;
     }
 
@@ -102,5 +103,16 @@ public class ResearchService extends BaseService {
 
     public List<ResearchDTO> getResearchList(CurrentUser currentUser) {
         return researchDAO.getResearchList(currentUser);
+    }
+
+    public List<ResearchDTO> geAllResearchList() {
+        return researchDAO.geAllResearchList();
+    }
+
+    public ResponseMessage saveReviewerComments(Integer researchId, String rComment, Integer statusId) {
+        researchDAO.saveReviewerComments(researchId, rComment, statusId);
+        responseMessage.setStatus(SUCCESSFUL_STATUS);
+        responseMessage.setText("Saved successfully");
+        return responseMessage;
     }
 }

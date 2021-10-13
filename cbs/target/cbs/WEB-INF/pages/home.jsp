@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: RMA
@@ -120,11 +121,14 @@
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col" hidden>Research Id</th>
                         <th scope="col">Research Topic</th>
                         <th scope="col">File</th>
                         <th scope="col">Word count</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Submitted By</th>
                         <th scope="col">Submitted On</th>
+                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -134,10 +138,59 @@
                 <%--            <a href="#" class="btn btn-primary">Go somewhere</a>--%>
             </div>
         </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="reviewerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Reviewer Comment:</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" id="researchId" hidden>
+                    <div class="form-group">
+                        <label for="researchTopic">Research Topic</label>
+<%--                        <input type="text" class="form-control" id="researchTopic">--%>
+                        <textarea class="form-control" id="researchTopic" name="rComment" rows="2" readonly></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="researchTopic">Submitted By</label>
+                        <input type="text" class="form-control" id="name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="rComment">Remarks</label>
+                        <textarea class="form-control" id="rComment" name="rComment" rows="15"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="required" for="statusId">Currency</label>
+                        <select class="form-control required" id="statusId" name="statusId">
+                            <option>--------SELECT----------</option>
+                            <option value="2">Reviewed</option>
+                            <option value="3">Return</option>
+                            <option value="4">Approve</option>
+                        </select>
+                    </div>
+<%--                    <div class="form-group">--%>
+<%--                        <label for="aStatus">Status</label>--%>
+<%--                        <form:select id="aStatus"--%>
+<%--                                     class="form-control editable" name="aStatus"--%>
+<%--                                     path="applicationStatusCode">--%>
+<%--                            <form:options items="${applicationStatusCode}" itemValue="value"--%>
+<%--                                          itemLabel="text"/>--%>
+<%--                        </form:select>--%>
+<%--                    </div>--%>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="reviwerSubmitBtn" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </security:authorize>
-
-
-
 </div>
 <script src="<c:url value='/resources/js/db/home.js'/>"></script>
 </body>

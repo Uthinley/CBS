@@ -46,9 +46,6 @@ public class UserSetup extends BaseEntity implements Serializable {
     @Column(name = "USREMPLOYEECODE")
     private String employeeCode;
 
-    @NotNull
-    @Column(name = "USRAGENCYCODE")
-    private String agencyCode;
 
     @NotNull
     @Column(name = "USRUSERSTATUS")
@@ -113,13 +110,6 @@ public class UserSetup extends BaseEntity implements Serializable {
         this.employeeCode = employeeCode;
     }
 
-    public String getAgencyCode() {
-        return agencyCode;
-    }
-
-    public void setAgencyCode(String agencyCode) {
-        this.agencyCode = agencyCode;
-    }
 
     public String getUserStatus() {
         return userStatus;

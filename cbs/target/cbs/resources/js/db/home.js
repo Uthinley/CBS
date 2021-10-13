@@ -13,19 +13,22 @@ transaction = (function () {
 
     function getResearchList(){
         $.ajax({
-            url: _baseURL() + 'research/getResearchList',
+            url: _baseURL() + 'getAllResearchList',
             type: 'GET',
             success: function (res) {
                 var row = "";
                 for (var i in res){
                     row = row + '<tr>'+
-                        '<td></td>' +
+                        '<td>'+(parseInt(i)+1)+'</td>' +
+                        '<td hidden>' + (res[i].researchId) + '</td>' +
                         '<td>' + (res[i].researchTopic) + '</td>' +
                         // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
                         '<td> ' + (res[i].filePath) + '</td>' +
                         '<td>' + (res[i].wordCount) + '</td>' +
                         '<td>' + (res[i].status) + '</td>' +
+                        '<td>' + (res[i].createdBy) + '</td>' +
                         '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
+                        '<td><i class="fa fa-eye text-success" id="iconEdit" data-toggle="modal" data-target="#reviewerModal" aria-hidden="true"></i></td>' +
                         // '<td class="d-none" id="status">' + (res[i].wordCount) + '</td>' +
                         // '<td hidden>' + (res[i].researchId) + '</td>' +
                         '</tr>'
@@ -52,6 +55,41 @@ transaction = (function () {
         }
         var finalDate;
         return finalDate = `${day}/${month}/${year}`;
+    }
+
+    function populateModal(){
+        $('#researchTbl').find(' tbody').on('click', 'tr', function () {
+            var researchId = $(this).find('td:nth-child(2)').text();
+            var researchTopic = $(this).find('td:nth-child(3)').text();
+            var submittedBy = $(this).find('td:nth-child(7)').text();
+            $('#researchId').val(researchId);
+            $('#researchTopic').val(researchTopic);
+            $('#name').val(submittedBy);
+        });
+    }
+
+    function submitReviewerDtls(){
+        $('#reviewerModal').on('click', '#reviwerSubmitBtn', function () {
+            var researchId = $('#researchId').val();
+            var statusId = $('#statusId').val();
+            var rComment = $('#rComment').val();
+            $.ajax({
+                url: _baseURL() + 'saveReviewerComments',
+                type: 'POST',
+                data: {
+                    researchId: researchId,
+                    statusId:statusId,
+                    rComment :rComment
+                },
+                success: function (res) {
+                    if (res.status == 1) {
+                        successMsg(res.text, _baseURL());
+                    } else {
+                        warningMsg(res.text);
+                    }
+                }
+            });
+        })
     }
 
     function save() {
@@ -83,7 +121,9 @@ transaction = (function () {
     return {
         save: save,
         getResearchList: getResearchList,
-        formatDate: formatDate
+        formatDate: formatDate,
+        populateModal: populateModal,
+        submitReviewerDtls: submitReviewerDtls
     };
 })();
 
@@ -91,4 +131,6 @@ $(document).ready(function () {
     transaction.save();
     transaction.getResearchList();
     transaction.formatDate();
+    transaction.populateModal();
+    transaction.submitReviewerDtls();
 });

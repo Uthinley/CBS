@@ -6,9 +6,12 @@ import com.springapp.mvc.card.CardService;
 import com.springapp.mvc.data.FileUploadDTO;
 import com.springapp.mvc.data.db.bankDeposit.BankDepositService;
 import com.springapp.mvc.global.base.BaseController;
+import com.springapp.mvc.global.common.CommonService;
 import com.springapp.mvc.global.dto.CurrentUser;
 import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.global.library.DateUtil;
+import com.springapp.mvc.research.ResearchDTO;
+import com.springapp.mvc.research.ResearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -33,9 +36,10 @@ public class HomeController extends BaseController {
 
     @Autowired
     private BankDepositService bankDepositService;
-
     @Autowired
-    private CardService cardService;
+    private ResearchService researchService;
+    @Autowired
+    private CommonService commonService;
 
 
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
@@ -63,6 +67,7 @@ public class HomeController extends BaseController {
 
 
         ModelAndView modelAndView = new ModelAndView();
+        model.addAttribute("applicationStatusCode", commonService.getApplicationStatusCode());
         model.addAttribute("currentDate", DateUtil.formatDate(currentUser.getServerDate()));
         modelAndView.setViewName("home");
         return modelAndView;
@@ -88,26 +93,17 @@ public class HomeController extends BaseController {
         return bankDepositService.save(fileUploadDTO);
     }
 
-    /**
-     * Get bank-wise total cards
-     * @return CardDTO list
-     * @throws Exception
-     */
     @ResponseBody
-    @RequestMapping(value = "/getTotalCardsBankWise", method = RequestMethod.GET)
-    public List<CardDTO> getTotalCardsBankWise() throws Exception {
-        return cardService.totalCardsBankWise();
+    @RequestMapping(value="/saveReviewerComments")
+    public ResponseMessage saveReviewerComments(HttpServletRequest request, Integer researchId, String rComment, Integer statusId){
+        return researchService.saveReviewerComments(researchId, rComment, statusId);
     }
 
-    /**
-     * Method to get all the cards info
-     * @return CardDTO List
-     * @throws Exception
-     */
     @ResponseBody
-    @RequestMapping(value = "/getAllCardInfoList", method = RequestMethod.GET)
-    public List<CardDTO> getAllCardInfoList() throws Exception {
-        return cardService.getAllCardInfoList();
+    @RequestMapping(value = "/getAllResearchList", method= RequestMethod.GET)
+    public List<ResearchDTO> getResearchList(HttpServletRequest request){
+        currentUser = getCurrentUser(request);
+        return researchService.geAllResearchList();
     }
 
 }
