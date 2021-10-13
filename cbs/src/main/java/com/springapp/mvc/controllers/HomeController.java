@@ -33,14 +33,12 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 @RequestMapping(value = "")
 public class HomeController extends BaseController {
-
     @Autowired
     private BankDepositService bankDepositService;
     @Autowired
     private ResearchService researchService;
     @Autowired
     private CommonService commonService;
-
 
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response, Model model)

@@ -11,23 +11,21 @@ public class UserSetupDTO {
     private BigDecimal userId;
     private String userName;
     private String fullName;
-    private String password;
-    private String confirmPassword;
-    private String agencyCode;
-    private String employeeCode;
     private String userStatus;
     private Integer groupId;
+    private String employeeId;
+    private String emailId;
 
     private Date createdDate;
     private String createdBy;
     private Date updatedDate;
     private String updatedBy;
 
-    private String agencyName;
     private String groupName;
     //endregion
 
     //region setter and getter
+
     public BigDecimal getUserId() {
         return userId;
     }
@@ -52,38 +50,6 @@ public class UserSetupDTO {
         this.fullName = fullName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public String getAgencyCode() {
-        return agencyCode;
-    }
-
-    public void setAgencyCode(String agencyCode) {
-        this.agencyCode = agencyCode;
-    }
-
-    public String getEmployeeCode() {
-        return employeeCode;
-    }
-
-    public void setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
-    }
-
     public String getUserStatus() {
         return userStatus;
     }
@@ -98,6 +64,22 @@ public class UserSetupDTO {
 
     public void setGroupId(Integer groupId) {
         this.groupId = groupId;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
     public Date getCreatedDate() {
@@ -132,14 +114,6 @@ public class UserSetupDTO {
         this.updatedBy = updatedBy;
     }
 
-    public String getAgencyName() {
-        return agencyName;
-    }
-
-    public void setAgencyName(String agencyName) {
-        this.agencyName = agencyName;
-    }
-
     public String getGroupName() {
         return groupName;
     }
@@ -147,5 +121,6 @@ public class UserSetupDTO {
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
+
     //endregion
 }

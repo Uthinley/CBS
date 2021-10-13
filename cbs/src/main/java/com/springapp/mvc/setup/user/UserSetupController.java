@@ -34,7 +34,7 @@ public class UserSetupController extends BaseController {
     public String index(HttpServletRequest request, Model model) {
         model.addAttribute("userGroupList", commonService.getUserGroupList());
         model.addAttribute("statusList", commonService.getStatusList());
-        model.addAttribute("branchCodeList", commonService.getBranchCodeList());
+        //model.addAttribute("branchCodeList", commonService.getBranchCodeList());
         model.addAttribute("SCREEN_ID", ScreenNumber.USER_SETUP.getValue());
         return "setup/userSetup";
     }

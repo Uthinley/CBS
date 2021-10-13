@@ -165,7 +165,7 @@
                         <textarea class="form-control" id="rComment" name="rComment" rows="15"></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="required" for="statusId">Currency</label>
+                        <label class="required" for="statusId">Status</label>
                         <select class="form-control required" id="statusId" name="statusId">
                             <option>--------SELECT----------</option>
                             <option value="2">Reviewed</option>

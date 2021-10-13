@@ -5,6 +5,7 @@ import com.springapp.mvc.global.dto.CurrentUser;
 import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.global.enumeration.StatusCode;
 import com.springapp.mvc.global.library.DateUtil;
+import com.springapp.mvc.global.library.GlobalVariable;
 import com.springapp.mvc.setup.passwordPolicy.PasswordPolicyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -61,16 +62,6 @@ public class UserSetupService extends BaseService {
 
     @Transactional(readOnly = false)
     public ResponseMessage save(UserSetupDTO userSetupDTO, CurrentUser currentUser) {
-        if (!userSetupDTO.getConfirmPassword().equals(userSetupDTO.getPassword())) {
-            responseMessage.setStatus(UNSUCCESSFUL_STATUS);
-            responseMessage.setText("Confirm password does not match password.");
-            return responseMessage;
-        }
-
-        responseMessage = passwordPolicyService.isPasswordValid(userSetupDTO.getPassword());
-        if (responseMessage.getStatus() != SUCCESSFUL_STATUS) {
-            return responseMessage;
-        }
 
         UserSetup userSetup = userSetupDao.getUser(userSetupDTO.getUserName());
         if (userSetup != null) {
@@ -82,7 +73,7 @@ public class UserSetupService extends BaseService {
         userSetupDao.save(userSetup);
 
         responseMessage.setStatus(SUCCESSFUL_STATUS);
-        responseMessage.setText("User is created successfully.");
+        responseMessage.setText("User is created successfully with default password. 'Default@2021'");
         return responseMessage;
     }
 
@@ -110,7 +101,7 @@ public class UserSetupService extends BaseService {
             responseMessage.setText("There is some problem. Please logout and try again.");
             return responseMessage;
         }
-        userSetup = convertDTOToEntity(userSetup, userSetupDTO.getPassword(), currentUser);
+        userSetup = convertDTOToEntity(userSetup, GlobalVariable.DEFAULT_PASSWORD,currentUser);
         userSetupDao.save(userSetup);
 
         responseMessage.setStatus(SUCCESSFUL_STATUS);
@@ -152,10 +143,10 @@ public class UserSetupService extends BaseService {
         UserSetup userSetup = new UserSetup();
         userSetup.setUserId(userSetupDao.getNextUserId());
         userSetup.setUserName(userSetupDTO.getUserName());
-        userSetup.setPassword(passwordEncoder.encode(userSetupDTO.getPassword()));
+        userSetup.setPassword(passwordEncoder.encode(GlobalVariable.DEFAULT_PASSWORD));
         userSetup.setFullName(userSetupDTO.getFullName());
-        userSetup.setEmployeeCode(userSetupDTO.getEmployeeCode());
-//        userSetup.setAgencyCode(userSetupDTO.getAgencyCode());
+        userSetup.setEmployeeId(userSetupDTO.getEmployeeId());
+        userSetup.setEmailId(userSetupDTO.getEmailId());
         userSetup.setUserStatus(userSetupDTO.getUserStatus());
         userSetup.setGroupId(userSetupDTO.getGroupId());
         userSetup.setIsBadCredential(Boolean.TRUE);
@@ -176,8 +167,8 @@ public class UserSetupService extends BaseService {
     private UserSetup convertDTOToEntity(UserSetup userSetup, UserSetupDTO userSetupDTO, CurrentUser currentUser) {
 
         userSetup.setFullName(userSetupDTO.getFullName());
-        userSetup.setEmployeeCode(userSetupDTO.getEmployeeCode());
-//        userSetup.setAgencyCode(userSetupDTO.getAgencyCode());
+        userSetup.setEmployeeId(userSetupDTO.getEmployeeId());
+        userSetup.setEmailId(userSetupDTO.getEmailId());
         userSetup.setUserStatus(userSetupDTO.getUserStatus());
         userSetup.setGroupId(userSetupDTO.getGroupId());
         userSetup.setIsBadCredential(Boolean.TRUE);

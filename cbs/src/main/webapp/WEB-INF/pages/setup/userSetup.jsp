@@ -15,8 +15,6 @@
 <body>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">User Setup</h1>
     <!--Intput table card-->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -33,13 +31,20 @@
                             <label class="col-md-2 align-right required" for="userName">Username
                                 : </label>
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <input type="text" name="userName" id="userName"
-                                       class="form-control input-sm" required>
+                                       class="form-control input-sm editable" required>
+                            </div>
+                            <label class="col-md-2 align-right required" for="employeeId">Employee ID
+                                : </label>
+
+                            <div class="col-md-4">
+                                <input type="text" name="employeeId" id="employeeId"
+                                       class="form-control input-sm editable" required>
                             </div>
 
                         </div>
-                        <div class="form-group row">
+                        <%--<div class="form-group row">
                             <label class="col-md-2 align-right required" for="password">Password
                                 : </label>
 
@@ -54,7 +59,7 @@
                                 <input type="password" name="confirmPassword" id="confirmPassword"
                                        class="form-control input-sm resetP" required>
                             </div>
-                        </div>
+                        </div>--%>
 
                         <div class="form-group row">
                             <label class="col-md-2 align-right required" for="fullName">Full name
@@ -63,6 +68,14 @@
                             <div class="col-md-4">
                                 <input type="text" name="fullName" id="fullName"
                                        class="form-control input-sm editable nameOnly"
+                                       required>
+                            </div>
+                            <label class="col-md-2 align-right required" for="emailId">Email ID
+                                : </label>
+
+                            <div class="col-md-4">
+                                <input type="text" name="emailId" id="emailId"
+                                       class="form-control input-sm editable"
                                        required>
                             </div>
 
@@ -95,28 +108,6 @@
                                 </form:select>
                             </div>
 
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 align-right required"
-                                   for="agencyCode">Location</label>
-
-                            <div class="col-md-4">
-                                <form:select id="agencyCode"
-                                             class="form-control" name="agencyCode"
-                                             path="branchCodeList" required="true">
-                                    <form:option value="">---Please select---</form:option>
-                                    <form:options items="${branchCodeList}" itemValue="value"
-                                                  itemLabel="text"/>
-                                </form:select>
-                            </div>
-
-                            <label class="col-md-2 align-right" for="employeeCode">Employee
-                                code: </label>
-
-                            <div class="col-md-2">
-                                <input type="text" name="employeeCode" id="employeeCode"
-                                       class="form-control input-sm editable">
-                            </div>
                         </div>
 
                         <div class="form-group ">

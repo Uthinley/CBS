@@ -11,4 +11,5 @@ import java.math.BigInteger;
  */
 public class GlobalVariable {
     public static BigInteger FILE_ID = null;
+    public final static String DEFAULT_PASSWORD = "Default@2021";
 }

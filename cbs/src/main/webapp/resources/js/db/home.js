@@ -70,6 +70,7 @@ transaction = (function () {
 
     function submitReviewerDtls(){
         $('#reviewerModal').on('click', '#reviwerSubmitBtn', function () {
+            $('#reviewerModal').modal('toggle');
             var researchId = $('#researchId').val();
             var statusId = $('#statusId').val();
             var rComment = $('#rComment').val();
