@@ -48,6 +48,14 @@ public class UserSetupController extends BaseController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
+    public ResponseMessage resetPassword(HttpServletRequest request, String username) {
+        currentUser = getCurrentUser(request);
+        responseMessage = userSetupService.resetPassword(username, currentUser);
+        return responseMessage;
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ResponseMessage delete(HttpServletRequest request, UserSetupDTO userSetupDTO) {
         currentUser = getCurrentUser(request);

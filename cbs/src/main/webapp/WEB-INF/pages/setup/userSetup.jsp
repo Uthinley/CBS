@@ -118,6 +118,8 @@
                                    disabled>
                             <input type="submit" id="btnSave" value="Save"
                                    class="btn btn-primary">
+                            <input type="button" id="resetPassword" value="Reset Password"
+                                   class="btn btn-primary" disabled>
                             <input type="button" id="btnDelete" value="Delete"
                                    class="btn btn-primary" disabled>
                         </div>
