@@ -69,8 +69,9 @@ userSetup = (function () {
                         '<td>' + ((res[i].userStatus == '1') ? 'Active' : 'Inactive') + '</td>' +
                         '<td>' +
                         '<input type="hidden" id="userId" value="' + res[i].userId + '"/> ' +
-                        '<input type="hidden" id="agencyCode" value="' + res[i].agencyCode + '"/> ' +
-                        '<input type="hidden" id="employeeCode" value="' + res[i].employeeCode + '"/> ' +
+                        '<input type="hidden" id="emailId" value="' + res[i].emailId + '"/> ' +
+                        '<input type="hidden" id="employeeId" value="' + res[i].employeeId + '"/> ' +
+                        '<input type="hidden" id="groupId" value="' + res[i].groupId + '"/> ' +
                         '<input type="hidden" id="userStatus" value="' + res[i].userStatus + '"/> ' +
                         // '<input type="hidden" id="groupId" value="' + res[i].groupId + '"/> ' +
                         '</td>' +
@@ -107,6 +108,7 @@ userSetup = (function () {
             $(formID).find('.resetP').prop('disabled', true);
             $('#userName').prop('readonly', true);
             $('#btnSave').prop('disabled', true);
+            $('#resetPassword').prop('disabled', false);
             $('#btnEdit').prop('disabled', false);
             $('#btnDelete').prop('disabled', false);
         });
@@ -128,12 +130,19 @@ userSetup = (function () {
 
     function resetPassword() {
         $('#resetPassword').on('click', function () {
-            $(this).prop('disabled', true);
-            $('.editable').prop('disabled', true);
-            $('.resetP').prop('disabled', false);
-            $('#btnSave').prop('disabled', false);
-            $('#btnDelete').prop('disabled', true);
-            $('#actionType').val('R');
+            var username = $('#userName').val();
+            if(!username){
+                warningMsg("Select user to reset the password.");
+                return;
+            }
+            $.ajax({
+                url: _baseURL() + 'resetPassword',
+                type: 'POST',
+                data: {username:username},
+                success: function (res) {
+                    successMsg(res.text);
+                }
+            });
         });
     }
 

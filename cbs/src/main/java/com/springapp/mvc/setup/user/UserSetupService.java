@@ -51,7 +51,7 @@ public class UserSetupService extends BaseService {
                 responseMessage = update(userSetupDTO, currentUser);
                 break;
             case 'R':
-                responseMessage = resetPassword(userSetupDTO, currentUser);
+                responseMessage = resetPassword(userSetupDTO.getUserName(), currentUser);
                 break;
             default:
                 responseMessage.setStatus(UNSUCCESSFUL_STATUS);
@@ -94,8 +94,8 @@ public class UserSetupService extends BaseService {
     }
 
     @Transactional(readOnly = false)
-    public ResponseMessage resetPassword(UserSetupDTO userSetupDTO, CurrentUser currentUser) {
-        UserSetup userSetup = userSetupDao.getUser(userSetupDTO.getUserName());
+    public ResponseMessage resetPassword(String username, CurrentUser currentUser) {
+        UserSetup userSetup = userSetupDao.getUser(username);
         if (userSetup == null) {
             responseMessage.setStatus(UNSUCCESSFUL_STATUS);
             responseMessage.setText("There is some problem. Please logout and try again.");
@@ -105,7 +105,7 @@ public class UserSetupService extends BaseService {
         userSetupDao.save(userSetup);
 
         responseMessage.setStatus(SUCCESSFUL_STATUS);
-        responseMessage.setText("Password for user , " + userSetup.getUserName().toUpperCase() + " has been reset successfully.");
+        responseMessage.setText("Password for user , " + userSetup.getUserName().toUpperCase() + " has been reset successfully to default password");
         return responseMessage;
     }
 
