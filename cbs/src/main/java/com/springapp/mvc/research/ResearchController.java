@@ -40,13 +40,9 @@ public class ResearchController extends BaseController {
         LoginDTO loginDTO = (LoginDTO) auth.getPrincipal();
 
         CurrentUser currentUser = new CurrentUser();
-        currentUser.setBranchCode(loginDTO.getBranchCode());
-        currentUser.setBranchName(loginDTO.getBranchName());
         currentUser.setUserName(loginDTO.getUserName());
         currentUser.setFullName(loginDTO.getUserFullName());
         currentUser.setGroupId(loginDTO.getGroupId());
-        currentUser.setBankId(loginDTO.getBankId());
-        currentUser.setDzongkhagId(loginDTO.getDzongkhagId());
         currentUser.setServerDate(new Date());
 
         request.getSession().setAttribute("currentUser", currentUser);

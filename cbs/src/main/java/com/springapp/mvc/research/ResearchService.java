@@ -48,8 +48,9 @@ public class ResearchService extends BaseService {
     private ResearchEntity convertDTOToEntity(ResearchDTO researchDTO, String filePath, CurrentUser currentUser, Long wordCount){
         ResearchEntity researchEntity = new ResearchEntity();
         researchEntity.setResearchTopic(researchDTO.getResearchTopic());
+        researchEntity.setResearch_description(researchDTO.getResearch_description());
         researchEntity.setFilepath(filePath);
-        researchEntity.setCreatedBy(currentUser.getFullName());
+        researchEntity.setCreatedBy(currentUser.getUserName());
         researchEntity.setCreatedDate(new Date());
         researchEntity.setWordCount(wordCount);
 //        researchEntity.setStatus(applicationStatusCode.find(1));

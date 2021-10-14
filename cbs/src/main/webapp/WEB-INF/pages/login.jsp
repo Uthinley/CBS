@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <div id="login-box" class="col-md-6 row d-flex justify-content-center align-items-center">
-        <div class="header col-md-12 align-center">CBS Researchers Management System
+        <div class="header col-md-12 align-center text-info">Username
             <%--      <hr>
           <p style="text-align: center;font-size: small">Royal Monetary Authority of Bhutan</p>--%>
         </div>

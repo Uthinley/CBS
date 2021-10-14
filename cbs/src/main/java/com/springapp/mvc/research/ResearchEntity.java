@@ -20,6 +20,9 @@ public class ResearchEntity extends BaseEntity {
     @Column(name = "research_topic")
     private String researchTopic;
 
+    @Column(name = "research_description")
+    private String research_description;
+
     @Column(name = "file_path")
     private String filepath;
 
@@ -64,5 +67,13 @@ public class ResearchEntity extends BaseEntity {
 
     public void setResearchTopic(String researchTopic) {
         this.researchTopic = researchTopic;
+    }
+
+    public String getResearch_description() {
+        return research_description;
+    }
+
+    public void setResearch_description(String research_description) {
+        this.research_description = research_description;
     }
 }

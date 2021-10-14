@@ -71,19 +71,6 @@ public class HomeController extends BaseController {
         return modelAndView;
     }
 
-    /**
-     * //endregion
-     * home controller
-     *
-     * @param request  request
-     * @param response response
-     * @return ModelAndView
-     */
-
-    public String indexd(HttpServletRequest request, HttpServletResponse response, Model model)
-            throws IOException {
-        return "home";
-    }
 
     @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)

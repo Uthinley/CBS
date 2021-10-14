@@ -42,6 +42,15 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label class="align-right col-md-2">Description</label>
+
+                                            <div class="col-md-6">
+                                                <textarea type="file" class="form-control nameOnly" name="reasearch_description"
+                                                          id="reasearch_description"  rows="6" ></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label class="align-right col-md-2">File Upload</label>
 
                                             <div class="col-md-6">

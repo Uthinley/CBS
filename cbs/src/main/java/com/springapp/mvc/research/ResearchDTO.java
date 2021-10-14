@@ -1,12 +1,12 @@
 package com.springapp.mvc.research;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 public class ResearchDTO {
 
     private Integer researchId;
     private String researchTopic;
+    private String research_description;
     private Integer wordCount;
     private String filePath;
     private String statusName;
@@ -76,5 +76,13 @@ public class ResearchDTO {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String getResearch_description() {
+        return research_description;
+    }
+
+    public void setResearch_description(String research_description) {
+        this.research_description = research_description;
     }
 }
