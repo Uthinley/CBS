@@ -43,11 +43,13 @@ research = (function () {
             success: function (res) {
                 var row = "";
                 for (var i in res){
+                    //nesGlobal.viewOrDownloadFile(res[i].filePath);
+                    let onclickFunction = "nesGlobal.viewOrDownloadFile('"+res[i].filePath+"');";
                     row = row + '<tr>'+
                         '<td></td>' +
                         '<td>' + (res[i].researchTopic) + '</td>' +
                         // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
-                        '<td> ' + (res[i].filePath) + '</td>' +
+                        '<td> <a href="javascript:void(0);" onclick="'+onclickFunction+'" >View File</a></td>' +
                         '<td>' + (res[i].wordCount) + '</td>' +
                         '<td>' + (res[i].status) + '</td>' +
                         '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
@@ -59,6 +61,7 @@ research = (function () {
                 cardTable.find('tbody').empty().prepend(row);
             }
         });
+
     }
 
     function formatDate(d){
@@ -87,6 +90,4 @@ research = (function () {
 $(document).ready(function () {
     research.save();
     research.getResearchList();
-    research.formatDate();
-
 });
