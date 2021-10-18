@@ -1,4 +1,0 @@
-UserSetupDao.getUserList = SELECT A.USRUSERID userId,A.USRUSERNAME userName,A.USRFULLNAME fullName,A.USRUSERSTATUS userStatus,A.USREMPLOYEEID employeeId,A.USREMAILID emailId,A.USRGROUPID groupId,B.GR_NAME groupName  FROM sa_user A INNER JOIN sa_user_group B ON A.USRGROUPID = B.GR_ID WHERE B.GR_STATUS =:status AND A.USRUSERSTATUS=:status
-UserSetupDao.getNextUserId = SELECT (USRUSERID+1)nUSERID FROM sa_user ORDER BY USRUSERID DESC
-
-UserSetupDao.updateIsBadCredentialStatus = UPDATE sa_user SET USRBADCREDENTIAL=:isBadCredential,USRPASSEXPIRY=:date WHERE USRUSERNAME=:userName

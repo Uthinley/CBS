@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sitemesh>
-    <mapping path="/*" decorator="/layout/layout-main.jsp"/>
-    <!--<mapping path="/login" exclude="true"/>-->
-    <mapping path="/login" decorator="/layout/layout-login.jsp"/>
-
-</sitemesh>
-
