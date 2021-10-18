@@ -5,6 +5,7 @@ import com.springapp.mvc.global.dto.CurrentUser;
 import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.global.enumeration.ApplicationStatusCode;
 import com.springapp.mvc.global.library.CustomFileUtil;
+import com.springapp.mvc.setup.user.UserSetupDTO;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.aspectj.util.FileUtil;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.core.io.Resource;
 
@@ -76,5 +78,18 @@ public class ResearchService extends BaseService {
         responseMessage.setStatus(SUCCESSFUL_STATUS);
         responseMessage.setText("Saved successfully");
         return responseMessage;
+    }
+
+    @Transactional(readOnly = true)
+    public GenericDTO getSummaryReport() {
+        return researchDAO.getSummaryReport();
+    }
+
+    public List<UserSetupDTO> getResearcherList() {
+        return researchDAO.getResearcherList(1);
+    }
+
+    public List<ResearchDTO> getReviewedResearchList() {
+        return researchDAO.getReviewedResearchList(3);
     }
 }
