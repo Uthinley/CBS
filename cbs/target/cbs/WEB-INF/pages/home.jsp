@@ -2,6 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: RMA
@@ -37,16 +38,22 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Total Researcher</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">288</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj1}"></c:out></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            <i class="fa fa-user fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                    <div class="row no-gutters align-items-center" id="totalR">
+                        <div class="col mr-2">
+                        </div>
+                        <div class="col-auto">
+                            <button id="totalResearcherDtls" class="btn text-primary">See details <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
@@ -55,16 +62,22 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Total Research Paper Submitted</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">215,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj2}"></c:out></div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fa fa-file fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                    <div class="row no-gutters align-items-center" id="submittedR">
+                        <div class="col mr-2">
+                        </div>
+                        <div class="col-auto">
+                            <button id="sResearch" class="btn text-primary">See details <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
@@ -73,13 +86,15 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Research Paper Reviewed
                             </div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj3}"></c:out></div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <fmt:formatNumber type = "number" var="val1" value="${summaryReport.obj4}" maxFractionDigits="0"/>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:out value="${val1}"></c:out> %</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: <c:out value="${summaryReport.obj4}"></c:out>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -88,10 +103,16 @@
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                         </div>
                     </div>
+                    <div class="row no-gutters align-items-center" id="reviewedR">
+                        <div class="col mr-2">
+                        </div>
+                        <div class="col-auto">
+                            <button id="reviewedRBtn" class="btn text-info">See details <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
@@ -99,45 +120,24 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                Research Paper Returned</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn text-warning">See details <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="card">
-            <div class="card-header">
-                Research Papers
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                <table class="table" id="researchTbl">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col" hidden>Research Id</th>
-                        <th scope="col">Research Topic</th>
-                        <th scope="col">File</th>
-                        <th scope="col">Word count</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Submitted By</th>
-                        <th scope="col">Submitted On</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                </p>
-                <%--            <a href="#" class="btn btn-primary">Go somewhere</a>--%>
-            </div>
-        </div>
 
     <!-- Modal -->
     <div class="modal fade" id="reviewerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -189,6 +189,15 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="totalResearcherSection" hidden>
+        <jsp:include page="researcher/totalResearcher.jsp"></jsp:include>
+    </div>
+    <div id="submittedResearchSection" hidden>
+        <jsp:include page="researcher/submittedResearch.jsp"></jsp:include>
+    </div>
+    <div id="reviewedResearchSection" hidden>
+        <jsp:include page="researcher/reviewedResearch.jsp"></jsp:include>
     </div>
 </security:authorize>
 </div>
