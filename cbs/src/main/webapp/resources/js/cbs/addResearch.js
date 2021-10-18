@@ -10,6 +10,24 @@ research = (function () {
         return nesGlobal.baseURL;
     }
 
+    function wordCountOnFileSelect(){
+        $('#file').on('change', function () {
+            let data = new FormData();
+            data.append('file', $(this)[0].files[0]);
+            $.ajax({
+                url: _baseURL() + 'research/getWordCount',
+                type: 'POST',
+                data: data,
+                enctype: 'multipart/form-data',
+                contentType: false,
+                processData: false,
+                success: function(res){
+                    $('.word_count').text(res);
+                }
+            })
+        });
+    }
+
     function save() {
         $(formId).on('click', '#btnSave', function () {
             // $(formId).validate({
@@ -44,12 +62,11 @@ research = (function () {
                 var row = "";
                 for (var i in res){
                     //nesGlobal.viewOrDownloadFile(res[i].filePath);
-                    let onclickFunction = "nesGlobal.viewOrDownloadFile('"+res[i].filePath+"');";
                     row = row + '<tr>'+
                         '<td></td>' +
                         '<td>' + (res[i].researchTopic) + '</td>' +
                         // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
-                        '<td> <a href="javascript:void(0);" onclick="'+onclickFunction+'" >View File</a></td>' +
+                        '<td>'+nesGlobal.viewOrDownloadFile(res[i].filePath)+'</td>' +
                         '<td>' + (res[i].wordCount) + '</td>' +
                         '<td>' + (res[i].status) + '</td>' +
                         '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
@@ -83,11 +100,13 @@ research = (function () {
     return {
         save: save,
         getResearchList: getResearchList,
-        formatDate: formatDate
+        formatDate: formatDate,
+        wordCountOnFileSelect:wordCountOnFileSelect
     };
 })();
 
 $(document).ready(function () {
     research.save();
     research.getResearchList();
+    research.wordCountOnFileSelect();
 });

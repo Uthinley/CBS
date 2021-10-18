@@ -107,9 +107,8 @@ public class AuthController {
         return model;
     }
 
-    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/viewOrDownloadFile", method = RequestMethod.POST)
-    public void viewDownloadFile(HttpServletResponse response, @RequestParam String filePath) throws Exception {
+    public void viewDownloadFile(HttpServletResponse response, String filePath) throws Exception {
         CustomFileUtil.viewDownloadFile(filePath,response);
     }
 

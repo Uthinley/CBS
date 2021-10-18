@@ -670,15 +670,21 @@ nesGlobal = (function () {
     }
 
     function viewOrDownloadFile(filePath){
-
-        $.ajax({
+        let url = globalConf.context+"/viewOrDownloadFile";
+        let token = $("meta[name='_csrf']").attr("content");
+        let parameter = $("meta[name='_csrf_parameterName']").attr("content");
+        return '<form target="_blank" method="POST" action="'+url+'">' +
+            '<input type="hidden" name="'+parameter+'" value="'+token+'"/>'+
+            '<input type="hidden" name="filePath" value="' + filePath + '"/>' +
+            '<input type="submit" value="View File"/></form>';
+        /*$.ajax({
             url: baseURL()+"viewOrDownloadFile",
             type: 'POST',
             data: {filePath:filePath},
             success: function(res){
                 window.open(baseURL()+"viewOrDownloadFile","_blank");
             }
-        });
+        });*/
     }
 
 

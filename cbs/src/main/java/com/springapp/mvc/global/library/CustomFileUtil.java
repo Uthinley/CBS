@@ -1,6 +1,8 @@
 package com.springapp.mvc.global.library;
 
 import com.springapp.mvc.global.dto.ResponseMessage;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -11,9 +13,11 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -47,6 +51,32 @@ public class CustomFileUtil {
         return rootPath;
     }
 
+    public static Long wordCount(InputStream inputStream) throws IOException {
+        String line;
+        Long count;
+        try (XWPFDocument doc = new XWPFDocument(inputStream)) {
+            XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
+            String docText = xwpfWordExtractor.getText();
+            // find number of words in the document
+            count = Arrays.stream(docText.split("\\s+")).count();
+
+        }
+//        File convFile = new File(file.getOriginalFilename());
+//        convFile.createNewFile();
+//        FileOutputStream fos = new FileOutputStream(convFile);
+//        fos.write(file.getBytes());
+//        FileInputStream fis = new FileInputStream(convFile);
+//        byte[] bytesArray = new byte[(int)convFile.length()];
+//        fis.read(bytesArray);
+//        String s = new String(bytesArray);
+//        String [] data = s.split(" ");
+//         for(int i = 0; i< data.length; i++){
+//             count++;
+//         }
+        return count;
+    }
+
+
     public static void viewDownloadFile(String documentPath,HttpServletResponse response) throws Exception{
         if(documentPath != null) {
             //documentPath = documentPath.replaceAll("///","\\");
@@ -62,7 +92,6 @@ public class CustomFileUtil {
     }
 
     private static void downloadFile(byte[] file, String fileName, HttpServletResponse response) throws IOException {
-        ResponseMessage responseMessage = new ResponseMessage();
 
         String fileExt = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
         switch (fileExt) {

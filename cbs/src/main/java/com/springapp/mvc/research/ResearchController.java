@@ -4,6 +4,7 @@ import com.springapp.mvc.auth.LoginDTO;
 import com.springapp.mvc.global.base.BaseController;
 import com.springapp.mvc.global.dto.CurrentUser;
 import com.springapp.mvc.global.dto.ResponseMessage;
+import com.springapp.mvc.global.library.CustomFileUtil;
 import com.springapp.mvc.setup.card.CardSetupDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -62,5 +63,11 @@ public class ResearchController extends BaseController {
     public List<ResearchDTO> getResearchList(HttpServletRequest request){
         currentUser = getCurrentUser(request);
         return researchService.getResearchList(currentUser);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getWordCount", method= RequestMethod.POST)
+    public Long getWordCount(HttpServletRequest request,@RequestParam("file") MultipartFile file) throws IOException {
+        return CustomFileUtil.wordCount(file.getInputStream());
     }
 }

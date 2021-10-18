@@ -7,10 +7,12 @@ public class ResearchDTO {
     private Integer researchId;
     private String researchTopic;
     private String research_description;
-    private Integer wordCount;
+    private Long wordCount;
     private String filePath;
     private String statusName;
     private String status;
+    private String research_number;
+    private Integer paper_version;
     private Date createdDate;
     private String createdBy;
 
@@ -62,11 +64,11 @@ public class ResearchDTO {
         this.researchTopic = researchTopic;
     }
 
-    public Integer getWordCount() {
+    public Long getWordCount() {
         return wordCount;
     }
 
-    public void setWordCount(Integer wordCount) {
+    public void setWordCount(Long wordCount) {
         this.wordCount = wordCount;
     }
 
@@ -84,5 +86,21 @@ public class ResearchDTO {
 
     public void setResearch_description(String research_description) {
         this.research_description = research_description;
+    }
+
+    public String getResearch_number() {
+        return research_number;
+    }
+
+    public void setResearch_number(String research_number) {
+        this.research_number = research_number;
+    }
+
+    public Integer getPaper_version() {
+        return paper_version;
+    }
+
+    public void setPaper_version(Integer paper_version) {
+        this.paper_version = paper_version;
     }
 }

@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_parameterName" content="${_csrf.parameterName}"/>
     <link rel="icon" type="image/png" href="resources/startbootstrap/img/favicon.png" />
     <title><sitemesh:write property="title"/></title>
     <jsp:include page="include/startbootstrap/css.jsp"/>

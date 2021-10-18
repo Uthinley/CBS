@@ -29,8 +29,6 @@ public class ResearchService extends BaseService {
     @Autowired
     private ResearchDAO researchDAO;
 
-    private ApplicationStatusCode applicationStatusCode;
-
 
     public ResponseMessage save(MultipartFile file, CurrentUser currentUser, ResearchDTO researchDTO) throws IOException {
         if(Objects.isNull(file)){
@@ -42,72 +40,28 @@ public class ResearchService extends BaseService {
         String sub_folder = currentUser.getUserName() + "/" + date + "/" +file.getOriginalFilename();
 
         String filePath = CustomFileUtil.uploadFile(file,sub_folder,file.getOriginalFilename());
-        Long wordCount =  wordCount(filePath);
-//        String filePath ="";
-        ResearchEntity researchEntity = convertDTOToEntity(researchDTO, filePath, currentUser, wordCount);
+        Long wordCount =  CustomFileUtil.wordCount(file.getInputStream());
+        researchDTO.setWordCount(wordCount);
+        researchDTO.setFilePath(filePath);
+        ResearchEntity researchEntity = convertDTOToEntity(researchDTO, currentUser);
         researchDAO.save(researchEntity);
         responseMessage.setStatus(SUCCESSFUL_STATUS);
         responseMessage.setText("Your research has been recorded and forwarded for review.");
         return responseMessage;
     }
 
-    private ResearchEntity convertDTOToEntity(ResearchDTO researchDTO, String filePath, CurrentUser currentUser, Long wordCount){
+    private ResearchEntity convertDTOToEntity(ResearchDTO researchDTO, CurrentUser currentUser){
         ResearchEntity researchEntity = new ResearchEntity();
         researchEntity.setResearchTopic(researchDTO.getResearchTopic());
         researchEntity.setResearch_description(researchDTO.getResearch_description());
-        researchEntity.setFilepath(filePath);
+        researchEntity.setFilepath(researchDTO.getFilePath());
         researchEntity.setCreatedBy(currentUser.getUserName());
         researchEntity.setCreatedDate(new Date());
-        researchEntity.setWordCount(wordCount);
-//        researchEntity.setStatus(applicationStatusCode.find(1));
-//        researchEntity.setStatus("SUBMITTED");
-        researchEntity.setStatus(1);
+        researchEntity.setWordCount(researchDTO.getWordCount());
+        researchEntity.setStatus(ApplicationStatusCode.SUBMITTED.getValue());;
         return researchEntity;
     }
 
-    private Long wordCount(String filePath) throws IOException {
-        String line;
-        Long count;
-        try (XWPFDocument doc = new XWPFDocument(Files.newInputStream(Paths.get(filePath)))) {
-            XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
-            String docText = xwpfWordExtractor.getText();
-            // find number of words in the document
-            count = Arrays.stream(docText.split("\\s+")).count();
-
-        }
-//        File convFile = new File(file.getOriginalFilename());
-//        convFile.createNewFile();
-//        FileOutputStream fos = new FileOutputStream(convFile);
-//        fos.write(file.getBytes());
-//        FileInputStream fis = new FileInputStream(convFile);
-//        byte[] bytesArray = new byte[(int)convFile.length()];
-//        fis.read(bytesArray);
-//        String s = new String(bytesArray);
-//        String [] data = s.split(" ");
-//         for(int i = 0; i< data.length; i++){
-//             count++;
-//         }
-         return count;
-    }
-
-    private String uploadFile(MultipartFile file, CurrentUser currentUser) throws Exception {
-        SimpleDateFormat dateTimeInGMT = new SimpleDateFormat("dd-MMM-yyyy");
-        dateTimeInGMT.setTimeZone(TimeZone.getTimeZone("GMT"));
-        String date = dateTimeInGMT.format(new Date());
-        String sub_folder = currentUser.getUserName() + "/" + date + "/" +file.getOriginalFilename();
-        Resource resource = new ClassPathResource("/lang/fileUpload.properties");
-        Properties properties = PropertiesLoaderUtils.loadProperties(resource);
-        String rootpath = properties.getProperty("fileUpload.loc");
-        rootpath = rootpath +"/"+ currentUser.getUserName() + "/" + date + "/" +file.getOriginalFilename();
-        Path path = Paths.get(rootpath);
-        byte[] bytes = file.getBytes();
-        Path parentDir = path.getParent();
-        if(!Files.exists(parentDir))
-            Files.createDirectories(parentDir);
-        Files.write(path, bytes);
-
-        return rootpath;
-    }
 
     public List<ResearchDTO> getResearchList(CurrentUser currentUser) {
         return researchDAO.getResearchList(currentUser);
