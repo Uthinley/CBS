@@ -4,8 +4,10 @@ import com.springapp.mvc.global.base.BaseService;
 import com.springapp.mvc.global.dto.CurrentUser;
 import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.global.enumeration.ApplicationStatusCode;
+import com.springapp.mvc.global.library.CustomFileUtil;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
@@ -35,13 +37,17 @@ public class ResearchService extends BaseService {
             responseMessage.setStatus(UNSUCCESSFUL_STATUS);
             responseMessage.setText("Please choose file to upload.");
         }
-        String filePath = uploadFile(file, currentUser);
+
+        String date = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
+        String sub_folder = currentUser.getUserName() + "/" + date + "/" +file.getOriginalFilename();
+
+        String filePath = CustomFileUtil.uploadFile(file,sub_folder,file.getOriginalFilename());
         Long wordCount =  wordCount(filePath);
 //        String filePath ="";
         ResearchEntity researchEntity = convertDTOToEntity(researchDTO, filePath, currentUser, wordCount);
         researchDAO.save(researchEntity);
         responseMessage.setStatus(SUCCESSFUL_STATUS);
-        responseMessage.setText("Saved successfully");
+        responseMessage.setText("Your research has been recorded and forwarded for review.");
         return responseMessage;
     }
 
@@ -65,7 +71,6 @@ public class ResearchService extends BaseService {
         try (XWPFDocument doc = new XWPFDocument(Files.newInputStream(Paths.get(filePath)))) {
             XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
             String docText = xwpfWordExtractor.getText();
-            System.out.println(docText);
             // find number of words in the document
             count = Arrays.stream(docText.split("\\s+")).count();
 
@@ -85,10 +90,11 @@ public class ResearchService extends BaseService {
          return count;
     }
 
-    private String uploadFile(MultipartFile file, CurrentUser currentUser) throws IOException {
+    private String uploadFile(MultipartFile file, CurrentUser currentUser) throws Exception {
         SimpleDateFormat dateTimeInGMT = new SimpleDateFormat("dd-MMM-yyyy");
         dateTimeInGMT.setTimeZone(TimeZone.getTimeZone("GMT"));
         String date = dateTimeInGMT.format(new Date());
+        String sub_folder = currentUser.getUserName() + "/" + date + "/" +file.getOriginalFilename();
         Resource resource = new ClassPathResource("/lang/fileUpload.properties");
         Properties properties = PropertiesLoaderUtils.loadProperties(resource);
         String rootpath = properties.getProperty("fileUpload.loc");
@@ -99,6 +105,7 @@ public class ResearchService extends BaseService {
         if(!Files.exists(parentDir))
             Files.createDirectories(parentDir);
         Files.write(path, bytes);
+
         return rootpath;
     }
 

@@ -3,6 +3,7 @@ package com.springapp.mvc.controllers;
 import com.springapp.mvc.auth.LoginDTO;
 import com.springapp.mvc.global.common.CommonService;
 import com.springapp.mvc.global.enumeration.LoginErrorCode;
+import com.springapp.mvc.global.library.CustomFileUtil;
 import com.springapp.mvc.setup.userLog.UserLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -31,9 +32,6 @@ public class AuthController {
 
     @Autowired
     private UserLogService userLogService;
-
-    @Autowired
-    private CommonService commonService;
 
     /**
      * login loader
@@ -107,6 +105,12 @@ public class AuthController {
         }
         model.setViewName("403");
         return model;
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/viewOrDownloadFile", method = RequestMethod.POST)
+    public void viewDownloadFile(HttpServletResponse response, @RequestParam String filePath) throws Exception {
+        CustomFileUtil.viewDownloadFile(filePath,response);
     }
 
     /**

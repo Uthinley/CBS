@@ -669,6 +669,18 @@ nesGlobal = (function () {
     function notification() {
     }
 
+    function viewOrDownloadFile(filePath){
+
+        $.ajax({
+            url: baseURL()+"viewOrDownloadFile",
+            type: 'POST',
+            data: {filePath:filePath},
+            success: function(res){
+                window.open(baseURL()+"viewOrDownloadFile","_blank");
+            }
+        });
+    }
+
 
     return {
         baseURL: baseURL(),
@@ -686,6 +698,7 @@ nesGlobal = (function () {
         baseReportLocation: baseReportLocation,
         reset: reset,
         enterKeyAsTab: enterKeyAsTab,
+        viewOrDownloadFile: viewOrDownloadFile,
         number_format: number_format
     };
 })();
