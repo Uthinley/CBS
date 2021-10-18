@@ -68,6 +68,77 @@ transaction = (function () {
         });
     }
 
+    function sResearch(){
+        $('#submittedR').on('click', '#sResearch', function () {
+            $('#submittedResearchSection').removeAttr('hidden');
+            $('#totalResearcherSection').attr('hidden',true);
+            $('#reviewedResearchSection').attr('hidden',true);
+        });
+    }
+    function reviewedRBtn(){
+        $('#reviewedR').on('click', '#reviewedRBtn', function () {
+            $('#reviewedResearchSection').removeAttr('hidden');
+            $('#totalResearcherSection').attr('hidden',true);
+            $('#submittedResearchSection').attr('hidden',true);
+            $.ajax({
+                url: _baseURL() + 'getReviewedResearchList',
+                type: 'GET',
+                success: function (res) {
+                    var row = "";
+                    for (var i in res){
+                        row = row + '<tr>'+
+                            '<td></td>' +
+                            '<td hidden>' + (res[i].researchId) + '</td>' +
+                            '<td>' + (res[i].researchTopic) + '</td>' +
+                            // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
+                            '<td> ' + (res[i].filePath) + '</td>' +
+                            '<td>' + (res[i].wordCount) + '</td>' +
+                            // '<td>' + (res[i].status) + '</td>' +
+                            '<td>' + (res[i].createdBy) + '</td>' +
+                            '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
+                            // '<td><i class="fa fa-eye text-success" id="iconEdit" data-toggle="modal" data-target="#reviewerModal" aria-hidden="true"></i></td>' +
+                            // '<td class="d-none" id="status">' + (res[i].wordCount) + '</td>' +
+                            // '<td hidden>' + (res[i].researchId) + '</td>' +
+                            '</tr>'
+                    }
+                    var tableID = $('#getReviewedResearchListTbl');
+                    tableID.dataTable().fnDestroy();
+                    tableID.find('tbody').empty().prepend(row);
+                    createDataTableWithButtons(tableID);
+                }
+            });
+
+        });
+    }
+    function totalResearcherDtls(){
+        $('#totalR').on('click', '#totalResearcherDtls', function () {
+            $('#totalResearcherSection').removeAttr('hidden');
+            $('#submittedResearchSection').attr('hidden',true);
+            $('#reviewedResearchSection').attr('hidden',true);
+            $.ajax({
+                url: _baseURL() + 'getResearcherList',
+                type: 'GET',
+                success: function (res) {
+                    var row = '';
+                    for (var i in res) {
+                        row = row + '<tr align="left">' +
+                            '<td></td>' +
+                            '<td>' + res[i].employeeId + '</td>' +
+                            '<td>' + res[i].userName + '</td>' +
+                            '<td>' + res[i].fullName + '</td>' +
+                            '<td>' + res[i].emailId + '</td>' +
+                            '<td>' + ((res[i].userStatus == '1') ? 'Active' : 'Inactive') + '</td>' +
+                            '</tr>';
+                    }
+                    var researcherListTbl = $('#researcherListTbl');
+                    researcherListTbl.dataTable().fnDestroy();
+                    researcherListTbl.find('tbody').empty().prepend(row);
+                    // researcherListTbl.dataTable();
+                    createDataTableWithButtons(researcherListTbl);
+                }
+            });
+        });
+    }
     function submitReviewerDtls(){
         $('#reviewerModal').on('click', '#reviwerSubmitBtn', function () {
             $('#reviewerModal').modal('toggle');
@@ -124,7 +195,10 @@ transaction = (function () {
         getResearchList: getResearchList,
         formatDate: formatDate,
         populateModal: populateModal,
-        submitReviewerDtls: submitReviewerDtls
+        submitReviewerDtls: submitReviewerDtls,
+        totalResearcherDtls : totalResearcherDtls,
+        sResearch : sResearch,
+        reviewedRBtn: reviewedRBtn
     };
 })();
 
@@ -134,4 +208,7 @@ $(document).ready(function () {
     transaction.formatDate();
     transaction.populateModal();
     transaction.submitReviewerDtls();
+    transaction.totalResearcherDtls();
+    transaction.sResearch();
+    transaction.reviewedRBtn();
 });

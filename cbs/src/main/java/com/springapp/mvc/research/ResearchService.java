@@ -4,6 +4,8 @@ import com.springapp.mvc.global.base.BaseService;
 import com.springapp.mvc.global.dto.CurrentUser;
 import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.global.enumeration.ApplicationStatusCode;
+import com.springapp.mvc.global.enumeration.StatusCode;
+import com.springapp.mvc.setup.user.UserSetupDTO;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,5 +116,17 @@ public class ResearchService extends BaseService {
         responseMessage.setStatus(SUCCESSFUL_STATUS);
         responseMessage.setText("Saved successfully");
         return responseMessage;
+    }
+
+    public List<UserSetupDTO> getResearcherList() {
+        return researchDAO.getResearcherList(StatusCode.ACTIVE.getValue());
+    }
+
+    public List<ResearchDTO> getReviewedResearchList() {
+        return researchDAO.getReviewedResearchList(ApplicationStatusCode.REVIEWED.getValue());
+    }
+
+    public GenericDTO getSummaryReport() {
+        return researchDAO.getSummaryReport();
     }
 }

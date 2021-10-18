@@ -12,6 +12,7 @@ import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.global.library.DateUtil;
 import com.springapp.mvc.research.ResearchDTO;
 import com.springapp.mvc.research.ResearchService;
+import com.springapp.mvc.setup.user.UserSetupDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -46,7 +47,6 @@ public class HomeController extends BaseController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         LoginDTO loginDTO = (LoginDTO) auth.getPrincipal();
-
         CurrentUser currentUser = new CurrentUser();
         currentUser.setBranchCode(loginDTO.getBranchCode());
         currentUser.setBranchName(loginDTO.getBranchName());
@@ -56,17 +56,14 @@ public class HomeController extends BaseController {
         currentUser.setBankId(loginDTO.getBankId());
         currentUser.setDzongkhagId(loginDTO.getDzongkhagId());
         currentUser.setServerDate(new Date());
-
         request.getSession().setAttribute("currentUser", currentUser);
-
         if (loginDTO.isPasswordChangeYN()) {
             response.sendRedirect("changePassword");
         }
-
-
         ModelAndView modelAndView = new ModelAndView();
         model.addAttribute("applicationStatusCode", commonService.getApplicationStatusCode());
         model.addAttribute("currentDate", DateUtil.formatDate(currentUser.getServerDate()));
+        model.addAttribute("summaryReport", researchService.getSummaryReport());
         modelAndView.setViewName("home");
         return modelAndView;
     }
@@ -102,6 +99,18 @@ public class HomeController extends BaseController {
     public List<ResearchDTO> getResearchList(HttpServletRequest request){
         currentUser = getCurrentUser(request);
         return researchService.geAllResearchList();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getResearcherList", method = RequestMethod.GET)
+    public List<UserSetupDTO> getResearcherList() {
+        return researchService.getResearcherList();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getReviewedResearchList", method = RequestMethod.GET)
+    public List<ResearchDTO> getReviewedResearchList() {
+        return researchService.getReviewedResearchList();
     }
 
 }

@@ -4,6 +4,7 @@ import com.springapp.mvc.global.base.BaseDao;
 import com.springapp.mvc.global.dto.CurrentUser;
 import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.setup.card.CardSetupDTO;
+import com.springapp.mvc.setup.user.UserSetupDTO;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,5 +42,28 @@ public class ResearchDAO extends BaseDao {
                 .setParameter("rComment", rComment)
                 .setParameter("statusId",statusId);
         hQuery.executeUpdate();
+    }
+
+    @Transactional(readOnly = true)
+    public List<UserSetupDTO> getResearcherList(Integer status) {
+        sqlQuery = properties.getProperty("ResearchDAO.getResearcherList");
+        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, UserSetupDTO.class);
+//                .setParameter("status", status);
+        return hQuery.list();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ResearchDTO> getReviewedResearchList(Integer statusCode) {
+        sqlQuery = properties.getProperty("ResearchDAO.getReviewedResearchList");
+        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, ResearchDTO.class)
+                .setParameter("statusCode", statusCode);
+        return hQuery.list();
+    }
+
+    @Transactional(readOnly = true)
+    public GenericDTO getSummaryReport() {
+        sqlQuery = properties.getProperty("ResearchDAO.getSummaryReport");
+        hQuery = (Query) hibernateQuery(sqlQuery, GenericDTO.class);
+        return (GenericDTO) hQuery.uniqueResult();
     }
 }
