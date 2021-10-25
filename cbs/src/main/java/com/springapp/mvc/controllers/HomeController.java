@@ -12,6 +12,7 @@ import com.springapp.mvc.global.dto.ResponseMessage;
 import com.springapp.mvc.global.library.DateUtil;
 import com.springapp.mvc.research.ResearchDTO;
 import com.springapp.mvc.research.ResearchService;
+import com.springapp.mvc.research.comment.ResearchCommentService;
 import com.springapp.mvc.setup.user.UserSetupDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,6 +43,8 @@ public class HomeController extends BaseController {
     private ResearchService researchService;
     @Autowired
     private CommonService commonService;
+    @Autowired
+    private ResearchCommentService commentService;
 
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response, Model model)
@@ -81,6 +84,8 @@ public class HomeController extends BaseController {
     @ResponseBody
     @RequestMapping(value="/saveReviewerComments")
     public ResponseMessage saveReviewerComments(HttpServletRequest request, Integer researchId, String rComment, Integer statusId){
+        currentUser=getCurrentUser(request);
+        commentService.reviewerComment(researchId, rComment, statusId,currentUser);
         return researchService.saveReviewerComments(researchId, rComment, statusId);
     }
 

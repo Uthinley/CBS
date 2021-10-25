@@ -23,37 +23,31 @@ import java.util.Properties;
 
 public class CustomFileUtil {
 
-    public static String uploadFile(MultipartFile attachment,String sub_folder, String fileName){
+    public static String uploadFile(MultipartFile attachment,String sub_folder, String fileName) throws IOException {
         String rootPath = null;
         if (attachment != null && !attachment.isEmpty()) {
             //get file upload location from properties file
-            try {
+            Resource resource = new ClassPathResource("/lang/fileUpload.properties");
+            Properties props = PropertiesLoaderUtils.loadProperties(resource);
+            rootPath = props.getProperty("fileUpload.loc");
 
-                Resource resource = new ClassPathResource("/lang/fileUpload.properties");
-                Properties props = PropertiesLoaderUtils.loadProperties(resource);
-                rootPath = props.getProperty("fileUpload.loc");
+            rootPath = rootPath + "/" + sub_folder + "/" + fileName;
 
-                rootPath = rootPath + "/" + sub_folder + "/" + fileName;
+            byte[] bytes = attachment.getBytes();
+            Path path = Paths.get(rootPath);
 
-                byte[] bytes = attachment.getBytes();
-                Path path = Paths.get(rootPath);
-
-                // Decode the file name (might contain spaces and on) and prepare file object.
-                Path parentDir = path.getParent();
-                if (!Files.exists(parentDir))
-                    Files.createDirectories(parentDir);
-                Files.write(path, bytes);
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-            }
+            Path parentDir = path.getParent();
+            if (!Files.exists(parentDir))
+                Files.createDirectories(parentDir);
+            Files.write(path, bytes);
 
         }
         return rootPath;
     }
 
-    public static long wordCount(InputStream inputStream) throws IOException {
+    public static Long wordCount(InputStream inputStream) throws IOException {
         String line;
-        long count;
+        Long count;
         try (XWPFDocument doc = new XWPFDocument(inputStream)) {
             XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
             String docText = xwpfWordExtractor.getText();
