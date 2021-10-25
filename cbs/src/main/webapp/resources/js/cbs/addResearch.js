@@ -11,7 +11,7 @@ research = (function () {
     }
 
     function wordCountOnFileSelect(){
-        $('#file').on('change', function () {
+        $('#research_paper').on('change', function () {
             let data = new FormData();
             data.append('file', $(this)[0].files[0]);
             $.ajax({
@@ -29,11 +29,13 @@ research = (function () {
     }
 
     function save() {
-        $(formId).on('click', '#btnSave', function () {
+        $(formId).on('click', '#btnSave', function (e) {
+            e.preventDefault();
             // $(formId).validate({
             //     submitHandler: function (form) {
             var data = new FormData($(formId)[0]);
-            data.append('file', $('input[type=file]')[0].files[0]);
+            data.append('research_paper', $('input[type=file]')[0].files[0]);
+            data.append('supporting_documents', $('input[type=file]')[0].files[1]);
                     $.ajax({
                         url: _baseURL() + 'research/save',
                         type: 'POST',
@@ -62,13 +64,18 @@ research = (function () {
                 var row = "";
                 for (var i in res){
                     //nesGlobal.viewOrDownloadFile(res[i].filePath);
+                    let color = "";
+                    if(res[i].status == '3'){
+                        color = "color: red;";
+                    }
                     row = row + '<tr>'+
                         '<td></td>' +
+                        '<td>' + (res[i].research_number) + '</td>' +
                         '<td>' + (res[i].researchTopic) + '</td>' +
                         // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
                         '<td>'+nesGlobal.viewOrDownloadFile(res[i].filePath)+'</td>' +
-                        '<td>' + (res[i].wordCount) + '</td>' +
-                        '<td>' + (res[i].status) + '</td>' +
+                        '<td>' + (res[i].paper_version) + '</td>' +
+                        '<td style="'+color+'">' + (res[i].statusName) + '</td>' +
                         '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
                         '<td class="d-none" id="status">' + (res[i].wordCount) + '</td>' +
                         '<td hidden>' + (res[i].researchId) + '</td>' +

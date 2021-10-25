@@ -52,10 +52,11 @@ public class ResearchController extends BaseController {
 
     }
 
+    @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ResponseMessage save(@RequestParam("file") MultipartFile file, HttpServletRequest request, ResearchDTO researchDTO) throws IOException {
+    public ResponseMessage save(HttpServletRequest request, ResearchDTO researchDTO) throws IOException {
         currentUser = getCurrentUser(request);
-        return researchService.save(file, currentUser, researchDTO);
+        return researchService.save(currentUser, researchDTO);
     }
 
     @ResponseBody
