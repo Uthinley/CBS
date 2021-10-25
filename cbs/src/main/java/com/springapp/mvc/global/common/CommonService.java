@@ -57,6 +57,11 @@ public class CommonService {
     }
 
     @Transactional(readOnly = true)
+    public List<DropdownDTO> getResearchMonthList() {
+        return commonDao.getResearchMonthList();
+    }
+
+    @Transactional(readOnly = true)
     public List<DropdownDTO> getBankList() {
         return commonDao.getBankList(StatusCode.ACTIVE.getValue());
     }

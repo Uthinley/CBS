@@ -29,7 +29,7 @@ public class CustomFileUtil {
             //get file upload location from properties file
             try {
 
-                Resource resource = new ClassPathResource("/properties/fileUpload.properties");
+                Resource resource = new ClassPathResource("/lang/fileUpload.properties");
                 Properties props = PropertiesLoaderUtils.loadProperties(resource);
                 rootPath = props.getProperty("fileUpload.loc");
 
@@ -51,9 +51,9 @@ public class CustomFileUtil {
         return rootPath;
     }
 
-    public static Long wordCount(InputStream inputStream) throws IOException {
+    public static long wordCount(InputStream inputStream) throws IOException {
         String line;
-        Long count;
+        long count;
         try (XWPFDocument doc = new XWPFDocument(inputStream)) {
             XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
             String docText = xwpfWordExtractor.getText();

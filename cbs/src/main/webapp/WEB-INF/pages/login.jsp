@@ -18,13 +18,13 @@
 <body>
 <div class="container">
     <div id="login-box" class="col-md-6 row d-flex justify-content-center align-items-center">
-        <div class="header col-md-12 align-center text-info">Username
-            <%--      <hr>
-          <p style="text-align: center;font-size: small">Royal Monetary Authority of Bhutan</p>--%>
+        <div class="header col-md-12 align-center text-primary">Zhichen Research Registry
+<%--            <hr>--%>
+<%--          <p style="text-align: center;font-size: small">Royal Monetary Authority of Bhutan</p>--%>
         </div>
-<%--        <div class="col-md-6 img">--%>
-<%--            <img src="<c:url value="/resources/startbootstrap/img/login.jpg"/>"/>--%>
-<%--        </div>--%>
+        <div class="col-md-4 img">
+            <img width="30%" height="30%" src="<c:url value="/resources/startbootstrap/img/logoZRR.jpg"/>"/>
+        </div>
         <div id="login-column" class="col-md-8">
             <form id="login-form" class="form-horizontal" action="<c:url value='/auth'/>" method="post">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

@@ -43,7 +43,7 @@ public class ResearchService extends BaseService {
 
         String filePath = CustomFileUtil.uploadFile(file,sub_folder,file.getOriginalFilename());
         Long wordCount =  CustomFileUtil.wordCount(file.getInputStream());
-        researchDTO.setWordCount(wordCount);
+        researchDTO.setWordCount(wordCount.intValue());
         researchDTO.setFilePath(filePath);
         ResearchEntity researchEntity = convertDTOToEntity(researchDTO, currentUser);
         researchDAO.save(researchEntity);
@@ -59,7 +59,7 @@ public class ResearchService extends BaseService {
         researchEntity.setFilepath(researchDTO.getFilePath());
         researchEntity.setCreatedBy(currentUser.getUserName());
         researchEntity.setCreatedDate(new Date());
-        researchEntity.setWordCount(researchDTO.getWordCount());
+        researchEntity.setWordCount(researchDTO.getWordCount().longValue());
         researchEntity.setStatus(ApplicationStatusCode.SUBMITTED.getValue());;
         return researchEntity;
     }
@@ -90,6 +90,6 @@ public class ResearchService extends BaseService {
     }
 
     public List<ResearchDTO> getReviewedResearchList() {
-        return researchDAO.getReviewedResearchList(3);
+        return researchDAO.getReviewedResearchList(2);
     }
 }

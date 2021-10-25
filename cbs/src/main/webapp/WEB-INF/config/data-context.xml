@@ -48,7 +48,7 @@
                 <value>classpath*:sql/ChangePasswordDao.sql</value>
                 <value>classpath*:sql/CardDao.sql</value>
                 <value>classpath*:sql/ResearchDAO.sql</value>
-
+                <value>classpath*:sql/ReviewerDAO.sql</value>
             </list>
         </property>
     </bean>

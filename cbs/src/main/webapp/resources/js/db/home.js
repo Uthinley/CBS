@@ -22,12 +22,12 @@ transaction = (function () {
                         '<td>'+(parseInt(i)+1)+'</td>' +
                         '<td hidden>' + (res[i].researchId) + '</td>' +
                         '<td>' + (res[i].researchTopic) + '</td>' +
+                        '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
+                        '<td>' + (res[i].createdBy) + '</td>' +
                         // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
                         '<td> ' + (res[i].filePath) + '</td>' +
                         '<td>' + (res[i].wordCount) + '</td>' +
                         '<td>' + (res[i].status) + '</td>' +
-                        '<td>' + (res[i].createdBy) + '</td>' +
-                        '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
                         '<td><i class="fa fa-eye text-success" id="iconEdit" data-toggle="modal" data-target="#reviewerModal" aria-hidden="true"></i></td>' +
                         // '<td class="d-none" id="status">' + (res[i].wordCount) + '</td>' +
                         // '<td hidden>' + (res[i].researchId) + '</td>' +
@@ -189,6 +189,16 @@ transaction = (function () {
             });
         })
     }
+    function getDate(){
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+        $('#currentDate').text(date);
+        $('#currentMonth').text(monthNames[today.getMonth()]);
+    }
 
     return {
         save: save,
@@ -198,12 +208,14 @@ transaction = (function () {
         submitReviewerDtls: submitReviewerDtls,
         totalResearcherDtls : totalResearcherDtls,
         sResearch : sResearch,
-        reviewedRBtn: reviewedRBtn
+        reviewedRBtn: reviewedRBtn,
+        getDate: getDate,
     };
 })();
 
 $(document).ready(function () {
     transaction.save();
+    transaction.getDate();
     transaction.getResearchList();
     transaction.formatDate();
     transaction.populateModal();

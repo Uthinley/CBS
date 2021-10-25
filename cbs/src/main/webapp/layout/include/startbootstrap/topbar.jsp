@@ -25,7 +25,7 @@
     </button>
 
 
-    <a href="<c:url value="/home"/>" style="text-decoration: none" class="text-primary"><h5>CBS Researchers Management System</h5></a> &nbsp;&nbsp;
+    <a href="<c:url value="/home"/>" style="text-decoration: none" class="text-primary"><h5>Zhichen Research Registry</h5></a> &nbsp;&nbsp;
 
     <%--<security:authorize access="hasRole('00-01-001-VIEW')">
         <a href="<c:url value="/home"/>">

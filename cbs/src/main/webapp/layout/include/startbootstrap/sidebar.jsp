@@ -19,7 +19,7 @@
         </div>
 
         <div class="sidebar-brand-icon">
-            <img src="<c:url value="/resources/startbootstrap/img/rma-logo-gold.png"/>">
+<%--            <img src="<c:url value="/resources/startbootstrap/img/logoZRR.jpg"/>">--%>
         </div>
 
         <div class="sidebar-brand-text mx-3">
@@ -82,6 +82,26 @@
 <%--                    <security:authorize access="hasAuthority('02-01-003-VIEW')">--%>
 <%--                        <a class="collapse-item" href="<c:url value="/capitalEntry"/>">Capital Entry</a>--%>
 <%--                    </security:authorize>--%>
+                </div>
+            </div>
+        </div>
+    </li>
+
+
+    <!-- Nav Item - Utilities Collapse Menu for card -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#researchPaper" aria-expanded="true"
+           aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-desktop"></i>
+            <span class="heading">Research Paper</span>
+        </a>
+        <div id="researchPaper" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <div class="sub-item">
+                    <%--                    <h6 class="collapse-header text-white">DFRS Operation</h6>--%>
+                    <security:authorize access="hasAuthority('01-01-003-VIEW')">
+                        <a class="collapse-item" href="<c:url value="/reviewer"/>">Assign Reviewer</a>
+                    </security:authorize>
                 </div>
             </div>
         </div>

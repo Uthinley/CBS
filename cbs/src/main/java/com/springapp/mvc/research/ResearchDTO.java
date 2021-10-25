@@ -7,7 +7,7 @@ public class ResearchDTO {
     private Integer researchId;
     private String researchTopic;
     private String research_description;
-    private Long wordCount;
+    private Integer wordCount;
     private String filePath;
     private String statusName;
     private String status;
@@ -64,11 +64,11 @@ public class ResearchDTO {
         this.researchTopic = researchTopic;
     }
 
-    public Long getWordCount() {
+    public Integer getWordCount() {
         return wordCount;
     }
 
-    public void setWordCount(Long wordCount) {
+    public void setWordCount(Integer wordCount) {
         this.wordCount = wordCount;
     }
 
