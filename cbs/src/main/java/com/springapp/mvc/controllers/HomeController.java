@@ -28,6 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -60,13 +62,14 @@ public class HomeController extends BaseController {
         currentUser.setDzongkhagId(loginDTO.getDzongkhagId());
         currentUser.setServerDate(new Date());
         request.getSession().setAttribute("currentUser", currentUser);
+
         if (loginDTO.isPasswordChangeYN()) {
             response.sendRedirect("changePassword");
         }
         ModelAndView modelAndView = new ModelAndView();
         model.addAttribute("applicationStatusCode", commonService.getApplicationStatusCode());
         model.addAttribute("currentDate", DateUtil.formatDate(currentUser.getServerDate()));
-        model.addAttribute("summaryReport", researchService.getSummaryReport());
+//        model.addAttribute("summaryReport", researchService.getSummaryReport());
         modelAndView.setViewName("home");
         return modelAndView;
     }

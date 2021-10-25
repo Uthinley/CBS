@@ -7,7 +7,7 @@
 --%>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Submitted Research Paper</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Uploaded Research Paper</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -17,11 +17,11 @@
                     <th scope="col">#</th>
                     <th scope="col" hidden>Research Id</th>
                     <th scope="col">Research Topic</th>
+                    <th scope="col">Uploaded On</th>
+                    <th scope="col">Uploaded By</th>
                     <th scope="col">File</th>
                     <th scope="col">Word count</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Submitted By</th>
-                    <th scope="col">Submitted On</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>

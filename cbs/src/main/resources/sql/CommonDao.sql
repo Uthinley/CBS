@@ -10,5 +10,6 @@ CommonDao.getBankList = SELECT A.bank_id value, A.bank_name text,bank_code text2
 CommonDao.getTSWCFLoans = SELECT a.tswcf_id value, a.name text FROM dfrs_tswcf_type a WHERE a.isactive =:status
 
 
-
+CommonDao.getResearchMonthList = SELECT DATE_FORMAT(CREATEDDATE, '%M-%Y') AS TEXT, CREATEDDATE AS VALUE \
+                                 FROM `research_dtls` A GROUP BY MONTH(CREATEDDATE), YEAR(CREATEDDATE)
 

@@ -44,6 +44,12 @@ public class CommonDao extends BaseDao {
         org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class);
         return hQuery.list();
     }
+    @Transactional(readOnly = true)
+    public List<DropdownDTO> getResearchMonthList() {
+        sqlQuery = properties.getProperty("CommonDao.getResearchMonthList");
+        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class);
+        return hQuery.list();
+    }
 
     /**
      * To get list of purpose for ngultrum exchange.
