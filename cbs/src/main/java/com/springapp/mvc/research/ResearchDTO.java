@@ -15,11 +15,11 @@ public class ResearchDTO {
     private String status;
     private String research_number;
     private Integer paper_version;
-    private String research_paper;
-    private String supporting_documents;
+    private String research_paper_name;
+    private String supporting_documents_name;
 
-    private MultipartFile research_paper_file;
-    private MultipartFile[] supporting_documents_file;
+    private MultipartFile research_paper;
+    private MultipartFile[] supporting_documents;
     private Date createdDate;
     private String createdBy;
 
@@ -95,36 +95,36 @@ public class ResearchDTO {
         this.paper_version = paper_version;
     }
 
-    public String getResearch_paper() {
+    public String getResearch_paper_name() {
+        return research_paper_name;
+    }
+
+    public void setResearch_paper_name(String research_paper_name) {
+        this.research_paper_name = research_paper_name;
+    }
+
+    public String getSupporting_documents_name() {
+        return supporting_documents_name;
+    }
+
+    public void setSupporting_documents_name(String supporting_documents_name) {
+        this.supporting_documents_name = supporting_documents_name;
+    }
+
+    public MultipartFile getResearch_paper() {
         return research_paper;
     }
 
-    public void setResearch_paper(String research_paper) {
+    public void setResearch_paper(MultipartFile research_paper) {
         this.research_paper = research_paper;
     }
 
-    public String getSupporting_documents() {
+    public MultipartFile[] getSupporting_documents() {
         return supporting_documents;
     }
 
-    public void setSupporting_documents(String supporting_documents) {
+    public void setSupporting_documents(MultipartFile[] supporting_documents) {
         this.supporting_documents = supporting_documents;
-    }
-
-    public MultipartFile getResearch_paper_file() {
-        return research_paper_file;
-    }
-
-    public void setResearch_paper_file(MultipartFile research_paper_file) {
-        this.research_paper_file = research_paper_file;
-    }
-
-    public MultipartFile[] getSupporting_documents_file() {
-        return supporting_documents_file;
-    }
-
-    public void setSupporting_documents_file(MultipartFile[] supporting_documents_file) {
-        this.supporting_documents_file = supporting_documents_file;
     }
 
     public Date getCreatedDate() {

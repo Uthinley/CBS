@@ -43,7 +43,7 @@ public class ResearchService extends BaseService {
 
 
     public ResponseMessage save(CurrentUser currentUser, ResearchDTO researchDTO) throws IOException {
-        MultipartFile rPaper = researchDTO.getResearch_paper_file();
+        MultipartFile rPaper = researchDTO.getResearch_paper();
         if(Objects.isNull(rPaper)){
             responseMessage.setStatus(UNSUCCESSFUL_STATUS);
             responseMessage.setText("Please choose file research paper to upload.");
