@@ -12,6 +12,7 @@ research = (function () {
 
     function wordCountOnFileSelect(){
         $('#research_paper').on('change', function () {
+            alert("ldlddl");
             let data = new FormData();
             data.append('file', $(this)[0].files[0]);
             $.ajax({
