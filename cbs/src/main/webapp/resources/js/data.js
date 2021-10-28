@@ -341,8 +341,8 @@ function confirmMsg(msg) {
 
 //*********************************************************************************************************
 
-//region *** nesGlobal Object ***
-nesGlobal = (function () {
+//region *** globalJs Object ***
+globalJs = (function () {
     "use strict";
 
     function baseURL() {
@@ -744,7 +744,7 @@ $(document).ready(
                 },
                 invalidHandler: function (event, validator) {
                     submitted = true;
-                    nesGlobal.switchToInvalidTab();
+                    globalJs.switchToInvalidTab();
                 }
             }
         );
@@ -869,8 +869,8 @@ $(document).ready(
 
 
         //region custom global methods
-        nesGlobal.reset();
-        nesGlobal.enterKeyAsTab();
+        globalJs.reset();
+        globalJs.enterKeyAsTab();
         //endregion
 
 

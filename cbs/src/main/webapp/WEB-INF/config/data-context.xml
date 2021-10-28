@@ -20,7 +20,7 @@
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.dialect">com.springapp.mvc.global.config.SqlServerCustomDialect</prop>
+                <prop key="hibernate.dialect">bt.cbs.zrr.global.config.SqlServerCustomDialect</prop>
             </props>
         </property>
     </bean>

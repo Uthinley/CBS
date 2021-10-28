@@ -47,28 +47,28 @@
 
     <bean class="org.springframework.security.core.session.SessionRegistryImpl" id="sessionRegistry"/>
     <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder"/>
-    <bean class="com.springapp.mvc.security.WebAuthenticationProvider" id="authenticationProvider">
+    <bean class="bt.cbs.zrr.security.WebAuthenticationProvider" id="authenticationProvider">
         <property name="passwordEncoder" ref="passwordEncoder"/>
     </bean>
-    <bean class="com.springapp.mvc.security.AjaxTimeoutRedirectFilter" id="ajaxTimeoutRedirectFilter"/>
+    <bean class="bt.cbs.zrr.security.AjaxTimeoutRedirectFilter" id="ajaxTimeoutRedirectFilter"/>
 
-    <bean class="com.springapp.mvc.security.AuthenticationEntryPoint" id="authenticationEntryPoint">
+    <bean class="bt.cbs.zrr.security.AuthenticationEntryPoint" id="authenticationEntryPoint">
         <constructor-arg name="loginUrl" value="/login"/>
     </bean>
 
-    <bean class="com.springapp.mvc.security.WebAccessDeniedHandler" id="accessDeniedHandler">
+    <bean class="bt.cbs.zrr.security.WebAccessDeniedHandler" id="accessDeniedHandler">
         <property name="accessDeniedUrl" value="403"/>
     </bean>
 
-    <bean class="com.springapp.mvc.security.LoginSuccessHandler" id="loginSuccessHandler">
+    <bean class="bt.cbs.zrr.security.LoginSuccessHandler" id="loginSuccessHandler">
         <constructor-arg name="defaultTargetUrl" value="/home"/>
     </bean>
 
-    <bean class="com.springapp.mvc.security.LoginFailureHandler" id="loginFailureHandler">
+    <bean class="bt.cbs.zrr.security.LoginFailureHandler" id="loginFailureHandler">
         <constructor-arg name="defaultFailureUrl" value="/login?error"/>
     </bean>
 
-    <bean class="com.springapp.mvc.security.LogoutSuccessHandler" id="logoutSuccessHandler">
+    <bean class="bt.cbs.zrr.security.LogoutSuccessHandler" id="logoutSuccessHandler">
         <constructor-arg name="defaultTargetUrl" value="/login"/>
     </bean>
 

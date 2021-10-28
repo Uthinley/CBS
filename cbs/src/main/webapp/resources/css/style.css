@@ -389,5 +389,11 @@ a {
     font-size: 11px;
 }
 
+.dtree input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    line-height: 3;
+}
+
 
 

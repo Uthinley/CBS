@@ -7,7 +7,7 @@ research = (function () {
     var formId = $('#addResearch');
 
     function _baseURL() {
-        return nesGlobal.baseURL;
+        return globalJs.baseURL;
     }
 
     function wordCountOnFileSelect(){

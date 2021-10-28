@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd">
     <aop:aspectj-autoproxy/>
 
-    <bean id="logAspect" class="com.springapp.mvc.aop.LoggingAspect"/>
+    <bean id="logAspect" class="bt.cbs.zrr.aop.LoggingAspect"/>
 
 
     <aop:config>
