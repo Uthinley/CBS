@@ -1,4 +1,4 @@
-package bt.cbs.zrr.research;
+package bt.cbs.zrr.global.dto;
 
 public class GenericDTO {
     private Object obj1;

@@ -7,12 +7,11 @@ research = (function () {
     var formId = $('#addResearch');
 
     function _baseURL() {
-        return nesGlobal.baseURL;
+        return globalJs.baseURL;
     }
 
     function wordCountOnFileSelect(){
         $('#research_paper').on('change', function () {
-            alert("ldlddl");
             let data = new FormData();
             data.append('file', $(this)[0].files[0]);
             $.ajax({

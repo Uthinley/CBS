@@ -1,7 +1,8 @@
-package bt.cbs.zrr.research;
+package bt.cbs.zrr.research.paper;
 
 import bt.cbs.zrr.global.base.BaseDao;
 import bt.cbs.zrr.global.dto.CurrentUser;
+import bt.cbs.zrr.global.dto.GenericDTO;
 import bt.cbs.zrr.setup.user.UserSetupDTO;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;

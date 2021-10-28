@@ -1,7 +1,7 @@
 package bt.cbs.zrr.reviewer;
 
 import bt.cbs.zrr.global.base.BaseService;
-import bt.cbs.zrr.research.ResearchDTO;
+import bt.cbs.zrr.research.paper.ResearchDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

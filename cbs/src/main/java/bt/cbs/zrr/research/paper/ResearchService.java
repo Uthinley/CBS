@@ -1,10 +1,11 @@
-package bt.cbs.zrr.research;
+package bt.cbs.zrr.research.paper;
 
 import bt.cbs.zrr.global.base.BaseService;
 import bt.cbs.zrr.global.common.CommonService;
 import bt.cbs.zrr.global.dto.CurrentUser;
 import bt.cbs.zrr.global.dto.ResponseMessage;
 import bt.cbs.zrr.global.library.CustomFileUtil;
+import bt.cbs.zrr.global.dto.GenericDTO;
 import bt.cbs.zrr.research.comment.ResearchCommentService;
 import bt.cbs.zrr.setup.user.UserSetupDTO;
 import bt.cbs.zrr.global.enumeration.ApplicationStatusCode;
@@ -14,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

@@ -30,7 +30,7 @@ public abstract class BaseDao {
         return em.unwrap(Session.class);
     }
 
-    protected org.hibernate.Query hibernateQuery(String query, Class dtoClazz) {
+    protected org.hibernate.query.Query hibernateQuery(String query, Class dtoClazz) {
         return getCurrentSession()
                 .createSQLQuery(query)
                 .setResultTransformer(new CaseLessAliasToBeanResultTransformer(dtoClazz));

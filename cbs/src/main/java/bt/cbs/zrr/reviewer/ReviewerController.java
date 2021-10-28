@@ -2,7 +2,7 @@ package bt.cbs.zrr.reviewer;
 
 import bt.cbs.zrr.global.base.BaseController;
 import bt.cbs.zrr.global.common.CommonService;
-import bt.cbs.zrr.research.ResearchDTO;
+import bt.cbs.zrr.research.paper.ResearchDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

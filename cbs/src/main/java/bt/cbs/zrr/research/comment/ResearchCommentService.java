@@ -4,7 +4,7 @@ import bt.cbs.zrr.global.base.BaseService;
 import bt.cbs.zrr.global.common.CommonService;
 import bt.cbs.zrr.global.dto.CurrentUser;
 import bt.cbs.zrr.global.dto.ResponseMessage;
-import bt.cbs.zrr.research.ResearchDTO;
+import bt.cbs.zrr.research.paper.ResearchDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

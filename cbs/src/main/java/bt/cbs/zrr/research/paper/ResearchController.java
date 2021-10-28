@@ -1,4 +1,4 @@
-package bt.cbs.zrr.research;
+package bt.cbs.zrr.research.paper;
 
 import bt.cbs.zrr.auth.LoginDTO;
 import bt.cbs.zrr.global.base.BaseController;

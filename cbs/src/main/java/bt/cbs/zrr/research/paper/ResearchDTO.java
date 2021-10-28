@@ -1,4 +1,4 @@
-package bt.cbs.zrr.research;
+package bt.cbs.zrr.research.paper;
 
 import org.springframework.web.multipart.MultipartFile;
 
