@@ -22,7 +22,7 @@ public class ResearchCommentService extends BaseService {
         ResearchComment researchComment = new ResearchComment();
         researchComment.setPaper_version(researchDTO.getPaper_version());
         researchComment.setResearch_number(researchDTO.getResearch_number());
-        researchComment.setResearch_comment(researchDTO.getResearch_abstract());
+//        researchComment.setResearch_comment(researchDTO.getResearch_abstract());
         researchComment.setResearch_document_path(researchDTO.getFilePath());
         researchComment.setResearch_status(researchDTO.getStatus());
         researchComment.setCreatedBy(currentUser.getUserName());

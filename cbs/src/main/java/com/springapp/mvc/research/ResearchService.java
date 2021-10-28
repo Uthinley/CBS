@@ -43,20 +43,20 @@ public class ResearchService extends BaseService {
 
 
     public ResponseMessage save(CurrentUser currentUser, ResearchDTO researchDTO) throws IOException {
-        MultipartFile rPaper = researchDTO.getResearch_paper_file();
-        if(Objects.isNull(rPaper)){
-            responseMessage.setStatus(UNSUCCESSFUL_STATUS);
-            responseMessage.setText("Please choose file research paper to upload.");
-        }
-
-        String date = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
-        String research_number = generateResearchNumber();
-        String sub_folder = currentUser.getUserName() + "/" + date + "/" +research_number;
-
-        String filePath = CustomFileUtil.uploadFile(rPaper,sub_folder,rPaper.getOriginalFilename());
-        Long wordCount =  CustomFileUtil.wordCount(rPaper.getInputStream());
-        researchDTO.setWordCount(wordCount.intValue());
-        researchDTO.setFilePath(filePath);
+//        MultipartFile rPaper = researchDTO.getResearch_paper_file();
+//        if(Objects.isNull(rPaper)){
+//            responseMessage.setStatus(UNSUCCESSFUL_STATUS);
+//            responseMessage.setText("Please choose file research paper to upload.");
+//        }
+//
+//        String date = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
+//        String research_number = generateResearchNumber();
+//        String sub_folder = currentUser.getUserName() + "/" + date + "/" +research_number;
+//
+//        String filePath = CustomFileUtil.uploadFile(rPaper,sub_folder,rPaper.getOriginalFilename());
+//        Long wordCount =  CustomFileUtil.wordCount(rPaper.getInputStream());
+//        researchDTO.setWordCount(wordCount.intValue());
+//        researchDTO.setFilePath(filePath);
         ResearchEntity researchEntity = convertDTOToEntity(researchDTO, currentUser);
         researchDAO.save(researchEntity);
         researchDTO.setPaper_version(researchEntity.getPaper_version());
@@ -72,7 +72,7 @@ public class ResearchService extends BaseService {
 
         ResearchEntity researchEntity = new ResearchEntity();
         researchEntity.setResearchTopic(researchDTO.getResearchTopic());
-        researchEntity.setResearch_abstract(researchDTO.getResearch_abstract());
+//        researchEntity.setResearch_abstract(researchDTO.getResearch_abstract());
         researchEntity.setFilepath(researchDTO.getFilePath());
         researchEntity.setFilepath(researchDTO.getFilePath());
         researchEntity.setCreatedBy(currentUser.getUserName());
