@@ -8,7 +8,7 @@ transaction = (function () {
     var formId = $('#bankDeposit');
 
     function _baseURL() {
-        return nesGlobal.baseURL;
+        return globalJs.baseURL;
     }
 
     function getResearchList(){

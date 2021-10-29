@@ -6,6 +6,23 @@
 
 var dateFormat = 'dd-mm-yyyy';
 
+function formatDate(d){
+    var date = new Date(d);
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+
+    if (day < 10) {
+        var dt = '0' + dt;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+    var finalDate;
+    return finalDate = `${day}/${month}/${year}`;
+}
+
+
 function getParameterByNameFromUrl(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -687,7 +704,6 @@ globalJs = (function () {
         });*/
     }
 
-
     return {
         baseURL: baseURL(),
         ajax: ajax,
@@ -714,6 +730,9 @@ globalJs = (function () {
 
 //region *** Document Ready Method ***
 $(document).ready(
+
+
+
     function () {
         //Local variable for show errors on pop instead of tooltip
         var submitted = false;

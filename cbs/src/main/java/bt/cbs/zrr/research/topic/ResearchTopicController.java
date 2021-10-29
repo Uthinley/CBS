@@ -40,19 +40,8 @@ public class ResearchTopicController extends BaseController {
     @RequestMapping()
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response, Model model){
         ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        LoginDTO loginDTO = (LoginDTO) auth.getPrincipal();
-
-        CurrentUser currentUser = new CurrentUser();
-        currentUser.setUserName(loginDTO.getUserName());
-        currentUser.setFullName(loginDTO.getUserFullName());
-        currentUser.setGroupId(loginDTO.getGroupId());
-        currentUser.setServerDate(new Date());
-
-        request.getSession().setAttribute("currentUser", currentUser);
         modelAndView.setViewName("researcher/researchTopic");
         return modelAndView;
-
     }
 
     @ResponseBody
@@ -63,15 +52,15 @@ public class ResearchTopicController extends BaseController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/getResearchList", method= RequestMethod.GET)
-    public List<ResearchDTO> getResearchList(HttpServletRequest request){
-        currentUser = getCurrentUser(request);
-        return topicService.getResearchList(currentUser);
+    @RequestMapping(value = "/gTopicList", method = RequestMethod.GET)
+    public List gTopicList(HttpServletRequest request, String status) throws Exception {
+        return topicService.gTopicList(status,getCurrentUser(request).getUserName());
     }
 
     @ResponseBody
-    @RequestMapping(value = "/getWordCount", method= RequestMethod.POST)
-    public Long getWordCount(HttpServletRequest request,@RequestParam("file") MultipartFile file) throws IOException {
-        return CustomFileUtil.wordCount(file.getInputStream());
+    @RequestMapping(value = "/findTopic", method = RequestMethod.GET)
+    public ResearchTopicDTO findTopic(HttpServletRequest request,String research_month) {
+        return topicService.findTopic(research_month,getCurrentUser(request).getUserName());
     }
+
 }

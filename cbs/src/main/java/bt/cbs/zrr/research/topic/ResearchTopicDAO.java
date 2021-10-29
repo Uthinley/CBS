@@ -1,12 +1,6 @@
 package bt.cbs.zrr.research.topic;
 
 import bt.cbs.zrr.global.base.BaseDao;
-import bt.cbs.zrr.global.dto.CurrentUser;
-import bt.cbs.zrr.global.dto.GenericDTO;
-import bt.cbs.zrr.research.paper.ResearchDTO;
-import bt.cbs.zrr.research.paper.ResearchEntity;
-import bt.cbs.zrr.setup.user.UserSetupDTO;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,10 +9,26 @@ import java.util.List;
 
 @Repository
 public class ResearchTopicDAO extends BaseDao {
-    private Query hQuery;
 
     @Transactional
     public void save(Object obj) {
         saveOrUpdate(obj);
+    }
+
+    @Transactional(readOnly = true)
+    public List gTopicList(String status, String userName) {
+        sqlQuery = properties.getProperty("ResearchTopicDAO.gTopicList");
+        return hibernateQuery(sqlQuery, ResearchTopicDTO.class)
+                .setParameter("userName",userName)
+                .setParameter("status",status).list();
+    }
+
+    @Transactional(readOnly = true)
+    public ResearchTopicDTO findTopic(String research_month, String userName) {
+        sqlQuery = properties.getProperty("ResearchTopicDAO.findTopic");
+        List list = hibernateQuery(sqlQuery, ResearchTopicDTO.class)
+                .setParameter("userName",userName)
+                .setParameter("research_month",research_month).list();
+        return list.isEmpty()?null:(ResearchTopicDTO)list.get(0);
     }
 }

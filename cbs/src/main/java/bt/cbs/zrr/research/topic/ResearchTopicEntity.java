@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "research_dtls")
+@Table(name = "research_topic")
 public class ResearchTopicEntity extends BaseEntity {
 
     /*
@@ -22,8 +22,10 @@ public class ResearchTopicEntity extends BaseEntity {
     @Column(name = "research_topic_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer research_topic_id;
+
     @Column(name = "research_month")
     private String research_month;
+
     @Column(name = "research_topic")
     private String research_topic;
 

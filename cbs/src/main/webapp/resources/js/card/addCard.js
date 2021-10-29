@@ -8,7 +8,7 @@ card = (function () {
     var formId = $('#addCardInfo');
 
     function _baseURL() {
-        return nesGlobal.baseURL;
+        return globalJs.baseURL;
     }
 
     function save() {

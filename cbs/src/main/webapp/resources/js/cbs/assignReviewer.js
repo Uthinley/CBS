@@ -7,7 +7,7 @@ reviewer = (function () {
     var formId = $('#addResearch');
 
     function _baseURL() {
-        return nesGlobal.baseURL;
+        return globalJs.baseURL;
     }
     function getResearchListByMonth(){
         $('.search').on('click', '#searchBtn', function () {
@@ -23,7 +23,7 @@ reviewer = (function () {
                             '<td></td>' +
                             '<td>' + (res[i].researchTopic) + '</td>' +
                             // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
-                            '<td>'+nesGlobal.viewOrDownloadFile(res[i].filePath)+'</td>' +
+                            '<td>'+globalJs.viewOrDownloadFile(res[i].filePath)+'</td>' +
                             '<td>' + (res[i].wordCount) + '</td>' +
                             '<td>' + (res[i].status) + '</td>' +
                             '<td>' + (formatDate(res[i].createdDate)) + '</td>' +

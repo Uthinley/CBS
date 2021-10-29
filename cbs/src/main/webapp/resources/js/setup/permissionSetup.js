@@ -8,14 +8,14 @@ permissionSetup = (function () {
     var isSubmitted = false;
 
     function _baseURL() {
-        return nesGlobal.baseURL + "permissionSetup/"
+        return globalJs.baseURL + "permissionSetup/"
     }
 
     function save() {
         $(formID).on('click', '#btnSave', function (e) {
             $(formID).validate({
                 submitHandler: function (form) {
-                    nesGlobal.formIndexing($("#permissionListTbl").find('tbody'));
+                    globalJs.formIndexing($("#permissionListTbl").find('tbody'));
                     $.ajax({
                         url: _baseURL() + 'save',
                         type: 'POST',
@@ -111,7 +111,7 @@ permissionSetup = (function () {
                     }
 
                     permissionListTbl.find('tbody').empty().prepend(row);
-                    nesGlobal.formIndexing(permissionListTbl.find('tbody'));
+                    globalJs.formIndexing(permissionListTbl.find('tbody'));
 
                 }
             });
@@ -132,7 +132,7 @@ permissionSetup = (function () {
                 success: function (res) {
                     if (res != null) {
                         $("#screenList option").remove();
-                        nesGlobal.loadDropDown($('#screenList'), res, 'string');
+                        globalJs.loadDropDown($('#screenList'), res, 'string');
                     }
                 }
             });
@@ -163,7 +163,7 @@ permissionSetup = (function () {
             });
             var permissionListTbl = $("#permissionListTbl");
             permissionListTbl.find('tbody').prepend(row);
-            nesGlobal.formIndexing(permissionListTbl.find('tbody'));
+            globalJs.formIndexing(permissionListTbl.find('tbody'));
         });
     }
 

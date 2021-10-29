@@ -7,7 +7,7 @@ cardSetup = (function () {
     var formId = $('#cardSetup');
 
     function _baseURL() {
-        return nesGlobal.baseURL;
+        return globalJs.baseURL;
     }
 
     function save() {

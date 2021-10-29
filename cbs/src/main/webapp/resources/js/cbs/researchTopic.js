@@ -4,42 +4,30 @@
 
 researchTopic = (function () {
     "use strict";
-    var formId = $('#researchTopicForm');
+    let formId = $('#researchTopicForm');
 
     function _baseURL() {
-        return globalJs.baseURL;
+        return globalJs.baseURL+"researchTopic";
     }
 
-    function wordCountOnFileSelect(){
-        $('#research_paper').on('change', function () {
-            let data = new FormData();
-            data.append('file', $(this)[0].files[0]);
-            $.ajax({
-                url: _baseURL() + 'research/getWordCount',
-                type: 'POST',
-                data: data,
-                enctype: 'multipart/form-data',
-                contentType: false,
-                processData: false,
-                success: function(res){
-                    $('.word_count').text(res);
-                }
-            })
-        });
+    function init(){
+        save();
+        gTopicList();
+        rePropose();
     }
 
     function save() {
         $(formId).on('click', '#btnSave', function (e) {
             // $(formId).validate({
             //     submitHandler: function (form) {
-            var data = new FormData($(formId)[0]);
+            let data = $(formId).serializeArray();
                     $.ajax({
-                        url: _baseURL() + 'researchTopic/save',
+                        url: _baseURL() + '/save',
                         type: 'POST',
                         data: data,
                         success: function (res) {
                             if (res.status == 1) {
-                                successMsg(res.text, _baseURL()+'research');
+                                successMsg(res.text, _baseURL());
                             } else {
                                 warningMsg(res.text);
                             }
@@ -50,30 +38,59 @@ researchTopic = (function () {
         })
     }
 
-    function formatDate(d){
-        var date = new Date(d);
-        var year = date.getFullYear();
-        var month = date.getMonth()+1;
-        var day = date.getDate();
+    function gTopicList(){
+        $('#approved-tab').on('click', function (e) {
+            $.ajax({
+                url: _baseURL() + '/gTopicList',
+                type: 'GET',
+                success: function (res) {
+                    let row = "";
+                    for (var i in res) {
+                        let color = "";
+                        let status = "";
+                        if (res[i].status == '3') {
+                            color = "color:red";
+                            status = "<span style='color:darkred;font-weight: bold;'>"+res[i].status_name+"<button class='re-propose-btn'>Re Propose</button></span>"
+                        }else{
+                            status = res[i].status_name;
+                        }
+                        row = row + '<tr>' +
+                            '<td></td>' +
+                            '<td class="month">' + (res[i].research_month) + '</td>' +
+                            '<td class="title">' + (res[i].research_topic) + '</td>' +
+                            '<td>' + status + '</td>' +
+                            '<td>' + isNull(res[i].remarks) + '</td>' +
+                            '<td>' + isNull(res[i].createdBy) + '</td>' +
+                            '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
+                            '</tr>'
+                    }
+                    let tbl = $('#approved_topic_list');
+                    tbl.find('tbody').empty().prepend(row);
+                }
+            });
+        });
 
-        if (day < 10) {
-            var dt = '0' + dt;
-        }
-        if (month < 10) {
-            month = '0' + month;
-        }
-        var finalDate;
-        return finalDate = `${day}/${month}/${year}`;
     }
 
+    function rePropose(){
+        $('body').on('click','.re-propose-btn',function (e) {
+            $('#research_month').val($(this).closest('tr').find('.month').text());
+            $('#research_topic').val($(this).closest('tr').find('.title').text());
+            $('#status').append($('<option>', {
+                value: 'R',
+                text: 'Re Propose'
+            }));
+
+            $('#form-tab').tab('show');
+        });
+    }
+
+
     return {
-        save: save,
-        formatDate: formatDate,
-        wordCountOnFileSelect:wordCountOnFileSelect
+        init: init
     };
 })();
 
 $(document).ready(function () {
-    researchTopic.save();
-    // research.wordCountOnFileSelect();
+    researchTopic.init();
 });
