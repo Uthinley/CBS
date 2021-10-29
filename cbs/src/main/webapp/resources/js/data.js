@@ -298,6 +298,23 @@ function successMsg(msg, url) {
         });
     }
 }
+function successMsg2(msg, functionName) {
+    if (!functionName) {
+        swal({
+            title: "Success!",
+            text: msg,
+            type: "success"
+        })
+    } else {
+        swal({
+            title: "Success",
+            text: msg,
+            type: "success"
+        }, function () {
+            functionName;
+        });
+    }
+}
 
 function errorMsg(msg) {
 

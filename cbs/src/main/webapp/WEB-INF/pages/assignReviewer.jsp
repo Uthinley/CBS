@@ -47,10 +47,10 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Research No</th>
+                                <th>Research Number</th>
 <%--                                <th>File</th>--%>
 <%--                                <th>Word Count</th>--%>
-                                <th>Research Topic</th>
+                                <th>Research Title</th>
                                 <th>Received On</th>
                                 <th>Action</th>
 <%--                                <th class="d-none"></th>--%>
@@ -65,8 +65,35 @@
             </div>
         </div>
 </div>
-<%--modal for assigning reviewer--%>
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">List of research paper assigned to reviewer</h6>
+    </div>
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-lg">
+                <div class="table-responsive">
+                    <table class="table table-bordered css-serial" id="assingedResearchTbl" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Research Number</th>
+                            <th>Research Title</th>
+                            <th>Assigned On</th>
+                            <th>Assigned To</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <%--modal for assigning reviewer--%>
+    <div class="modal fade bd-example-modal-lg" id="assignModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -113,6 +140,7 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+</div>
 <script src="<c:url value='/resources/js/cbs/assignReviewer.js'/>"></script>
 </body>
 </html>

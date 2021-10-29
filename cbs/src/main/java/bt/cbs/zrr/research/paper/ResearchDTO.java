@@ -25,6 +25,25 @@ public class ResearchDTO {
     private Date createdDate;
     private String createdBy;
 
+    private String reviewerName;
+    private Date assignedDate;
+
+    public String getReviewerName() {
+        return reviewerName;
+    }
+
+    public void setReviewerName(String reviewerName) {
+        this.reviewerName = reviewerName;
+    }
+
+    public Date getAssignedDate() {
+        return assignedDate;
+    }
+
+    public void setAssignedDate(Date assignedDate) {
+        this.assignedDate = assignedDate;
+    }
+
     public Integer getResearchId() {
         return researchId;
     }
@@ -76,10 +95,6 @@ public class ResearchDTO {
     public String getFilePath() {
         return filePath;
     }
-<<<<<<< HEAD:cbs/src/main/java/com/springapp/mvc/research/ResearchDTO.java
-
-=======
->>>>>>> d1f0d338627f6b9484424f65ccf3c7c0b4345860:cbs/src/main/java/bt/cbs/zrr/research/paper/ResearchDTO.java
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;

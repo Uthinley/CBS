@@ -31,6 +31,7 @@ import java.util.List;
 @RequestMapping(value = "/researchTopic")
 public class ResearchTopicController extends BaseController {
 
+    @Autowired
     private final ResearchTopicService topicService;
 
     public ResearchTopicController(ResearchTopicService topicService) {
@@ -62,12 +63,12 @@ public class ResearchTopicController extends BaseController {
         return topicService.save(currentUser, topicDTO);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/getResearchList", method= RequestMethod.GET)
-    public List<ResearchDTO> getResearchList(HttpServletRequest request){
-        currentUser = getCurrentUser(request);
-        return topicService.getResearchList(currentUser);
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/getResearchList", method= RequestMethod.GET)
+//    public List<ResearchDTO> getResearchList(HttpServletRequest request){
+//        currentUser = getCurrentUser(request);
+//        return topicService.getResearchList(currentUser);
+//    }
 
     @ResponseBody
     @RequestMapping(value = "/getWordCount", method= RequestMethod.POST)

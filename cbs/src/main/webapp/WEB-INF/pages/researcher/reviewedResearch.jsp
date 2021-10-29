@@ -16,7 +16,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col" hidden>Research Id</th>
-                    <th scope="col">Research Topic</th>
+                    <th scope="col">Research Title</th>
                     <th scope="col">File</th>
                     <th scope="col">Word count</th>
 <%--                    <th scope="col">Status</th>--%>

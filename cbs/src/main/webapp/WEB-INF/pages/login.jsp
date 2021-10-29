@@ -18,7 +18,9 @@
 <body>
 <div class="container">
     <div id="login-box" class="col-md-6 row d-flex justify-content-center align-items-center">
-        <div class="header col-md-12 align-center text-primary">Zhichen Research Registry
+        <div class="header col-md-12 align-center text-primary">
+            <h3>བཞི་ཆེན་ཞིབ་མཇུག་ཡིག།</h3>
+            <h5>Zhichen Research Registry</h5>
 <%--            <hr>--%>
 <%--          <p style="text-align: center;font-size: small">Royal Monetary Authority of Bhutan</p>--%>
         </div>

@@ -7,7 +7,7 @@ reviewer = (function () {
     var formId = $('#addResearch');
 
     function _baseURL() {
-        return nesGlobal.baseURL;
+        return globalJs.baseURL;
     }
     function getResearchListByMonth(){
         $('.search').on('click', '#searchBtn', function () {
@@ -40,11 +40,12 @@ reviewer = (function () {
                             // '<td hidden>' + (res[i].researchId) + '</td>' +
                             '</tr>'
                     }
+                    getAssignedResearchList($('#monthId').val());
                     var cardTable = $('#researchListTbl');
                     cardTable.dataTable().fnDestroy();
                     cardTable.find('tbody').empty().prepend(row);
-                    // $('#researchListTbl').DataTable();
-                    createDataTableWithButtons(cardTable);
+                    $(cardTable).DataTable();
+                    // createDataTableWithButtons(cardTable);
                 }
             });
         });
@@ -52,6 +53,7 @@ reviewer = (function () {
 
     function assignReviewer(){
         $('.modal-footer').on('click', '#assignBtn', function () {
+            $('#assignModal').modal('toggle');
             // var researchNo = $('#rNumber').val();
             // var reviewerId = $('#reviewerName').val();
             // var completionDate= $('#completionDate').val();
@@ -65,12 +67,46 @@ reviewer = (function () {
                 },
                 success: function (res) {
                     if (res.status == 1) {
-                        successMsg(res.text, _baseURL());
+                        // successMsg(res.text, _baseURL()+'reviewer');
+                        successMsg(res.text);
+                        // getResearchListByMonth();
+                        $('#searchBtn').trigger('click');
+                        getAssignedResearchList($('#monthId').val());
+                        // successMsg(res.text, _baseURL()+'reviewer/updatedList');
                     } else {
                         warningMsg(res.text);
                     }
                 }
             });
+        });
+    }
+
+    function getAssignedResearchList(month){
+        $.ajax({
+            url: _baseURL() + 'reviewer/getAssignedResearchList',
+            type: 'GET',
+            data: {
+                month : month,
+            },
+            success: function (res) {
+                var row = "";
+                for (var i in res){
+                    //nesGlobal.viewOrDownloadFile(res[i].filePath);
+                    row = row + '<tr>'+
+                        '<td></td>' +
+                        '<td>' + (res[i].research_number) + '</td>' +
+                        '<td>' + (res[i].researchTopic) + '</td>' +
+                        '<td>' + (formatDate(res[i].assignedDate)) + '</td>' +
+                        '<td>' + (res[i].reviewerName) + '</td>' +
+                        '<td>' + (res[i].statusName) + '</td>' +
+                        '</tr>'
+                }
+                var cardTable = $('#assingedResearchTbl');
+                cardTable.dataTable().fnDestroy();
+                cardTable.find('tbody').empty().prepend(row);
+                // $('#researchListTbl').DataTable();
+                createDataTableWithButtons(cardTable);
+            }
         });
     }
 

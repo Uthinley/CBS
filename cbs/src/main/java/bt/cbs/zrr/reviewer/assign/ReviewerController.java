@@ -1,15 +1,13 @@
-package bt.cbs.zrr.reviewer;
+package bt.cbs.zrr.reviewer.assign;
 
-<<<<<<< HEAD:cbs/src/main/java/com/springapp/mvc/reviewer/ReviewerController.java
-import com.springapp.mvc.global.base.BaseController;
-import com.springapp.mvc.global.common.CommonService;
-import com.springapp.mvc.global.dto.ResponseMessage;
-import com.springapp.mvc.research.ResearchDTO;
-=======
+//import com.springapp.mvc.global.base.BaseController;
+//import com.springapp.mvc.global.common.CommonService;
+//import com.springapp.mvc.global.dto.ResponseMessage;
+//import com.springapp.mvc.research.ResearchDTO;
 import bt.cbs.zrr.global.base.BaseController;
 import bt.cbs.zrr.global.common.CommonService;
+import bt.cbs.zrr.global.dto.ResponseMessage;
 import bt.cbs.zrr.research.paper.ResearchDTO;
->>>>>>> d1f0d338627f6b9484424f65ccf3c7c0b4345860:cbs/src/main/java/bt/cbs/zrr/reviewer/ReviewerController.java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -52,9 +50,17 @@ public class ReviewerController extends BaseController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/getAssignedResearchList", method= RequestMethod.GET)
+    public List<ResearchDTO> getAssignedResearchList(HttpServletRequest request, Date month){
+        currentUser = getCurrentUser(request);
+        return reviewerService.getAssignedResearchList(month);
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/assignReviewer", method= RequestMethod.POST)
     public ResponseMessage assignReviewer(HttpServletRequest request, Integer researchNo, Integer reviewerId, Date completionDate){
         currentUser = getCurrentUser(request);
         return reviewerService.assignReviewer(currentUser, researchNo, reviewerId, completionDate);
     }
+
 }

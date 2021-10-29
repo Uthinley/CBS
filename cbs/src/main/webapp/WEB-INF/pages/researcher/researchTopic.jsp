@@ -36,7 +36,7 @@
 
             <div class="col-md-9">
                 <textarea class="form-control " name="research_topic"
-                          id="research_topic" required="true" placeholder="Choose your research topic ..."></textarea>
+                          id="research_topic" required="true" placeholder="Propose your research topic ..."></textarea>
             </div>
         </div>
 
