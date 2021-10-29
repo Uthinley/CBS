@@ -33,9 +33,9 @@
     <link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet">
     <style>
         #login{
-            /*background-image: url("/resources/startbootstrap/img/bhutanflag.png");*/
-            /*background-repeat: no-repeat, repeat;*/
-            /*background-size: cover;*/
+            background-image: url("/resources/startbootstrap/img/background.png");
+            background-repeat: no-repeat, repeat;
+            background-size: cover;
         }
     </style>
 </head>

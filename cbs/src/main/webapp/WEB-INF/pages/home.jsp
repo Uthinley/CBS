@@ -141,8 +141,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="reviewerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade bd-example-modal-lg" id="reviewerModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="exampleModalLongTitle">Reviewer Comment:</h5>
@@ -153,27 +153,28 @@
                 <div class="modal-body">
                     <input type="text" class="form-control" id="researchId" hidden>
                     <div class="form-group">
-                        <label for="researchTopic">Research Topic</label>
+                        <label for="researchTopic">Research Title</label>
 <%--                        <input type="text" class="form-control" id="researchTopic">--%>
                         <textarea class="form-control" id="researchTopic" name="rComment" rows="2" readonly></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="researchTopic">Submitted By</label>
+                        <label for="researchTopic">Author</label>
                         <input type="text" class="form-control" id="name" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="rComment">Remarks</label>
-                        <textarea class="form-control" id="rComment" name="rComment" rows="15"></textarea>
+                        <label for="rComment">Reviewer comments</label>
+                        <textarea class="form-control" id="rComment" name="rComment" rows="12"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label class="required" for="statusId">Status</label>
-                        <select class="form-control required" id="statusId" name="statusId">
-                            <option>--------SELECT----------</option>
-                            <option value="2">Reviewed</option>
-                            <option value="3">Return</option>
-                            <option value="4">Approve</option>
-                        </select>
-                    </div>
+                    <%--TODO-- for the different status--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label class="required" for="statusId">Status</label>--%>
+<%--                        <select class="form-control required" id="statusId" name="statusId">--%>
+<%--                            <option>--------SELECT----------</option>--%>
+<%--                            <option value="2">Reviewed</option>--%>
+<%--                            <option value="3">Return</option>--%>
+<%--                            <option value="4">Approve</option>--%>
+<%--                        </select>--%>
+<%--                    </div>--%>
 <%--                    <div class="form-group">--%>
 <%--                        <label for="aStatus">Status</label>--%>
 <%--                        <form:select id="aStatus"--%>
@@ -186,7 +187,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="reviwerSubmitBtn" class="btn btn-primary">Submit</button>
+                    <button type="button" id="reviwerSubmitBtn" class="btn btn-primary">Post</button>
                 </div>
             </div>
         </div>

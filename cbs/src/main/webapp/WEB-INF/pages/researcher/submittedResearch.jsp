@@ -16,7 +16,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col" hidden>Research Id</th>
-                    <th scope="col">Research Topic</th>
+                    <th scope="col">Research Title</th>
                     <th scope="col">Uploaded On</th>
                     <th scope="col">Uploaded By</th>
                     <th scope="col">File</th>

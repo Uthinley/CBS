@@ -25,6 +25,25 @@ public class ResearchDTO {
     private Date createdDate;
     private String createdBy;
 
+    private String reviewerName;
+    private Date assignedDate;
+
+    public String getReviewerName() {
+        return reviewerName;
+    }
+
+    public void setReviewerName(String reviewerName) {
+        this.reviewerName = reviewerName;
+    }
+
+    public Date getAssignedDate() {
+        return assignedDate;
+    }
+
+    public void setAssignedDate(Date assignedDate) {
+        this.assignedDate = assignedDate;
+    }
+
     public Integer getResearchId() {
         return researchId;
     }
