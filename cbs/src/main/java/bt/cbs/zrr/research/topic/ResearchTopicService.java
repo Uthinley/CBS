@@ -62,7 +62,7 @@ public class ResearchTopicService extends BaseService {
         ResearchTopicEntity topicEntity = new ResearchTopicEntity();
         topicEntity.setResearch_month(topicDTO.getResearch_month());
         topicEntity.setResearch_topic(topicDTO.getResearch_topic());
-        topicEntity.setStatus(ApplicationStatusCode.SUBMITTED.getValue().toString());
+        topicEntity.setStatus(topicDTO.getStatus());
         topicEntity.setRemarks(topicDTO.getRemarks());
         topicEntity.setCreatedBy(currentUser.getUserName());
         topicEntity.setCreatedDate(new Date());

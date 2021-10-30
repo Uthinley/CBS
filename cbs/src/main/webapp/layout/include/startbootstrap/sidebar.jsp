@@ -74,8 +74,10 @@
                 <div class="sub-item">
 <%--                    <h6 class="collapse-header text-white">DFRS Operation</h6>--%>
                     <security:authorize access="hasAuthority('00-01-002-VIEW')">
-                        <a class="collapse-item" href="<c:url value="/research"/>">Research Paper</a>
                         <a class="collapse-item" href="<c:url value="/researchTopic"/>">Research Topic</a>
+                    </security:authorize>
+                    <security:authorize access="hasAuthority('00-01-002-VIEW')">
+                        <a class="collapse-item" href="<c:url value="/research"/>">Research Paper</a>
                     </security:authorize>
 <%--                    <security:authorize access="hasAuthority('00-01-002-VIEW')">--%>
 <%--                        <a class="collapse-item" href="<c:url value="/researchTopic"/>">Research Topic</a>--%>

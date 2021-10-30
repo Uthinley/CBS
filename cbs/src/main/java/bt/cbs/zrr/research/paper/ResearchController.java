@@ -5,6 +5,8 @@ import bt.cbs.zrr.global.base.BaseController;
 import bt.cbs.zrr.global.dto.CurrentUser;
 import bt.cbs.zrr.global.dto.ResponseMessage;
 import bt.cbs.zrr.global.library.CustomFileUtil;
+import bt.cbs.zrr.research.topic.ResearchTopicDTO;
+import bt.cbs.zrr.research.topic.ResearchTopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -29,8 +31,14 @@ import java.util.List;
 @RequestMapping(value = "/research")
 public class ResearchController extends BaseController {
 
-    @Autowired
-    private ResearchService researchService;
+    private final ResearchService researchService;
+
+    private final ResearchTopicService topicService;
+
+    public ResearchController(ResearchService researchService, ResearchTopicService topicService) {
+        this.researchService = researchService;
+        this.topicService = topicService;
+    }
 
     @RequestMapping()
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response, Model model)
@@ -69,5 +77,11 @@ public class ResearchController extends BaseController {
     @RequestMapping(value = "/getWordCount", method= RequestMethod.POST)
     public Long getWordCount(HttpServletRequest request,@RequestParam("file") MultipartFile file) throws IOException {
         return CustomFileUtil.wordCount(file.getInputStream());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getTitleForMonth", method= RequestMethod.GET)
+    public ResearchTopicDTO getTitleForMonth(HttpServletRequest request, String research_month) throws IOException {
+        return topicService.findTopic(research_month,getCurrentUser(request).getUserName());
     }
 }

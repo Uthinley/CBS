@@ -22,6 +22,15 @@ function formatDate(d){
     return finalDate = `${day}/${month}/${year}`;
 }
 
+function check_file_size(size) {
+    if(size > 5*1024*1024){ // 5MB
+        warningMsg("File size is greater than 5 MB.");
+        return false;
+    }else{
+        return true;
+    }
+
+}
 
 function getParameterByNameFromUrl(name, url) {
     if (!url) url = window.location.href;
@@ -697,11 +706,6 @@ globalJs = (function () {
         });
     }
 
-    //
-    // notification
-    //
-    function notification() {
-    }
 
     function viewOrDownloadFile(filePath){
         let url = globalConf.context+"/viewOrDownloadFile";

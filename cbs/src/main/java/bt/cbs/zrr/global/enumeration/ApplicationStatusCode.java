@@ -1,20 +1,23 @@
 package bt.cbs.zrr.global.enumeration;
 
 public enum ApplicationStatusCode {
-    SUBMITTED(1, "SUBMITTED"),
-    REVIEWED(2, "REVIEWED"),
-    RETURNED(3, "RETURNED"),
-    APPROVED(4, "APPROVED");
+    SUBMITTED("S", "SUBMITTED"),
+    REVIEWED("R", "REVIEWED"),
+    RETURNED("T", "RETURNED"),
+    RE_SUBMITTED("O", "RE_SUBMITTED"),
+    APPROVED("A", "APPROVED"),
+    ACTIVE("O", "ACTIVE"),
+    INACTIVE("O", "INACTIVE");
 
-    private Integer value;
+    private String value;
     private String text;
 
-    ApplicationStatusCode(int value, String text) {
+    ApplicationStatusCode(String value, String text) {
         this.value = value;
         this.text = text;
     }
 
-    public Integer getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -22,7 +25,7 @@ public enum ApplicationStatusCode {
         return text;
     }
 
-    public String find(Integer value) {
+    public String find(String value) {
         if (value.equals(ApplicationStatusCode.SUBMITTED.getValue())) {
             return ApplicationStatusCode.SUBMITTED.getText();
         }
@@ -34,6 +37,15 @@ public enum ApplicationStatusCode {
         }
         if (value.equals(ApplicationStatusCode.APPROVED.getValue())) {
             return ApplicationStatusCode.APPROVED.getText();
+        }
+        if (value.equals(ApplicationStatusCode.RE_SUBMITTED.getValue())) {
+            return ApplicationStatusCode.RE_SUBMITTED.getText();
+        }
+        if (value.equals(ApplicationStatusCode.ACTIVE.getValue())) {
+            return ApplicationStatusCode.ACTIVE.getText();
+        }
+        if (value.equals(ApplicationStatusCode.INACTIVE.getValue())) {
+            return ApplicationStatusCode.INACTIVE.getText();
         }
         return null;
     }

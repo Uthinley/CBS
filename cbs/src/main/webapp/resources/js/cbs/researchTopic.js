@@ -14,27 +14,28 @@ researchTopic = (function () {
         save();
         gTopicList();
         rePropose();
+
     }
 
     function save() {
         $(formId).on('click', '#btnSave', function (e) {
-            // $(formId).validate({
-            //     submitHandler: function (form) {
-            let data = $(formId).serializeArray();
-                    $.ajax({
-                        url: _baseURL() + '/save',
-                        type: 'POST',
-                        data: data,
-                        success: function (res) {
-                            if (res.status == 1) {
-                                successMsg(res.text, _baseURL());
-                            } else {
-                                warningMsg(res.text);
-                            }
-                        }
-                    });
-                // }
-            // });
+             $(formId).validate({
+                 submitHandler: function (form) {
+                    let data = $(formId).serializeArray();
+                            $.ajax({
+                                url: _baseURL() + '/save',
+                                type: 'POST',
+                                data: data,
+                                success: function (res) {
+                                    if (res.status == 1) {
+                                        successMsg(res.text, _baseURL());
+                                    } else {
+                                        warningMsg(res.text);
+                                    }
+                                }
+                            });
+                 }
+             });
         })
     }
 
@@ -48,14 +49,14 @@ researchTopic = (function () {
                     for (var i in res) {
                         let color = "";
                         let status = "";
-                        if (res[i].status == '3') {
+                        if (res[i].status == 'T') {
                             color = "color:red";
                             status = "<span style='color:darkred;font-weight: bold;'>"+res[i].status_name+"<button class='re-propose-btn'>Re Propose</button></span>"
                         }else{
                             status = res[i].status_name;
                         }
                         row = row + '<tr>' +
-                            '<td></td>' +
+                            '<td><input type="hidden" class="id" value="'+res[i].research_topic_id+'"/> </td>' +
                             '<td class="month">' + (res[i].research_month) + '</td>' +
                             '<td class="title">' + (res[i].research_topic) + '</td>' +
                             '<td>' + status + '</td>' +
@@ -74,15 +75,21 @@ researchTopic = (function () {
 
     function rePropose(){
         $('body').on('click','.re-propose-btn',function (e) {
+
+            $('#actionType').val('M');
             $('#research_month').val($(this).closest('tr').find('.month').text());
             $('#research_topic').val($(this).closest('tr').find('.title').text());
-            $('#status').append($('<option>', {
-                value: 'R',
-                text: 'Re Propose'
-            }));
+            $('#status').html('<option value="O">Re-Propose</option>');
 
             $('#form-tab').tab('show');
         });
+    }
+
+    function reset(){
+        $('#actionType').val('C');
+        $('#research_month').val('');
+        $('#research_topic').val('');
+        $('#status').html($('<option value="P">Propose</option>'));
     }
 
 

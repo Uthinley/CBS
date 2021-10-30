@@ -1,7 +1,5 @@
 package bt.cbs.zrr.research.topic;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.Date;
 
 public class ResearchTopicDTO {
@@ -15,6 +13,8 @@ public class ResearchTopicDTO {
 	`CREATEDBY`,
 	`CREATEDDATE`
     * */
+
+    private String actionType;
     private Integer research_topic_id;
     private String research_month;
     private String research_topic;
@@ -26,6 +26,14 @@ public class ResearchTopicDTO {
     private String approver;
 
     private String status_name;
+
+    public String getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
+    }
 
     public Integer getResearch_topic_id() {
         return research_topic_id;

@@ -36,7 +36,7 @@
                         <div class="col-lg-12">
                             <div class="form-group row">
 
-                                <label class="align-right col-md-2">Research Month</label>
+                                <label class="align-right col-md-2 required">Research Month</label>
 
                                 <div class="col-md-5">
                                     <input type="month" class="form-control " name="research_month"
@@ -45,19 +45,19 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="align-right col-md-2">Research Title</label>
+                                <label class="align-right col-md-2 required">Research Title</label>
 
                                 <div class="col-md-9">
                             <textarea class="form-control " name="research_topic"id="research_topic" required="true"
-                                      placeholder="Choose your research title ..." rows="5"></textarea>
+                                      placeholder="Propose your research title ..." rows="5"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="align-right col-md-2">Status</label>
+                                <label class="align-right col-md-2 required">Status</label>
 
                                 <div class="col-md-2">
-                                    <select class="" id="status">
+                                    <select class="" id="status" name="status">
                                         <option value="P">Propose</option>
                                     </select>
                                 </div>
