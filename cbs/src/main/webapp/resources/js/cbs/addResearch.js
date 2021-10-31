@@ -124,7 +124,6 @@ research = (function () {
         });
     }
 
-
     return {
         init: init
     };

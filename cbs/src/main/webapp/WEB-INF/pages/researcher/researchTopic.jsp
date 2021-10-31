@@ -18,10 +18,10 @@
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="form-tab" data-toggle="tab" href="#form" role="tab" aria-controls="form" aria-selected="true">Research Topic Selection</a>
+                    <a class="nav-link active" id="form-tab" data-toggle="tab" href="#form" role="tab" aria-controls="form" aria-selected="true">Research Title Selection</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false">Research Topics List</a>
+                    <a class="nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved" aria-selected="false">Research Title List</a>
                 </li>
             </ul>
 
@@ -57,7 +57,7 @@
                                 <label class="align-right col-md-2 required">Status</label>
 
                                 <div class="col-md-2">
-                                    <select class="" id="status" name="status">
+                                    <select class="form-control-sm" id="status" name="status">
                                         <option value="P">Propose</option>
                                     </select>
                                 </div>

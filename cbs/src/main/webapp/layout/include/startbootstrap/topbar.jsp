@@ -14,7 +14,7 @@
 <c:url value="/logout" var="logoutUrl"/>
 
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-light  topbar mb-2 static-top shadow">
     <form action="${logoutUrl}" method="post" id="logoutForm">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>

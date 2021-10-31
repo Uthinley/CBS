@@ -35,6 +35,11 @@ public class ResearchTopicEntity extends BaseEntity {
     @Column(name = "remarks")
     private String remarks;
 
+    @Column(name = "APPROVEDDATE")
+    private Date approvedDate;
+    @Column(name = "APPROVER")
+    private String approver;
+
     public Integer getResearch_topic_id() {
         return research_topic_id;
     }
@@ -75,4 +80,19 @@ public class ResearchTopicEntity extends BaseEntity {
         this.remarks = remarks;
     }
 
+    public Date getApprovedDate() {
+        return approvedDate;
+    }
+
+    public void setApprovedDate(Date approvedDate) {
+        this.approvedDate = approvedDate;
+    }
+
+    public String getApprover() {
+        return approver;
+    }
+
+    public void setApprover(String approver) {
+        this.approver = approver;
+    }
 }

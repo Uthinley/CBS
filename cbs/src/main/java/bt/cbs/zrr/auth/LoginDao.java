@@ -3,7 +3,7 @@ package bt.cbs.zrr.auth;
 
 
 import bt.cbs.zrr.global.base.BaseDao;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
