@@ -44,6 +44,6 @@
 <script type="text/javascript" src="<c:url value='/resources/js/morris.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/vendor/canvasjs/jquery.canvasjs.min.js' />"></script>
 <!-- Script loader -->
-<script src="<c:url value='/resources/js/data.js'/>"></script>
+<script src="<c:url value='/resources/js/globalJs.js'/>"></script>
 <script src="<c:url value='/resources/js/script.js'/>"></script>
 <script src="<c:url value='/resources/js/script_loader.js'/>"></script>

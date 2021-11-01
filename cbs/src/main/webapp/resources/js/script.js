@@ -20,7 +20,7 @@ $(document)
 		}
 		switch (jgxhr.status){
 			case 901:
-				window.location.href = nesGlobal.baseURL() + "login";
+				window.location.href = globalJs.baseURL() + "login";
 				break;
 			case 500:
 				errorMsg("System encountered with problem(s). Please try again or if the problem persist, contact with Administrator.");

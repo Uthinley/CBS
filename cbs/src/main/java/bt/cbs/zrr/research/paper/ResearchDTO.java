@@ -25,6 +25,7 @@ public class ResearchDTO {
     private Date createdDate;
     private String createdBy;
 
+    private String reviewer_comment;
     private String reviewerName;
     private Date assignedDate;
 
@@ -178,5 +179,13 @@ public class ResearchDTO {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getReviewer_comment() {
+        return reviewer_comment;
+    }
+
+    public void setReviewer_comment(String reviewer_comment) {
+        this.reviewer_comment = reviewer_comment;
     }
 }

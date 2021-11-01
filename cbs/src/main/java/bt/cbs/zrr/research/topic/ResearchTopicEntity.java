@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "research_dtls")
+@Table(name = "research_topic")
 public class ResearchTopicEntity extends BaseEntity {
 
     /*
@@ -22,8 +22,10 @@ public class ResearchTopicEntity extends BaseEntity {
     @Column(name = "research_topic_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer research_topic_id;
+
     @Column(name = "research_month")
     private String research_month;
+
     @Column(name = "research_topic")
     private String research_topic;
 
@@ -32,6 +34,11 @@ public class ResearchTopicEntity extends BaseEntity {
 
     @Column(name = "remarks")
     private String remarks;
+
+    @Column(name = "APPROVEDDATE")
+    private Date approvedDate;
+    @Column(name = "APPROVER")
+    private String approver;
 
     public Integer getResearch_topic_id() {
         return research_topic_id;
@@ -73,4 +80,19 @@ public class ResearchTopicEntity extends BaseEntity {
         this.remarks = remarks;
     }
 
+    public Date getApprovedDate() {
+        return approvedDate;
+    }
+
+    public void setApprovedDate(Date approvedDate) {
+        this.approvedDate = approvedDate;
+    }
+
+    public String getApprover() {
+        return approver;
+    }
+
+    public void setApprover(String approver) {
+        this.approver = approver;
+    }
 }

@@ -14,7 +14,7 @@
 <c:url value="/logout" var="logoutUrl"/>
 
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-light  topbar mb-2 static-top shadow">
     <form action="${logoutUrl}" method="post" id="logoutForm">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
@@ -25,7 +25,8 @@
     </button>
 
 
-    <a href="<c:url value="/home"/>" style="text-decoration: none" class="text-primary"><h5>Zhichen Research Registry</h5></a> &nbsp;&nbsp;
+    <div style="width: 100%;padding-top: 4px;"><a href="<c:url value="/home"/>" style="text-decoration: none" class="text-primary align-center"><h5>བཞི་ཆེན་ཞིབ་མཇུག་མ་ཡིག།</h5>
+        <h5>Zhichen Research Registry (ZRR)</h5></a> &nbsp;&nbsp;</div>
 
     <%--<security:authorize access="hasRole('00-01-001-VIEW')">
         <a href="<c:url value="/home"/>">

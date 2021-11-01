@@ -1,7 +1,9 @@
-package bt.cbs.zrr.research.topic;
+package bt.cbs.zrr.reviewer.title;
 
 import bt.cbs.zrr.global.base.BaseController;
 import bt.cbs.zrr.global.dto.ResponseMessage;
+import bt.cbs.zrr.research.topic.ResearchTopicDTO;
+import bt.cbs.zrr.research.topic.ResearchTopicService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,39 +19,39 @@ import java.util.List;
 
 @Controller
 @PreAuthorize("isAuthenticated()")
-@RequestMapping(value = "/researchTopic")
-public class ResearchTopicController extends BaseController {
+@RequestMapping(value = "/titleApprove")
+public class TitleApproveController extends BaseController {
 
-    private final ResearchTopicService topicService;
+    private final TitleApproveService tApproveService;
 
-    public ResearchTopicController(ResearchTopicService topicService) {
-        this.topicService = topicService;
+    public TitleApproveController(TitleApproveService tApproveService) {
+        this.tApproveService = tApproveService;
     }
 
     @RequestMapping()
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response, Model model){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("researcher/researchTopic");
+        modelAndView.setViewName("researcher/titleApprove");
         return modelAndView;
     }
 
     @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ResponseMessage save(HttpServletRequest request, ResearchTopicDTO topicDTO) throws IOException {
+    public ResponseMessage save(HttpServletRequest request, String action, String remarks,String[] research_title_ids) throws IOException {
         currentUser = getCurrentUser(request);
-        return topicService.save(currentUser, topicDTO);
+        return tApproveService.save(currentUser, action,remarks, research_title_ids);
     }
 
     @ResponseBody
     @RequestMapping(value = "/gTopicList", method = RequestMethod.GET)
-    public List gTopicList(HttpServletRequest request, String status) throws Exception {
-        return topicService.gTopicList(status,getCurrentUser(request).getUserName());
+    public List gTopicList(HttpServletRequest request, String status) {
+        return tApproveService.gTopicList(status.equalsIgnoreCase("ALL")?null:status,null);
     }
 
     @ResponseBody
     @RequestMapping(value = "/findTopic", method = RequestMethod.GET)
     public ResearchTopicDTO findTopic(HttpServletRequest request,String research_month) {
-        return topicService.findTopic(research_month,getCurrentUser(request).getUserName());
+        return tApproveService.findTopic(research_month,getCurrentUser(request).getUserName());
     }
 
 }

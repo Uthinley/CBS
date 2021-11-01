@@ -389,10 +389,9 @@ a {
     font-size: 11px;
 }
 
-.dtree input,
+.dtree input, .dtree textarea,
 input::-webkit-input-placeholder {
-    font-size: 11px;
-    line-height: 3;
+    font-size: 12px;
 }
 
 

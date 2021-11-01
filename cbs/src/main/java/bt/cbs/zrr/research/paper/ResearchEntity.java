@@ -64,7 +64,7 @@ public class ResearchEntity extends BaseEntity {
     private String supporting_documents_name;
 
     @Column(name = "status")
-    private Integer status;
+    private String status;
 
     public Integer getResearchId() {
         return researchId;
@@ -154,11 +154,11 @@ public class ResearchEntity extends BaseEntity {
         this.supporting_documents_name = supporting_documents_name;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

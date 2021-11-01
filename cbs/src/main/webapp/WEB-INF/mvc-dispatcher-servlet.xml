@@ -16,7 +16,16 @@
     <context:annotation-config/>
     <mvc:default-servlet-handler/>
 
-    <!--    <aop:aspectj-autoproxy/>-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </bean>
+
+    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        &lt;!&ndash; one of the properties available; the maximum file size in bytes &ndash;&gt;
+        <property name="defaultEncoding" value="uft-8"/>
+        <property name="maxUploadSize" value="52428800"/>
+        <property name="maxInMemorySize" value="52428800"/>
+        <property name="maxUploadSizePerFile" value="52428800"/>
+    </bean>-->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
@@ -36,4 +45,5 @@
         <property name="currentUser" ref="currentUser"/>
         <property name="responseMessage" ref="responseMessage"/>
     </bean>
+
 </beans>

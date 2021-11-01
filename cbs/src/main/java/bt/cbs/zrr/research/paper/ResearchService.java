@@ -33,20 +33,7 @@ public class ResearchService extends BaseService {
 
     @Transactional
     public ResponseMessage save(CurrentUser currentUser, ResearchDTO researchDTO) throws IOException {
-//        MultipartFile rPaper = researchDTO.getResearch_paper_file();
-//        if(Objects.isNull(rPaper)){
-//            responseMessage.setStatus(UNSUCCESSFUL_STATUS);
-//            responseMessage.setText("Please choose file research paper to upload.");
-//        }
-//
-//        String date = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
-//        String research_number = generateResearchNumber();
-//        String sub_folder = currentUser.getUserName() + "/" + date + "/" +research_number;
-//
-//        String filePath = CustomFileUtil.uploadFile(rPaper,sub_folder,rPaper.getOriginalFilename());
-//        Long wordCount =  CustomFileUtil.wordCount(rPaper.getInputStream());
-//        researchDTO.setWordCount(wordCount.intValue());
-//        researchDTO.setFilePath(filePath);
+
         MultipartFile rPaper = researchDTO.getResearch_paper();
         if(Objects.isNull(rPaper)){
             responseMessage.setStatus(UNSUCCESSFUL_STATUS);
@@ -60,7 +47,7 @@ public class ResearchService extends BaseService {
 
 
         String filePath = CustomFileUtil.uploadFile(rPaper,sub_folder,rPaper.getOriginalFilename());
-        String sDocName;
+        /*String sDocName;
         StringBuilder supporting_documents_name =  new StringBuilder();
         int i = 0;
         for(MultipartFile sDocument: researchDTO.getSupporting_documents()){
@@ -70,7 +57,7 @@ public class ResearchService extends BaseService {
             supporting_documents_name.append(sDocName);
             CustomFileUtil.uploadFile(sDocument,sub_folder,sDocName);
 
-        }
+        }*/
 
         Long wordCount =  CustomFileUtil.wordCount(rPaper.getInputStream());
         researchDTO.setWordCount(wordCount.intValue());
@@ -78,12 +65,12 @@ public class ResearchService extends BaseService {
         researchDTO.setResearch_number(research_number);
         ResearchEntity researchEntity = convertDTOToEntity(researchDTO, currentUser);
         researchEntity.setResearch_paper_name(rPaper.getOriginalFilename());
-        researchEntity.setSupporting_documents_name(supporting_documents_name.toString());
+        //researchEntity.setSupporting_documents_name(supporting_documents_name.toString());
         researchDAO.save(researchEntity);
 
-        researchDTO.setPaper_version(researchEntity.getPaper_version());
+        /*researchDTO.setPaper_version(researchEntity.getPaper_version());
         researchDTO.setStatus(researchEntity.getStatus().toString());
-        commentService.save(researchDTO, currentUser);
+        commentService.save(researchDTO, currentUser);*/
 
         responseMessage.setStatus(SUCCESSFUL_STATUS);
         responseMessage.setText("Your research has been recorded with research paper number <b>"+researchEntity.getResearch_number()+"</b> and forwarded for review.");
@@ -112,35 +99,42 @@ public class ResearchService extends BaseService {
 
     /**
      * Generate the research number
-     * Fist four is year, and last four is running sequence
+     * Fist four is year, middle two is month and last four is running sequence
+     * Example: 2021090001
      * @return the generated number
      */
     private String generateResearchNumber(){
         Object nextRNumber = commonService.getNextID("research_dtls","research_number");
-        int curYear = Calendar.getInstance().get(Calendar.YEAR);
+        String curYear = Integer.valueOf(Calendar.getInstance().get(Calendar.YEAR)).toString();
+        String curMonth = Integer.valueOf(Calendar.getInstance().get(Calendar.MONTH)).toString();
+        if(curMonth.length()==1){
+            curMonth='0'+curMonth;
+        }
         if(nextRNumber == null){
-            return Integer.valueOf(curYear).toString()+"0001";
+            return curYear+curMonth+"0001";
         }
         String research_number = Integer.valueOf(((Double)nextRNumber).intValue()).toString();
 
         //if year is changed, restart sequence from 0001
-        if(curYear != Integer.parseInt(research_number.substring(0,4))){
-            research_number = Integer.valueOf(curYear).toString()+"0001";
+        if(!curMonth.equalsIgnoreCase(research_number.substring(4,6))){
+            research_number = curYear+curMonth+"0001";
         }
 
         return research_number;
 
     }
 
-
+    @Transactional(readOnly = true)
     public List<ResearchDTO> getResearchList(CurrentUser currentUser) {
         return researchDAO.getResearchList(currentUser);
     }
 
+    @Transactional(readOnly = true)
     public List<ResearchDTO> geAllResearchList() {
         return researchDAO.geAllResearchList();
     }
 
+    @Transactional
     public ResponseMessage saveReviewerComments(Integer researchId, String rComment, Integer statusId) {
         researchDAO.saveReviewerComments(researchId, rComment, statusId);
         responseMessage.setStatus(SUCCESSFUL_STATUS);
@@ -148,15 +142,18 @@ public class ResearchService extends BaseService {
         return responseMessage;
     }
 
+
     @Transactional(readOnly = true)
     public GenericDTO getSummaryReport() {
         return researchDAO.getSummaryReport();
     }
 
+    @Transactional(readOnly = true)
     public List<UserSetupDTO> getResearcherList() {
         return researchDAO.getResearcherList(1);
     }
 
+    @Transactional(readOnly = true)
     public List<ResearchDTO> getReviewedResearchList() {
         return researchDAO.getReviewedResearchList(3);
     }

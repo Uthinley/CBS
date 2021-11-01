@@ -13,12 +13,12 @@ var loadScript = function () {
     if (document.URL.search("groupSetup") > 1) {
         scriptLoader("setup/groupSetup");
     }
-    if (document.URL.search("research") > 1) {
+    /*if (document.URL.search("research") > 1) {
         scriptLoader("cbs/addResearch");
     }
     if (document.URL.search("researchTopic") > 1) {
         scriptLoader("cbs/researchTopic");
-    }
+    }*/
 };
 
 var scriptLoader = function (url) {

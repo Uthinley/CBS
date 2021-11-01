@@ -39,8 +39,6 @@ public class ResearchTopicService extends BaseService {
             responseMessage.setText("Please enter all the required fields.");
         }
 
-        String date = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
-
         ResearchTopicEntity topicEntity = convertDTOToEntity(topicDTO,currentUser);
         topicDAO.save(topicEntity);
 
@@ -49,16 +47,27 @@ public class ResearchTopicService extends BaseService {
         return responseMessage;
     }
 
+    @Transactional(readOnly = true)
+    public List gTopicList(String status, String userName) {
+        return topicDAO.gTopicList(status,userName);
+    }
+
+    @Transactional(readOnly = true)
+    public ResearchTopicDTO findTopic(String research_month, String userName) {
+        return topicDAO.findTopic(research_month,userName);
+    }
+
     private ResearchTopicEntity convertDTOToEntity(ResearchTopicDTO topicDTO, CurrentUser currentUser){
 
         ResearchTopicEntity topicEntity = new ResearchTopicEntity();
+        topicEntity.setResearch_month(topicDTO.getResearch_month());
         topicEntity.setResearch_topic(topicDTO.getResearch_topic());
-        topicEntity.setResearch_topic(topicDTO.getResearch_topic());
-        topicEntity.setStatus(ApplicationStatusCode.SUBMITTED.getValue().toString());
+        topicEntity.setStatus(topicDTO.getStatus());
         topicEntity.setRemarks(topicDTO.getRemarks());
         topicEntity.setCreatedBy(currentUser.getUserName());
         topicEntity.setCreatedDate(new Date());
         return topicEntity;
     }
+
 
 }
