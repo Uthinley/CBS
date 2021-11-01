@@ -19,7 +19,7 @@ transaction = (function () {
                 var row = "";
                 for (var i in res){
                     row = row + '<tr>'+
-                        '<td>'+(parseInt(i)+1)+'</td>' +
+                        '<td></td>' +
                         '<td hidden>' + (res[i].researchId) + '</td>' +
                         '<td>' + (res[i].researchTopic) + '</td>' +
                         '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
@@ -27,7 +27,7 @@ transaction = (function () {
                         // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
                         '<td> ' + (res[i].filePath) + '</td>' +
                         '<td>' + (res[i].wordCount) + '</td>' +
-                        '<td>' + (res[i].status) + '</td>' +
+                        '<td>' + (res[i].statusName) + '</td>' +
                         '<td><i class="fa fa-eye text-success" id="iconEdit" data-toggle="modal" data-target="#reviewerModal" aria-hidden="true"></i></td>' +
                         // '<td class="d-none" id="status">' + (res[i].wordCount) + '</td>' +
                         // '<td hidden>' + (res[i].researchId) + '</td>' +
@@ -150,7 +150,7 @@ transaction = (function () {
                 type: 'POST',
                 data: {
                     researchId: researchId,
-                    statusId:statusId,
+                    // statusId:statusId,
                     rComment :rComment
                 },
                 success: function (res) {

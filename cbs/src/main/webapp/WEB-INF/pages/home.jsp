@@ -82,65 +82,65 @@
             </div>
         </div>
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                <h6><p>Total Research Paper Reviewed</p></h6>
-                            </div>
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj3}"></c:out></div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <fmt:formatNumber type = "number" var="val1" value="${summaryReport.obj4}" maxFractionDigits="0"/>
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:out value="${val1}"></c:out> %</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: <c:out value="${summaryReport.obj4}"></c:out>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                    <div class="row no-gutters align-items-center" id="reviewedR">
-                        <div class="col mr-2">
-                        </div>
-                        <div class="col-auto">
-                            <button id="reviewedRBtn" class="btn text-info">See details <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<%--        <div class="col-xl-3 col-md-6 mb-4">--%>
+<%--            <div class="card border-left-info shadow h-100 py-2">--%>
+<%--                <div class="card-body">--%>
+<%--                    <div class="row no-gutters align-items-center">--%>
+<%--                        <div class="col mr-2">--%>
+<%--                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">--%>
+<%--                                <h6><p>Total Research Paper Reviewed</p></h6>--%>
+<%--                            </div>--%>
+<%--                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj3}"></c:out></div>--%>
+<%--                            <div class="row no-gutters align-items-center">--%>
+<%--                                <div class="col-auto">--%>
+<%--                                    <fmt:formatNumber type = "number" var="val1" value="${summaryReport.obj4}" maxFractionDigits="0"/>--%>
+<%--                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:out value="${val1}"></c:out> %</div>--%>
+<%--                                </div>--%>
+<%--                                <div class="col">--%>
+<%--                                    <div class="progress progress-sm mr-2">--%>
+<%--                                        <div class="progress-bar bg-info" role="progressbar" style="width: <c:out value="${summaryReport.obj4}"></c:out>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-auto">--%>
+<%--                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="row no-gutters align-items-center" id="reviewedR">--%>
+<%--                        <div class="col mr-2">--%>
+<%--                        </div>--%>
+<%--                        <div class="col-auto">--%>
+<%--                            <button id="reviewedRBtn" class="btn text-info">See details <i class="fa fa-arrow-right" aria-hidden="true"></i></button>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                <h6><p>Research Paper Returned</p></h6></div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                        </div>
-                        <div class="col-auto">
-                            <button class="btn text-warning">See details <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<%--        <div class="col-xl-3 col-md-6 mb-4">--%>
+<%--            <div class="card border-left-warning shadow h-100 py-2">--%>
+<%--                <div class="card-body">--%>
+<%--                    <div class="row no-gutters align-items-center">--%>
+<%--                        <div class="col mr-2">--%>
+<%--                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">--%>
+<%--                                <h6><p>Research Paper Returned</p></h6></div>--%>
+<%--                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-auto">--%>
+<%--                            <i class="fas fa-comments fa-2x text-gray-300"></i>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="row no-gutters align-items-center">--%>
+<%--                        <div class="col mr-2">--%>
+<%--                        </div>--%>
+<%--                        <div class="col-auto">--%>
+<%--                            <button class="btn text-warning">See details <i class="fa fa-arrow-right" aria-hidden="true"></i></button>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
 
     <!-- Modal -->

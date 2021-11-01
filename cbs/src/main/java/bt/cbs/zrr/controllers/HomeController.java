@@ -79,8 +79,9 @@ public class HomeController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value="/saveReviewerComments")
-    public ResponseMessage saveReviewerComments(HttpServletRequest request, Integer researchId, String rComment, Integer statusId){
+    public ResponseMessage saveReviewerComments(HttpServletRequest request, Integer researchId, String rComment){
         currentUser=getCurrentUser(request);
+        String statusId = "R";
         commentService.reviewerComment(researchId, rComment, statusId,currentUser);
         return researchService.saveReviewerComments(researchId, rComment, statusId);
     }

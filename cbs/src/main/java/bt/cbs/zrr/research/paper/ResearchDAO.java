@@ -34,7 +34,7 @@ public class ResearchDAO extends BaseDao {
         return hQuery.list();
     }
     @Transactional
-    public void saveReviewerComments(Integer researchId, String rComment, Integer statusId) {
+    public void saveReviewerComments(Integer researchId, String rComment, String statusId) {
         sqlQuery = properties.getProperty("ResearchDAO.saveReviewerComments");
         hQuery = (Query) hibernateQuery(sqlQuery)
                 .setParameter("researchId", researchId)
