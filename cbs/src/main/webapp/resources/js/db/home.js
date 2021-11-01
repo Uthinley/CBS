@@ -197,7 +197,7 @@ transaction = (function () {
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
         var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
         $('#currentDate').text(date);
-        $('#currentMonth').text(monthNames[today.getMonth()]);
+        // $('#currentMonth').text(monthNames[today.getMonth()]);
     }
 
     return {

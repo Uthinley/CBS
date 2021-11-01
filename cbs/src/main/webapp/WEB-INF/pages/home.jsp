@@ -37,7 +37,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Researcher</div>
+                                <h6>Total Researcher</h6></div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj1}"></c:out></div>
                         </div>
                         <div class="col-auto">
@@ -61,8 +61,10 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xl font-weight-bold text-success mb-1">
-                                Total Research Paper Received as of
-                                <p><span id="currentDate"></span> for the month of <span id="currentMonth"></span></p></div>
+                                <h6>Total Research Paper Received as of
+                                    <p><span id="currentDate">
+<%--                                    </span> for the month of <span id="currentMonth"></span>--%>
+                                    </p></h6></div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj2}"></c:out></div>
                         </div>
                         <div class="col-auto">
@@ -85,7 +87,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Research Paper Reviewed
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                <h6><p>Total Research Paper Reviewed</p></h6>
                             </div>
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj3}"></c:out></div>
                             <div class="row no-gutters align-items-center">
@@ -121,7 +124,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Research Paper Returned</div>
+                                <h6><p>Research Paper Returned</p></h6></div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                         </div>
                         <div class="col-auto">

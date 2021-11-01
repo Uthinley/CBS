@@ -8,7 +8,7 @@ userSetup = (function () {
     var isSubmitted = false;
 
     function _baseURL() {
-        return nesGlobal.baseURL + "usersetup/"
+        return globalJs.baseURL + "usersetup/"
     }
 
     function save() {

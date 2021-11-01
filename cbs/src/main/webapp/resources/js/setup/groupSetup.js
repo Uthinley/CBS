@@ -6,7 +6,7 @@ groupSetup = (function () {
     var formID = "#groupSetup";
 
     function _baseURL() {
-        return nesGlobal.baseURL + "groupSetup/"
+        return globalJs.baseURL + "groupSetup/"
     }
 
     function edit() {
