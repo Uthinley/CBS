@@ -66,6 +66,7 @@
                                     <th>Research Paper</th>
                                     <th>Word Count</th>
                                     <th>Author</th>
+                                    <th hidden>rNo</th>
                                     <th>Assigned On</th>
                                     <th>Action</th>
                                 </tr>
@@ -109,6 +110,7 @@
             </div>
             <div class="modal-body">
                 <input type="text" class="form-control" id="researchId" hidden>
+                <input type="text" class="form-control" id="researchNo" hidden>
                 <div class="form-group col-md-12">
                     <label for="researchTitle">Research Title</label>
                     <input class="form-control" id="researchTitle" name="researchTopic" readonly>
@@ -122,34 +124,34 @@
                     <textarea class="form-control" id="rComment" name="rComment" rows="5"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="rComment">Marking (Quality and Quantity) -</label>
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Particulars</th>
-                            <th scope="col">Assessment</th>
-                            <th scope="col">IWP score</th>
-                            <th scope="col">Performance Level</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Word Count</td>
-                            <td>4000</td>
-                            <td>3.875</td>
-                            <td>Outstanding</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Quality assessment by reviewer</td>
-                            <td><input type="number" class="form-control" id="exampleInputPassword1"></td>
-                            <td><input type="number" class="form-control" readonly></td>
-                            <td><input type="text" class="form-control" readonly></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <label for="rComment">Marking (Quality) -</label>
+<%--                    <table class="table table-striped">--%>
+<%--                        <thead>--%>
+<%--                        <tr>--%>
+<%--                            <th scope="col">#</th>--%>
+<%--                            <th scope="col">Particulars</th>--%>
+<%--                            <th scope="col">Assessment</th>--%>
+<%--                            <th scope="col">IWP score</th>--%>
+<%--                            <th scope="col">Performance Level</th>--%>
+<%--                        </tr>--%>
+<%--                        </thead>--%>
+<%--                        <tbody>--%>
+<%--                        <tr>--%>
+<%--                            <td scope="row">1</td>--%>
+<%--                            <td>Word Count</td>--%>
+<%--                            <td>4000</td>--%>
+<%--                            <td>3.875</td>--%>
+<%--                            <td>Outstanding</td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <td scope="row">2</td>--%>
+<%--                            <td>Quality assessment by reviewer</td>--%>
+<%--                            <td><input type="number" class="form-control" id="exampleInputPassword1"></td>--%>
+<%--                            <td><input type="number" class="form-control" readonly></td>--%>
+<%--                            <td><input type="text" class="form-control" readonly></td>--%>
+<%--                        </tr>--%>
+<%--                        </tbody>--%>
+<%--                    </table>--%>
 
                     <table class="table table-striped">
                         <thead>
@@ -163,39 +165,39 @@
                         <tbody>
                         <tr>
                             <td scope="row">1</td>
-                            <td>Policy relevance/Research significance</td>
+                            <td>Policy relevance/Research significance (20)</td>
                             <td>The research has immediate practical utility or adds new knowledge to the existing knowledge</td>
                             <td><input type="number" class="form-control" id="weightageOne"></td>
                         </tr>
                         <tr>
                             <td scope="row">2</td>
-                            <td>Research methodology</td>
-                            <td>The research has immediate practical utility or adds new knowledge to the existing knowledge</td>
+                            <td>Research methodology (20)</td>
+                            <td>The research adopted appropriate research design, sampling techniques, and data collection methods/tools as per the research objectives or questions.</td>
                             <td><input type="number" class="form-control" id="weightageTwo"></td>
                         </tr>
                         <tr>
                             <td scope="row">3</td>
-                            <td>Data analysis and findings</td>
-                            <td>The research has immediate practical utility or adds new knowledge to the existing knowledge</td>
+                            <td>Data analysis and findings (20)</td>
+                            <td>The research collected adequate and relevant information/data, used appropriate data analysis techniques, statistics/qualitative information are interpreted appropriately, and inference/conclusions drawn are sound</td>
                             <td><input type="number" class="form-control" id="weightageThree"></td>
                         </tr>
                         <tr>
                             <td scope="row">4</td>
-                            <td>Recommendations</td>
-                            <td>The research has immediate practical utility or adds new knowledge to the existing knowledge</td>
+                            <td>Recommendations (20)</td>
+                            <td>The research offers practically implementable recommendations which are based on the empirical evidences drawn from the research findings.</td>
                             <td><input type="number" class="form-control" id="weightageFour"></td>
                         </tr>
                         <tr>
                             <td scope="row">5</td>
-                            <td>Overall standard of the report</td>
-                            <td>The research has immediate practical utility or adds new knowledge to the existing knowledge</td>
-                            <td><input type="number" class="form-control" id="weightage"></td>
+                            <td>Overall standard of the report (20)</td>
+                            <td>The overall standard of the research report in terms of language (grammar/spelling), structure (different parts of report such as the abstracts, problem statement, research objectives/questions/hypothesis)</td>
+                            <td><input type="number" class="form-control" id="weightageFive"></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="alert alert-danger" role="alert">
-                    This is a danger alert—check it out!
+                <div class="alert alert-danger" role="alert" id="errorAlert" hidden>
+
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -203,6 +205,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 

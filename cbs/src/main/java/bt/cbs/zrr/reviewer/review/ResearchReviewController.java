@@ -1,6 +1,7 @@
 package bt.cbs.zrr.reviewer.review;
 
 import bt.cbs.zrr.global.base.BaseController;
+import bt.cbs.zrr.global.dto.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +38,13 @@ public class ResearchReviewController extends BaseController {
     public List gResearchList(HttpServletRequest request, String status, String research_month) {
         currentUser = getCurrentUser(request);
         return researchReviewService.gResearchList(status.equalsIgnoreCase("ALL")?null:status,currentUser.getUserID(),research_month);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/saveReviewerMarks", method = RequestMethod.POST)
+    public ResponseMessage saveReviewerMarks(HttpServletRequest request, String rComment, Integer researchNo, Integer researchId, String[] assessmentCriteria, String weightage[], String marksAllocated[] ) throws IOException {
+        currentUser = getCurrentUser(request);
+        return researchReviewService.saveReviewerMarks(currentUser, rComment, researchNo, researchId, assessmentCriteria, weightage, marksAllocated);
     }
 
 }
