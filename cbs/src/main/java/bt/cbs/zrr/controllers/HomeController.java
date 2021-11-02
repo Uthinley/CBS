@@ -43,7 +43,7 @@ public class HomeController extends BaseController {
     private ResearchCommentService commentService;
 
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
-    public ModelAndView index(HttpServletRequest request, HttpServletResponse response, Model model)
+    public void index(HttpServletRequest request, HttpServletResponse response, Model model)
             throws IOException {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -51,6 +51,7 @@ public class HomeController extends BaseController {
         CurrentUser currentUser = new CurrentUser();
         currentUser.setBranchCode(loginDTO.getBranchCode());
         currentUser.setBranchName(loginDTO.getBranchName());
+        currentUser.setUserID(loginDTO.getUserId().intValue());
         currentUser.setUserName(loginDTO.getUserName());
         currentUser.setFullName(loginDTO.getUserFullName());
         currentUser.setGroupId(loginDTO.getGroupId());
@@ -62,12 +63,15 @@ public class HomeController extends BaseController {
         if (loginDTO.isPasswordChangeYN()) {
             response.sendRedirect("changePassword");
         }
-        ModelAndView modelAndView = new ModelAndView();
-        model.addAttribute("applicationStatusCode", commonService.getApplicationStatusCode());
-        model.addAttribute("currentDate", DateUtil.formatDate(currentUser.getServerDate()));
-        model.addAttribute("summaryReport", researchService.getSummaryReport());
-        modelAndView.setViewName("home");
-        return modelAndView;
+//<<<<<<< HEAD
+//        ModelAndView modelAndView = new ModelAndView();
+//        model.addAttribute("applicationStatusCode", commonService.getApplicationStatusCode());
+//        model.addAttribute("currentDate", DateUtil.formatDate(currentUser.getServerDate()));
+//        model.addAttribute("summaryReport", researchService.getSummaryReport());
+//        modelAndView.setViewName("home");
+//        return modelAndView;
+//=======
+        response.sendRedirect("dashboard");
     }
 
 

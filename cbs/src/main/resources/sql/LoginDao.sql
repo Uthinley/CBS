@@ -1,4 +1,4 @@
-LoginDao.login = SELECT A.USRUSERNAME AS userName, A.USRPASSWORD AS password, A.USRFULLNAME AS userFullName, A.USRPASSEXPIRY AS validityDate,  \
+LoginDao.login = SELECT A.USRUSERID as userId,A.USRUSERNAME AS userName, A.USRPASSWORD AS password, A.USRFULLNAME AS userFullName, A.USRPASSEXPIRY AS validityDate,  \
                  A.USRUSERSTATUS AS userStatus,A.USRGROUPID AS groupId, G.GR_STATUS AS groupStatus, A.USRBADCREDENTIAL AS passwordChangeYN \
                  FROM sa_user  A \
                  INNER JOIN sa_user_group G ON A.USRGROUPID = G.GR_ID \

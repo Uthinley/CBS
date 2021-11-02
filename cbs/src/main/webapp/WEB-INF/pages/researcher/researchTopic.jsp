@@ -58,7 +58,7 @@
 
                                 <div class="col-md-2">
                                     <select class="form-control-sm" id="status" name="status">
-                                        <option value="P">Propose</option>
+                                        <option value="S">Submit</option>
                                     </select>
                                 </div>
                                 <div class="col-md-8" id="approver_comments">

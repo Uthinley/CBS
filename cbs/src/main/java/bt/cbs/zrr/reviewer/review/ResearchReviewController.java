@@ -26,6 +26,7 @@ public class ResearchReviewController extends BaseController {
     @RequestMapping()
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response, Model model){
         ModelAndView modelAndView = new ModelAndView();
+        currentUser = getCurrentUser(request);
         modelAndView.setViewName("reviewer/researchReview");
         return modelAndView;
     }

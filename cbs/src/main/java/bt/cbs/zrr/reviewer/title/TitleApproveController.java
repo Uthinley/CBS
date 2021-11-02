@@ -48,10 +48,4 @@ public class TitleApproveController extends BaseController {
         return tApproveService.gTopicList(status.equalsIgnoreCase("ALL")?null:status,null);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/findTopic", method = RequestMethod.GET)
-    public ResearchTopicDTO findTopic(HttpServletRequest request,String research_month) {
-        return tApproveService.findTopic(research_month,getCurrentUser(request).getUserName());
-    }
-
 }

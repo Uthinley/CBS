@@ -14,6 +14,8 @@ titleApproval = (function () {
         approve();
         reject();
         gResearchList();
+        populateModal();
+        saveReviewerComment();
     }
 
     function approve(){
@@ -51,9 +53,15 @@ titleApproval = (function () {
         });
     }
 
+    function saveReviewerComment(){
+        $('#submitBtn').on('click', function (e) {
+            if($('#rComment').val()=='' || $('#rComment').val()==''){}
+
+        });
+    }
+
     function gResearchList(){
         $('#btnSearch').on('click', function (e) {
-            alert()
             $('#searchForm').validate({
                 submitHandler: function (form) {
                     let data = $(form).serializeArray();
@@ -69,21 +77,26 @@ titleApproval = (function () {
                                 if (res[i].status == 'T') {
                                     color = "color:red";
                                 } else if (res[i].status == 'S') {
-                                    action = '<input type="checkbox" class="check-for-action" value="' + res[i].research_number + '"/>';
+                                    // action = '<input type="checkbox" class="check-for-action" value="' + res[i].research_number + '"/>';
+                                    action = '<button type="button" class="btn btn-circle btn-sm btn-outline-danger" id="iconEdit" data-toggle="modal" data-target="#reviewerModal" aria-hidden="true">' +
+                                        '<i class="fas fa-info-circle"></i></button>';
                                     color = "color:#5A1B0E";
                                 } else if (res[i].status == 'R') {
+                                    action = '<i class="fa fa-check text-success" aria-hidden="true"></i>';
                                     color = "color:green";
                                 }
                                 color = color + ";font-weight:bold;";
                                 row = row + '<tr>' +
-                                    '<td><input type="hidden" class="id" value="' + res[i].research_number + '"/> </td>' +
-                                    '<td class="month">' + (res[i].research_month) + '</td>' +
-                                    '<td class="title">' + (res[i].research_topic) + '</td>' +
-                                    '<td><span style="' + color + '">' + (res[i].status_name) + '</span></td>' +
+                                    // '<td><input type="hidden" class="id" value="' + res[i].researchId + '"/> </td>' +
                                     '<td></td>' +
-                                    '<td>' + isNull(res[i].word_count) + '</td>' +
+                                    '<td class="id" hidden>' + (res[i].researchId) + '</td>' +
+                                    '<td class="month">' + (res[i].research_month) + '</td>' +
+                                    '<td class="title">' + (res[i].researchTopic ) + '</td>' +
+                                    '<td><span style="' + color + '">' + (res[i].statusName) + '</span></td>' +
+                                    '<td>'+(res[i].filePath)+'</td>' +
+                                    '<td>' + isNull(res[i].wordCount) + '</td>' +
                                     '<td>' + isNull(res[i].createdBy) + '</td>' +
-                                    '<td>' + (formatDate(res[i].assigned_date)) + '</td>' +
+                                    '<td>' + (formatDate(res[i].assignedDate)) + '</td>' +
                                     '<td>'+action+'</td>'+
                                     '</tr>'
                             }
@@ -97,7 +110,17 @@ titleApproval = (function () {
                 }
             });
         });
+    }
 
+    function populateModal(){
+        $('#assigned_research_tbl').find(' tbody').on('click', 'tr', function () {
+            var researchId = $(this).find('td:nth-child(2)').text();
+            var researchTitle = $(this).find('td:nth-child(4)').text();
+            var author = $(this).find('td:nth-child(8)').text();
+            // $('#researchId').val(researchId);
+            $('#researchTitle').val(researchTitle);
+            $('#author').val(author);
+        });
     }
 
     function reset(){
