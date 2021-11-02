@@ -35,12 +35,12 @@ public class ResearchCommentService extends BaseService {
     }
 
     @Transactional
-    public ResponseMessage reviewerComment(Integer researchId, String rComment, Integer statusId, CurrentUser currentUser){
+    public ResponseMessage reviewerComment(Integer researchId, String rComment, String statusId, CurrentUser currentUser){
         String research_number = commonService.getValue("research_dtls","research_number","research_id",researchId).toString();
         ResearchComment researchComment = new ResearchComment();
         researchComment.setResearch_number(research_number);
         researchComment.setResearch_comment(rComment);
-        researchComment.setResearch_status(statusId.toString());
+        researchComment.setResearch_status(statusId);
         researchComment.setCreatedBy(currentUser.getUserName());
         researchComment.setCreatedDate(currentUser.getServerDate());
         researchDAO.save(researchComment);

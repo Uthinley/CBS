@@ -135,7 +135,7 @@ public class ResearchService extends BaseService {
     }
 
     @Transactional
-    public ResponseMessage saveReviewerComments(Integer researchId, String rComment, Integer statusId) {
+    public ResponseMessage saveReviewerComments(Integer researchId, String rComment, String statusId) {
         researchDAO.saveReviewerComments(researchId, rComment, statusId);
         responseMessage.setStatus(SUCCESSFUL_STATUS);
         responseMessage.setText("Saved successfully");
