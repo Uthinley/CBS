@@ -82,6 +82,9 @@
                     <security:authorize access="hasAuthority('00-01-002-VIEW')">
                         <a class="collapse-item" href="<c:url value="/titleApprove"/>">Title Approval</a>
                     </security:authorize>
+                    <security:authorize access="hasAuthority('00-01-002-VIEW')">
+                        <a class="collapse-item" href="<c:url value="/researchReview"/>">Review Research</a>
+                    </security:authorize>
 <%--                    <security:authorize access="hasAuthority('02-01-003-VIEW')">--%>
 <%--                        <a class="collapse-item" href="<c:url value="/capitalEntry"/>">Capital Entry</a>--%>
 <%--                    </security:authorize>--%>

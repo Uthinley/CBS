@@ -65,7 +65,7 @@ public class HomeController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         model.addAttribute("applicationStatusCode", commonService.getApplicationStatusCode());
         model.addAttribute("currentDate", DateUtil.formatDate(currentUser.getServerDate()));
-//        model.addAttribute("summaryReport", researchService.getSummaryReport());
+        model.addAttribute("summaryReport", researchService.getSummaryReport());
         modelAndView.setViewName("home");
         return modelAndView;
     }

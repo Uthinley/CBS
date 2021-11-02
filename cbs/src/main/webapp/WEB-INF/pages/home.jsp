@@ -65,7 +65,7 @@
                                     <p><span id="currentDate">
 <%--                                    </span> for the month of <span id="currentMonth"></span>--%>
                                     </p></h6></div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj2}"></c:out></div>
+<%--                            <div class="h5 mb-0 font-weight-bold text-gray-800"><c:out value="${summaryReport.obj2}"></c:out></div>--%>
                         </div>
                         <div class="col-auto">
                             <i class="fa fa-file fa-2x text-gray-300"></i>
