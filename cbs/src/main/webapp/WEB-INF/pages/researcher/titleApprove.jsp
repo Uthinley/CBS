@@ -25,12 +25,16 @@
                         <div class="col-lg-12">
                             <div class="form-group row">
 
+                            </div>
+                            <div class="form-group row">
+
                                 <label class="align-right col-md-2 required">Research Month</label>
 
-                                <div class="col-md-5">
+                                <div class="col-md-2">
                                     <input type="month" class="form-control " name="research_month"
                                            id="research_month" required="true" placeholder="Month">
                                 </div>
+
                             </div>
 
                             <div class="form-group row">
@@ -56,7 +60,7 @@
                         <input type="hidden" name="actionType" id="actionType" value="C"/>
 
                             <div class="col-lg-12" >
-                                <table id="approved_topic_list" class="table table-responsive-sm css-serial">
+                                <table id="research_title_list" class="table table-responsive-sm css-serial">
                                     <thead>
                                     <tr>
                                         <th>#</th>

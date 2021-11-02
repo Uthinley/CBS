@@ -79,7 +79,7 @@ researchTopic = (function () {
             $('#actionType').val('M');
             $('#research_month').val($(this).closest('tr').find('.month').text());
             $('#research_topic').val($(this).closest('tr').find('.title').text());
-            $('#status').html('<option value="O">Re-Propose</option>');
+            $('#status').html('<option value="O">Re-Submit</option>');
 
             $('#form-tab').tab('show');
         });
@@ -89,7 +89,7 @@ researchTopic = (function () {
         $('#actionType').val('C');
         $('#research_month').val('');
         $('#research_topic').val('');
-        $('#status').html($('<option value="P">Propose</option>'));
+        $('#status').html($('<option value="S">Submit</option>'));
     }
 
 

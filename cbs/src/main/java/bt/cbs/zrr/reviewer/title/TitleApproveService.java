@@ -24,28 +24,22 @@ public class TitleApproveService extends BaseService {
         this.tApproveDao = tApproveDao;
     }
 
-
     @Transactional(readOnly = true)
     public List gTopicList(String status, String userName) {
         return tApproveDao.gTopicList(status,userName);
     }
 
-    @Transactional(readOnly = true)
-    public ResearchTopicDTO findTopic(String research_month, String userName) {
-        return tApproveDao.findTopic(research_month,userName);
-    }
-
-
     @Transactional
     public ResponseMessage save(CurrentUser currentUser, String status, String remarks, String[] research_title_ids) {
-        if(Objects.isNull(status)){
+        if(status == null || research_title_ids == null || research_title_ids.length==0){
             responseMessage.setStatus(UNSUCCESSFUL_STATUS);
             responseMessage.setText("Please enter all the required fields.");
+            return responseMessage;
         }
 
         int i=0;
         for(String id: research_title_ids){
-            ResearchTopicEntity entity =  tApproveDao.load(Integer.valueOf(id));
+            ResearchTopicEntity entity =  tApproveDao.load(Integer.parseInt(id));
             entity.setRemarks(remarks);
             entity.setStatus(status);
             entity.setApprover(currentUser.getUserName());

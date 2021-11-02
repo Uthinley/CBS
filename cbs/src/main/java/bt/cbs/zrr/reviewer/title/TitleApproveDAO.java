@@ -29,13 +29,4 @@ public class TitleApproveDAO extends BaseDao {
                 .setParameter("status",status).list();
     }
 
-    @Transactional(readOnly = true)
-    public ResearchTopicDTO findTopic(String research_month, String userName) {
-        sqlQuery = properties.getProperty("ResearchTopicDAO.findTopic");
-        List list = hibernateQuery(sqlQuery, ResearchTopicDTO.class)
-                .setParameter("userName",userName)
-                .setParameter("research_month",research_month).list();
-        return list.isEmpty()?null:(ResearchTopicDTO)list.get(0);
-    }
-
 }
