@@ -61,8 +61,9 @@ public class HomeController extends BaseController {
 
         if (loginDTO.isPasswordChangeYN()) {
             response.sendRedirect("changePassword");
+        }else {
+            response.sendRedirect("dashboard");
         }
-        response.sendRedirect("dashboard");
     }
 
 

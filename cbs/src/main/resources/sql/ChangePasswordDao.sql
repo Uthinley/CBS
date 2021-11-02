@@ -1,1 +1,1 @@
-ChangePasswordDao.changePassword = UPDATE sa_user SET USRPASSWORD=:password WHERE USRUSERNAME=:userName
+ChangePasswordDao.changePassword = UPDATE sa_user SET USRPASSWORD=:password,USRBADCREDENTIAL=0 WHERE USRUSERNAME=:userName
