@@ -62,6 +62,8 @@ public class HomeController extends BaseController {
 
         if (loginDTO.isPasswordChangeYN()) {
             response.sendRedirect("changePassword");
+        }else {
+            response.sendRedirect("dashboard");
         }
 //<<<<<<< HEAD
 //        ModelAndView modelAndView = new ModelAndView();
@@ -71,7 +73,7 @@ public class HomeController extends BaseController {
 //        modelAndView.setViewName("home");
 //        return modelAndView;
 //=======
-        response.sendRedirect("dashboard");
+//        response.sendRedirect("dashboard");
     }
 
 

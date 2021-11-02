@@ -27,7 +27,7 @@ public class UserSetupDao extends BaseDao {
     @Transactional(readOnly = true)
     public List<UserSetupDTO> getUserList(Integer status) {
         sqlQuery = properties.getProperty("UserSetupDao.getUserList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, UserSetupDTO.class)
+        org.hibernate.query.Query hQuery = hibernateQuery(sqlQuery, UserSetupDTO.class)
                 .setParameter("status", status);
         return hQuery.list();
     }
@@ -35,7 +35,7 @@ public class UserSetupDao extends BaseDao {
     @Transactional(readOnly = true)
     public BigDecimal getNextUserId() {
         sqlQuery = properties.getProperty("UserSetupDao.getNextUserId");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery);
+        org.hibernate.query.Query hQuery = hibernateQuery(sqlQuery);
         return hQuery.list().isEmpty() ? BigDecimal.ONE : (BigDecimal) hQuery.list().get(0);
     }
 

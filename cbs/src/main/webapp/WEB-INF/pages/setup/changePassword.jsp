@@ -32,7 +32,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form id="changePasswordForm" method="post"
-                                          action="<c:url value='/changePassword'/>">
+                                          action="<c:url value='/changePassword/save'/>">
 
                                         <div class="form-group row">
                                             <label class="align-right required col-lg-2" for="userName">User Name
@@ -106,6 +106,7 @@
 
 </div>
 <!-- /.container-fluid -->
+<script src="<c:url value='/resources/js/setup/changePassword.js'/>"></script>
 
 </body>
 </html>

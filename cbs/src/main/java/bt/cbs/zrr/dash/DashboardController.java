@@ -17,14 +17,19 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @PreAuthorize("isAuthenticated()")
 @RequestMapping(value = "/dashboard")
 public class DashboardController extends BaseController {
 
-    @Autowired
-    private CommonService commonService;
+    private final DashboardService dashboardService;
+
+    public DashboardController(DashboardService dashboardService) {
+        this.dashboardService = dashboardService;
+    }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response, Model model)
@@ -32,15 +37,22 @@ public class DashboardController extends BaseController {
 
         ModelAndView modelAndView = new ModelAndView();
         currentUser = getCurrentUser(request);
-        model.addAttribute("applicationStatusCode", commonService.getApplicationStatusCode());
-        model.addAttribute("currentDate", DateUtil.formatDate(currentUser.getServerDate()));
-        if(currentUser.getGroupId() == 1 || currentUser.getGroupId() == 4){
+        String yyyy_mm = new SimpleDateFormat("yyyy-mm").format(new Date());
+
+        if(currentUser.getGroupId() == 1 || currentUser.getGroupId() == 2){ // admin and approver
+            model.addAttribute("users", dashboardService.getUserCount());
+            model.addAttribute("title", dashboardService.getTitleCount(currentUser,null));
+            model.addAttribute("paper", dashboardService.getPaperCount(currentUser,null));
             modelAndView.setViewName("dash/approver_db");
-        }else if(currentUser.getGroupId() == 3){
+        }else if(currentUser.getGroupId() == 3){ // reviewer
+            model.addAttribute("assignedPaper", dashboardService.reviewerPaper(currentUser,null));
             modelAndView.setViewName("dash/reviewer_db");
-        }else{
+        }else{ // researcher
+            model.addAttribute("title", dashboardService.getTitleCount(currentUser,null));
+            model.addAttribute("paper", dashboardService.getPaperCount(currentUser,null));
             modelAndView.setViewName("dash/researcher_db");
         }
+        //modelAndView.setViewName("home");
 
         return modelAndView;
     }
