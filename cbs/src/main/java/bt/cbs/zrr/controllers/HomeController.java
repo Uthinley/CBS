@@ -65,15 +65,6 @@ public class HomeController extends BaseController {
         }else {
             response.sendRedirect("dashboard");
         }
-//<<<<<<< HEAD
-//        ModelAndView modelAndView = new ModelAndView();
-//        model.addAttribute("applicationStatusCode", commonService.getApplicationStatusCode());
-//        model.addAttribute("currentDate", DateUtil.formatDate(currentUser.getServerDate()));
-//        model.addAttribute("summaryReport", researchService.getSummaryReport());
-//        modelAndView.setViewName("home");
-//        return modelAndView;
-//=======
-//        response.sendRedirect("dashboard");
     }
 
 
