@@ -46,7 +46,7 @@ public class ResearchDAO extends BaseDao {
     @Transactional(readOnly = true)
     public List<UserSetupDTO> getResearcherList(Integer status) {
         sqlQuery = properties.getProperty("ResearchDAO.getResearcherList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, UserSetupDTO.class);
+        hQuery = hibernateQuery(sqlQuery, UserSetupDTO.class);
 //                .setParameter("status", status);
         return hQuery.list();
     }
@@ -54,7 +54,7 @@ public class ResearchDAO extends BaseDao {
     @Transactional(readOnly = true)
     public List<ResearchDTO> getReviewedResearchList(Integer statusCode) {
         sqlQuery = properties.getProperty("ResearchDAO.getReviewedResearchList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, ResearchDTO.class)
+        hQuery = hibernateQuery(sqlQuery, ResearchDTO.class)
                 .setParameter("statusCode", statusCode);
         return hQuery.list();
     }
@@ -62,7 +62,7 @@ public class ResearchDAO extends BaseDao {
     @Transactional(readOnly = true)
     public GenericDTO getSummaryReport() {
         sqlQuery = properties.getProperty("ResearchDAO.getSummaryReport");
-        hQuery = (Query) hibernateQuery(sqlQuery, GenericDTO.class);
+        hQuery = hibernateQuery(sqlQuery, GenericDTO.class);
         return (GenericDTO) hQuery.uniqueResult();
     }
 }
