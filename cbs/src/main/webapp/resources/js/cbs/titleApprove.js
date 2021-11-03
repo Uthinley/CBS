@@ -11,9 +11,12 @@ titleApproval = (function () {
     }
 
     function init(){
+
         approve();
         reject();
         gTopicList();
+
+        $('#btnSearch').click();
     }
 
     function approve(){
@@ -40,7 +43,6 @@ titleApproval = (function () {
         });
         data.push({name:"action",value:action});
         data.push({name:"remarks",value:$('#remarks').val()});
-        alert(JSON.stringify(data));
         $.ajax({
             url: _baseURL() + '/save',
             type: 'POST',

@@ -6,6 +6,7 @@ import bt.cbs.zrr.global.dto.CurrentUser;
 import bt.cbs.zrr.global.dto.GenericDTO;
 import bt.cbs.zrr.global.dto.ResponseMessage;
 import bt.cbs.zrr.global.enumeration.ApplicationStatusCode;
+import bt.cbs.zrr.global.enumeration.UserGroup;
 import bt.cbs.zrr.global.library.CustomFileUtil;
 import bt.cbs.zrr.research.comment.ResearchCommentService;
 import bt.cbs.zrr.research.paper.ResearchDAO;
@@ -48,8 +49,12 @@ public class ResearchTopicService extends BaseService {
     }
 
     @Transactional(readOnly = true)
-    public List gTopicList(String status, String userName) {
-        return topicDAO.gTopicList(status,userName);
+    public List gTopicList(String status, CurrentUser currentUser) {
+        if(currentUser.getGroupId() == UserGroup.RESEARCHER.value()){
+            return topicDAO.gTopicList(status, currentUser.getUserName());
+        }
+        return topicDAO.gTopicList(status, null);
+
     }
 
     @Transactional(readOnly = true)

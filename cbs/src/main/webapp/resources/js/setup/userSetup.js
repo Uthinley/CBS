@@ -65,9 +65,10 @@ userSetup = (function () {
                         '<td></td>' +
                         '<td>' + res[i].userName + '</td>' +
                         '<td>' + res[i].fullName + '</td>' +
+                        '<td>' + res[i].employeeId + '</td>' +
                         '<td>' + res[i].groupName + '</td>' +
-                        '<td>' + ((res[i].userStatus == '1') ? 'Active' : 'Inactive') + '</td>' +
-                        '<td>' +
+                        '<td>' + res[i].emailId + '</td>' +
+                        '<td>' + ((res[i].userStatus == '1') ? 'Active' : 'Inactive') +
                         '<input type="hidden" id="userId" value="' + res[i].userId + '"/> ' +
                         '<input type="hidden" id="emailId" value="' + res[i].emailId + '"/> ' +
                         '<input type="hidden" id="employeeId" value="' + res[i].employeeId + '"/> ' +
@@ -106,11 +107,12 @@ userSetup = (function () {
             populate(data);
             $(formID).find('.editable').prop('disabled', true);
             $(formID).find('.resetP').prop('disabled', true);
-            $('#userName').prop('readonly', true);
+            $('#userName').prop('readonly', true).focus();
             $('#btnSave').prop('disabled', true);
             $('#resetPassword').prop('disabled', false);
             $('#btnEdit').prop('disabled', false);
             $('#btnDelete').prop('disabled', false);
+
         });
     }
 

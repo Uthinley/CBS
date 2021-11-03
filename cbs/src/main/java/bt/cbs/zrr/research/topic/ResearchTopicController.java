@@ -43,7 +43,8 @@ public class ResearchTopicController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/gTopicList", method = RequestMethod.GET)
     public List gTopicList(HttpServletRequest request, String status) throws Exception {
-        return topicService.gTopicList(status,getCurrentUser(request).getUserName());
+
+        return topicService.gTopicList(status,getCurrentUser(request));
     }
 
     @ResponseBody

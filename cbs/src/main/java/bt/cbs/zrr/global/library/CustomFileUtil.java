@@ -1,5 +1,6 @@
 package bt.cbs.zrr.global.library;
 
+import org.apache.poi.extractor.POITextExtractor;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.core.io.ClassPathResource;
@@ -46,11 +47,29 @@ public class CustomFileUtil {
     public static Long wordCount(InputStream inputStream) throws IOException {
         String line;
         Long count;
+        /*POITextExtractor textExtractor;
+        if (file.getName().endsWith(".docx")) {
+            XWPFDocument doc = new XWPFDocument(new FileInputStream(file));
+            textExtractor = new XWPFWordExtractor(doc);
+        }
+        else if (file.getName().endsWith(".doc")) {
+            textExtractor = new WordExtractor(new FileInputStream(file));
+        }
+        else {
+            throw new IllegalArgumentException("Not a MS Word file.");
+        }
+
+        return Arrays.stream(textExtractor.getText().split("\\s+"))
+                .filter(s -> s.matches("^.*[\\p{L}\\p{N}].*$"))
+                .count();*/
+
         try (XWPFDocument doc = new XWPFDocument(inputStream)) {
             XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
+
             String docText = xwpfWordExtractor.getText();
             // find number of words in the document
-            count = Arrays.stream(docText.split("\\s+")).count();
+//            count = Arrays.stream(docText.split("\\s+")).count();
+            count = (long)doc.getProperties().getExtendedProperties().getUnderlyingProperties().getWords();
 
         }
 //        File convFile = new File(file.getOriginalFilename());

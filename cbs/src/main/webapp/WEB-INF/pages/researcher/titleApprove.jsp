@@ -1,4 +1,6 @@
-<%@ page import="bt.cbs.zrr.global.enumeration.ApplicationStatusCode" %><%--
+<%@ page import="bt.cbs.zrr.global.enumeration.ApplicationStatusCode" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: hp
   Date: 9/27/2021
@@ -30,9 +32,9 @@
 
                                 <label class="align-right col-md-2 required">Research Month</label>
 
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <input type="month" class="form-control " name="research_month"
-                                           id="research_month" required="true" placeholder="Month">
+                                           id="research_month" required="true" placeholder="Month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>">
                                 </div>
 
                             </div>

@@ -50,13 +50,13 @@
                     <a class="collapse-item" href="<c:url value="/groupSetup"/>">Group setup</a>
                 </security:authorize>
                 <security:authorize access="hasAuthority('01-01-002-VIEW')">
-                    <a class="collapse-item" href="<c:url value="/passwordPolicy"/>">Password policy</a>
-                </security:authorize>
-                <security:authorize access="hasAuthority('01-01-003-VIEW')">
                     <a class="collapse-item" href="<c:url value="/usersetup"/>">User setup</a>
                 </security:authorize>
-                <security:authorize access="hasAuthority('01-01-004-VIEW')">
+                <security:authorize access="hasAuthority('01-01-003-VIEW')">
                     <a class="collapse-item" href="<c:url value="/permissionSetup"/>">Permission setup</a>
+                </security:authorize>
+                <security:authorize access="hasAuthority('01-01-004-VIEW')">
+                    <a class="collapse-item" href="<c:url value="/passwordPolicy"/>">Password policy</a>
                 </security:authorize>
             </div>
         </div>
@@ -67,27 +67,19 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#card" aria-expanded="true"
            aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-desktop"></i>
-            <span class="heading">Researchers</span>
+            <span class="heading">Researcher Paper</span>
         </a>
         <div id="card" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <div class="sub-item">
 <%--                    <h6 class="collapse-header text-white">DFRS Operation</h6>--%>
-                    <security:authorize access="hasAuthority('00-01-002-VIEW')">
+                    <security:authorize access="hasAuthority('02-01-001-VIEW')">
                         <a class="collapse-item" href="<c:url value="/researchTopic"/>">Research Title</a>
                     </security:authorize>
-                    <security:authorize access="hasAuthority('00-01-002-VIEW')">
+                    <security:authorize access="hasAuthority('02-01-003-VIEW')">
                         <a class="collapse-item" href="<c:url value="/research"/>">Research Paper</a>
                     </security:authorize>
-                    <security:authorize access="hasAuthority('00-01-002-VIEW')">
-                        <a class="collapse-item" href="<c:url value="/titleApprove"/>">Title Approval</a>
-                    </security:authorize>
-                    <security:authorize access="hasAuthority('00-01-002-VIEW')">
-                        <a class="collapse-item" href="<c:url value="/researchReview"/>">Review Research</a>
-                    </security:authorize>
-<%--                    <security:authorize access="hasAuthority('02-01-003-VIEW')">--%>
-<%--                        <a class="collapse-item" href="<c:url value="/capitalEntry"/>">Capital Entry</a>--%>
-<%--                    </security:authorize>--%>
+
                 </div>
             </div>
         </div>
@@ -96,17 +88,37 @@
 
     <!-- Nav Item - Utilities Collapse Menu for card -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#researchPaper" aria-expanded="true"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#review" aria-expanded="true"
            aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-desktop"></i>
-            <span class="heading">Research Paper</span>
+            <span class="heading">Research Review</span>
         </a>
-        <div id="researchPaper" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="review" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <div class="sub-item">
                     <%--                    <h6 class="collapse-header text-white">DFRS Operation</h6>--%>
-                    <security:authorize access="hasAuthority('01-01-003-VIEW')">
+                    <security:authorize access="hasAuthority('02-01-006-VIEW')">
                         <a class="collapse-item" href="<c:url value="/reviewer"/>">Assign Reviewer</a>
+                    </security:authorize>
+                    <security:authorize access="hasAuthority('02-01-007-VIEW')">
+                        <a class="collapse-item" href="<c:url value="/researchReview"/>">Research Review</a>
+                    </security:authorize>
+                </div>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#approval" aria-expanded="true"
+           aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-desktop"></i>
+            <span class="heading">Research Approvals</span>
+        </a>
+        <div id="approval" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <div class="sub-item">
+                    <security:authorize access="hasAuthority('02-01-005-VIEW')">
+                        <a class="collapse-item" href="<c:url value="/titleApprove"/>">Title Approval</a>
                     </security:authorize>
                 </div>
             </div>

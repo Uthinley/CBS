@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>User Setup</title>
@@ -15,7 +16,7 @@
 <body>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <!--Intput table card-->
+    <security:authorize access="hasAuthority('01-01-002-VIEW')">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">User Setup</h6>
@@ -44,22 +45,6 @@
                             </div>
 
                         </div>
-                        <%--<div class="form-group row">
-                            <label class="col-md-2 align-right required" for="password">Password
-                                : </label>
-
-                            <div class="col-md-3">
-                                <input type="password" name="password" id="password"
-                                       class="form-control input-sm resetP" required>
-                            </div>
-                            <label class="col-md-2 align-right required" for="confirmPassword">Confirm
-                                Password : </label>
-
-                            <div class="col-md-3">
-                                <input type="password" name="confirmPassword" id="confirmPassword"
-                                       class="form-control input-sm resetP" required>
-                            </div>
-                        </div>--%>
 
                         <div class="form-group row">
                             <label class="col-md-2 align-right required" for="fullName">Full name
@@ -131,33 +116,34 @@
     </div>
     <!-- /.panel-body -->
 </div>
-<!-- /.panel -->
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">User List</h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered css-serial" id="userListTbl" width="100%" cellspacing="0">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Username</th>
-                    <th>Full name</th>
-                    <th>User group</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+    </security:authorize>
+    <security:authorize access="hasAuthority('01-01-006-VIEW')">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">User List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered css-serial table-responsive-sm table-hover table-success" id="userListTbl" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Full name</th>
+                        <th>Employee ID</th>
+                        <th>User group</th>
+                        <th>Email ID</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    </security:authorize>
 </div>
-</div>
-<!-- /.container-fluid -->
 
 </body>
 </html>

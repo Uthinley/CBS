@@ -4,6 +4,7 @@ import bt.cbs.zrr.global.base.BaseService;
 import bt.cbs.zrr.global.common.CommonService;
 import bt.cbs.zrr.global.dto.CurrentUser;
 import bt.cbs.zrr.global.dto.ResponseMessage;
+import bt.cbs.zrr.global.enumeration.UserGroup;
 import bt.cbs.zrr.global.library.CustomFileUtil;
 import bt.cbs.zrr.global.dto.GenericDTO;
 import bt.cbs.zrr.research.comment.ResearchCommentService;
@@ -126,7 +127,10 @@ public class ResearchService extends BaseService {
 
     @Transactional(readOnly = true)
     public List<ResearchDTO> getResearchList(CurrentUser currentUser) {
-        return researchDAO.getResearchList(currentUser);
+        if(currentUser.getGroupId() == UserGroup.RESEARCHER.value()) {
+            return researchDAO.getResearchList(currentUser.getUserName());
+        }
+        return researchDAO.getResearchList(null);
     }
 
     @Transactional(readOnly = true)

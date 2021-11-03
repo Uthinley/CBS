@@ -90,9 +90,7 @@ public class WebAuthenticationProvider implements AuthenticationProvider {
         /* else if (passwordPolicyDTO.getIsExpiryDaysEnable() && userLogin.getValidityDate().before(DateUtils.truncate(new Date(), Calendar.DATE))) {
             throw new LockedException(LoginErrorCode.EXPIRED.getCode());
         }*/
-        else if (true
-//                passwordEncoder.matches(password, userLogin.getPassword())
-        ) {
+        else if (passwordEncoder.matches(password, userLogin.getPassword())) {
             Set<GrantedAuthority> authorities = getAccessRight(userLogin.getGroupId());
             return new UsernamePasswordAuthenticationToken(userLogin, password, authorities);
         } else {

@@ -20,10 +20,10 @@ public class ResearchDAO extends BaseDao {
     }
 
     @Transactional
-    public List<ResearchDTO> getResearchList(CurrentUser currentUser) {
+    public List<ResearchDTO> getResearchList(String username) {
         sqlQuery = properties.getProperty("ResearchDAO.getResearchList");
         hQuery = (Query) hibernateQuery(sqlQuery, ResearchDTO.class)
-                .setParameter("userName",currentUser.getUserName());
+                .setParameter("userName",username);
         return hQuery.list();
     }
 

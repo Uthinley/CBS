@@ -3,8 +3,6 @@ package bt.cbs.zrr.dash;
 import bt.cbs.zrr.global.base.BaseDao;
 import bt.cbs.zrr.global.dto.DropdownDTO;
 import bt.cbs.zrr.global.dto.GenericDTO;
-import bt.cbs.zrr.global.library.GlobalVariable;
-import bt.cbs.zrr.setup.user.UserSetupDTO;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

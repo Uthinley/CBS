@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Researcher</title>
@@ -19,23 +20,29 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <security:authorize access="hasAuthority('02-01-003-VIEW')">
                 <li class="nav-item">
                     <a class="nav-link active" id="form-tab" data-toggle="tab" href="#form" role="tab"
                        aria-controls="form" aria-selected="true">
                         <p class="m-0 font-weight-bold text-primary">Research Paper</p>
                     </a>
                 </li>
+                </security:authorize>
+                <security:authorize access="hasAuthority('02-01-004-VIEW')">
                 <li class="nav-item">
                     <a class="nav-link" id="research-list-tab" data-toggle="tab" href="#research-list" role="tab"
                        aria-controls="research-list" aria-selected="false">
                         <p class="m-0 font-weight-bold text-primary">Research Paper List</p>
                     </a>
                 </li>
+                </security:authorize>
             </ul>
         </div>
 
         <div class="card-body">
             <div class="tab-content">
+
+                <security:authorize access="hasAuthority('02-01-003-VIEW')">
                 <div class="tab-pane active" id="form" role="tabpanel" aria-labelledby="form-tab">
                     <form id="addResearch" method="post" action=""
                           class="row align-items-center" enctype="multipart/form-data">
@@ -115,6 +122,8 @@
                         </div>
                     </form>
                 </div>
+                </security:authorize>
+                <security:authorize access="hasAuthority('02-01-004-VIEW')">
                 <div class="tab-pane" id="research-list" role="tabpanel" aria-labelledby="research-list-tab">
                     <div class="table-responsive">
                         <table class="table table-bordered css-serial table-responsive-sm" id="researchListTbl"
@@ -137,6 +146,7 @@
                         </table>
                     </div>
                 </div>
+                </security:authorize>
             </div>
         </div>
 
