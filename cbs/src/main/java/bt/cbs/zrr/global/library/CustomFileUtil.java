@@ -66,9 +66,9 @@ public class CustomFileUtil {
         try (XWPFDocument doc = new XWPFDocument(inputStream)) {
             XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
 
-            String docText = xwpfWordExtractor.getText();
+            /*String docText = xwpfWordExtractor.getText();
             // find number of words in the document
-//            count = Arrays.stream(docText.split("\\s+")).count();
+            count = Arrays.stream(docText.split("\\s+")).count();*/
             count = (long)doc.getProperties().getExtendedProperties().getUnderlyingProperties().getWords();
 
         }
