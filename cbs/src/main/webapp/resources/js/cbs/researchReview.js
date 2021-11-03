@@ -38,7 +38,7 @@ titleApproval = (function () {
         });
         data.push({name:"action",value:action});
         data.push({name:"remarks",value:$('#remarks').val()});
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
         $.ajax({
             url: _baseURL() + '/save',
             type: 'POST',
@@ -55,8 +55,57 @@ titleApproval = (function () {
 
     function saveReviewerComment(){
         $('#submitBtn').on('click', function (e) {
-            if($('#rComment').val()=='' || $('#rComment').val()==''){}
+            var error="";
+            if($('#rComment').val()=='' || $('#weightageOne').val()=='' || $('#weightageTwo').val()=='' || $('#weightageThree').val()==''||
+                $('#weightageFour').val()=='' || $('#weightageFive').val()=='' ){
+                error = "Please fill up all the input fields.";
+                $('#errorAlert').text(error)
+                $('#errorAlert').removeAttr('hidden');
+            }else if($('#weightageOne').val() >20 || $('#weightageTwo').val() >20 || $('#weightageThree').val()>20||
+                $('#weightageFour').val()>20 || $('#weightageFive').val()>20 ){
+                error = "Weightage cannot be greater than 20";
+                $('#errorAlert').text(error)
+                $('#errorAlert').removeAttr('hidden');
+            }else{
+                saveReviewerMarks();
+                $('#errorAlert').attr('hidden',true);
+            }
+        });
+    }
 
+    function saveReviewerMarks(){
+        var assessmentCriteria = [
+            "Policy relevance/Research significance",
+            "Research methodology",
+            "Data analysis and findings",
+            "Recommendations",
+            "Overall standard of the report"
+        ];
+        const weightage=[20, 20, 20, 20, 20];
+        const marksAllocated = [$('#weightageOne').val(), $('#weightageTwo').val(), $('#weightageThree').val(), $('#weightageFour').val(), $('#weightageFive').val()];
+        var rComment = $('#rComment').val();
+        var researchId = $('#researchId').val();
+        var researchNo = $('#researchNo').val();
+        // alert(researchNo)
+        $.ajax({
+            url: _baseURL() + '/saveReviewerMarks',
+            type: 'POST',
+            data: {
+                assessmentCriteria: JSON.stringify(assessmentCriteria),
+                weightage: JSON.stringify(weightage),
+                marksAllocated:JSON.stringify(marksAllocated),
+                rComment: rComment,
+                researchId: researchId,
+                researchNo: researchNo
+            },
+            dataType: "json",
+            success: function (res) {
+                if (res.status == 1) {
+                    successMsg(res.text, _baseURL());
+                } else {
+                    warningMsg(res.text);
+                }
+            }
         });
     }
 
@@ -96,6 +145,7 @@ titleApproval = (function () {
                                     '<td>'+(res[i].filePath)+'</td>' +
                                     '<td>' + isNull(res[i].wordCount) + '</td>' +
                                     '<td>' + isNull(res[i].createdBy) + '</td>' +
+                                    '<td hidden>' + isNull(res[i].research_number) + '</td>' +
                                     '<td>' + (formatDate(res[i].assignedDate)) + '</td>' +
                                     '<td>'+action+'</td>'+
                                     '</tr>'
@@ -117,7 +167,9 @@ titleApproval = (function () {
             var researchId = $(this).find('td:nth-child(2)').text();
             var researchTitle = $(this).find('td:nth-child(4)').text();
             var author = $(this).find('td:nth-child(8)').text();
-            // $('#researchId').val(researchId);
+            var researchNo = $(this).find('td:nth-child(9)').text();
+            $('#researchId').val(researchId);
+            $('#researchNo').val(researchNo);
             $('#researchTitle').val(researchTitle);
             $('#author').val(author);
         });

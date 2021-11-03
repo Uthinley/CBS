@@ -7,3 +7,7 @@ ResearchReviewDAO.gResearchList= SELECT a.research_id as researchId, a.research_
                                          a.research_month=:rMonth AND \
                                          (:status IS NULL OR a.status = :status)
 --                                          a.status= (:status IS NULL OR a.status = :status) \
+
+ResearchReviewDAO.saveReviewerComments = UPDATE `research_dtls` SET reviewer_comment =:rComment, status='R' WHERE research_id = :researchId
+ResearchReviewDAO.saveReviewerMarks = INSERT INTO research_reviewer_marks(research_number, assessment_criteria, weightage, marks_allocated, CREATEDBY, CREATEDDATE) \
+                                         VALUES(:researchNo,:assessmentCriteria,:weightage,:marksAllocated,:createdBy, :createdDate)
