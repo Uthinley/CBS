@@ -133,6 +133,10 @@ titleApproval = (function () {
                                 } else if (res[i].status == 'R') {
                                     action = '<i class="fa fa-check text-success" aria-hidden="true"></i>';
                                     color = "color:green";
+                                }else{
+                                    action = '<button type="button" class="btn btn-circle btn-sm btn-outline-danger" id="iconEdit" data-toggle="modal" data-target="#reviewerModal" aria-hidden="true">' +
+                                        '<i class="fas fa-info-circle"></i></button>';
+                                    color = "color:#5A1B0E";
                                 }
                                 color = color + ";font-weight:bold;";
                                 row = row + '<tr>' +
@@ -142,7 +146,7 @@ titleApproval = (function () {
                                     '<td class="month">' + (res[i].research_month) + '</td>' +
                                     '<td class="title">' + (res[i].researchTopic ) + '</td>' +
                                     '<td><span style="' + color + '">' + (res[i].statusName) + '</span></td>' +
-                                    '<td>'+(res[i].filePath)+'</td>' +
+                                    '<td>'+(globalJs.viewOrDownloadFile(res[i].filePath))+'</td>' +
                                     '<td>' + isNull(res[i].wordCount) + '</td>' +
                                     '<td>' + isNull(res[i].createdBy) + '</td>' +
                                     '<td hidden>' + isNull(res[i].research_number) + '</td>' +

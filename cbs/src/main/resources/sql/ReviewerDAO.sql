@@ -9,14 +9,14 @@ ReviewerDAO.getResearchListForReview = SELECT \
                                   `status`, \
                                   `CREATEDBY` AS createdBy, \
                                   `CREATEDDATE` AS createdDate \
-                              FROM `research_dtls` WHERE MONTH(CREATEDDATE)=DATE_FORMAT(:dateFormat, '%m') AND YEAR(CREATEDDATE)= DATE_FORMAT(:dateFormat, '%Y') AND status='1'
+                              FROM `research_dtls` WHERE MONTH(CREATEDDATE)=DATE_FORMAT(:dateFormat, '%m') AND YEAR(CREATEDDATE)= DATE_FORMAT(:dateFormat, '%Y') AND status='S'
 
 ReviewerDAO.getReviewerList = SELECT CONCAT(A.USRFULLNAME, "(",A.USREMAILID, ")" ) AS TEXT, A.USRUSERID AS VALUE FROM `sa_user` A \
                               INNER JOIN sa_user_group B \
                               ON A.USRGROUPID = B.GR_ID \
                               WHERE A.USRUSERSTATUS='1' AND B.GR_NAME="REVIEWER" AND B.GR_STATUS='1' \
 
-ReviewerDAO.upDateResearchStatus = UPDATE `research_dtls` SET STATUS= '6' WHERE research_number =:researchNo
+ReviewerDAO.upDateResearchStatus = UPDATE `research_dtls` SET STATUS= 'U' WHERE research_number =:researchNo
 
 ReviewerDAO.getAssignedResearchList = SELECT \
                                           A.research_id AS researchId,\
