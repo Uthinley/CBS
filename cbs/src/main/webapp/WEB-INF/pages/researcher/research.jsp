@@ -98,14 +98,14 @@
                                            id="research_paper" required="true" accept=".doc,.docx">
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <%--<div class="form-group row">
                                 <label class="align-right col-md-3" style="font-size: 9px">Supporting Documents</label>
 
                                 <div class="col-md-9">
                                     <input type="file" class="form-control-file" name="supporting_documents"
                                            multiple="multiple">
                                 </div>
-                            </div>
+                            </div>--%>
 
                             <div class="h5 font-weight-bold text-info text-uppercase mb-1">
                                 TOTAL WORD COUNT
