@@ -77,7 +77,7 @@ public class WebAuthenticationProvider implements AuthenticationProvider {
 
         LoginDTO userLogin = loginService.login(username);
 
-        PasswordPolicyDTO passwordPolicyDTO = passwordPolicyService.getPasswordPolicyInfo();
+        //PasswordPolicyDTO passwordPolicyDTO = passwordPolicyService.getPasswordPolicyInfo();
 
         if (userLogin == null) {
             throw new UsernameNotFoundException(LoginErrorCode.FAILED.getCode());

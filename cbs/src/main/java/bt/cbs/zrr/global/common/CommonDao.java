@@ -26,32 +26,30 @@ public class CommonDao extends BaseDao {
     @Transactional(readOnly = true)
     public List<DropdownDTO> getScreenList() {
         sqlQuery = properties.getProperty("CommonDao.getScreenList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class);
-        return hQuery.list();
+        return hibernateQuery(sqlQuery, DropdownDTO.class).list();
     }
 
     @Transactional(readOnly = true)
     public List<DropdownDTO> getScreenByTypeList(Character screenType) {
         sqlQuery = properties.getProperty("CommonDao.getScreenByTypeList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class).setParameter("screenType",screenType);
-        return hQuery.list();
+        return (List<DropdownDTO>)hibernateQuery(sqlQuery, DropdownDTO.class)
+                .setParameter("screenType",screenType).list();
     }
 
     @Transactional(readOnly = true)
     public List<DropdownDTO> getUserGroupList() {
         sqlQuery = properties.getProperty("CommonDao.getUserGroupList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class);
-        return hQuery.list();
+        return (List<DropdownDTO>)hibernateQuery(sqlQuery, DropdownDTO.class).list();
     }
+
     @Transactional(readOnly = true)
     public List<DropdownDTO> getResearchMonthList() {
         sqlQuery = properties.getProperty("CommonDao.getResearchMonthList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class);
-        return hQuery.list();
+        return (List<DropdownDTO>)hibernateQuery(sqlQuery, DropdownDTO.class).list();
     }
 
     /**
-     * To get list of purpose for ngultrum exchange.
+     * To get list of branch
      *
      * @param status Integer
      * @return List<DropdownDTO>
@@ -59,26 +57,23 @@ public class CommonDao extends BaseDao {
     @Transactional(readOnly = true)
     public List<DropdownDTO> getBranchCodeList(Integer status) {
         sqlQuery = properties.getProperty("CommonDao.getBranchCodeList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class)
-                .setParameter("status", status);
-        return (List<DropdownDTO>) hQuery.list();
+        return  (List<DropdownDTO>)hibernateQuery(sqlQuery, DropdownDTO.class)
+                .setParameter("status", status).list();
     }
 
 
     @Transactional(readOnly = true)
     public List<DropdownDTO> getReportList(Integer status) {
         sqlQuery = properties.getProperty("CommonDao.getReportList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class);
-        return (List<DropdownDTO>) hQuery.list();
+        return (List<DropdownDTO>)hibernateQuery(sqlQuery, DropdownDTO.class).list();
     }
 
 
     @Transactional(readOnly = true)
     public List<DropdownDTO> getBankList(Integer status) {
         sqlQuery = properties.getProperty("CommonDao.getBankList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class)
-                .setParameter("status", status);
-        return (List<DropdownDTO>) hQuery.list();
+        return (List<DropdownDTO>) hibernateQuery(sqlQuery, DropdownDTO.class)
+                .setParameter("status", status).list();
     }
 
     @Transactional(readOnly = true)
@@ -99,10 +94,4 @@ public class CommonDao extends BaseDao {
         saveOrUpdate(fileDetail);
     }
 
-    public List<DropdownDTO> getTSWCFLoans(Integer value) {
-        sqlQuery = properties.getProperty("CommonDao.getTSWCFLoans");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, DropdownDTO.class)
-                .setParameter("status", value);
-        return (List<DropdownDTO>) hQuery.list();
-    }
 }

@@ -66,10 +66,6 @@ public class CommonService {
         return commonDao.getBankList(StatusCode.ACTIVE.getValue());
     }
 
-    @Transactional(readOnly = true)
-    public List<DropdownDTO> getTSWCFLoans() {
-        return commonDao.getTSWCFLoans(StatusCode.ACTIVE.getValue());
-    }
 
     /**
      * To get status list

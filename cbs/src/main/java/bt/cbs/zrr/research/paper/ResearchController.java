@@ -76,7 +76,7 @@ public class ResearchController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/getWordCount", method= RequestMethod.POST)
     public Long getWordCount(HttpServletRequest request,@RequestParam("file") MultipartFile file) throws IOException {
-        return CustomFileUtil.wordCount(file.getInputStream());
+        return CustomFileUtil.wordCount(file);
     }
 
     @ResponseBody

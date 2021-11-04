@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by Sonam Dargay on 1/3/2020.
  */
+@SuppressWarnings("unchecked")
 @Repository
 public class BranchSetupDao extends BaseDao {
     @Transactional(rollbackFor = Exception.class)
@@ -36,21 +37,19 @@ public class BranchSetupDao extends BaseDao {
     @Transactional(rollbackFor = Exception.class)
     public void delete(int branchId) {
         sqlQuery = properties.getProperty("BranchSetupDao.delete");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery).setParameter("branchId", branchId);
-        hQuery.executeUpdate();
+        hibernateQuery(sqlQuery).setParameter("branchId", branchId).executeUpdate();
     }
 
     @Transactional(readOnly = true)
     public List<BranchSetupDTO> getBranchList() {
         sqlQuery = properties.getProperty("BranchSetupDao.getBranchList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, BranchSetupDTO.class);
-        return hQuery.list();
+        return hibernateQuery(sqlQuery, BranchSetupDTO.class).list();
     }
 
     @Transactional(readOnly = true)
     public Boolean isBranchExist(String branchName) {
         sqlQuery = properties.getProperty("BranchSetupDao.isBranchExist");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery).setParameter("branchName", branchName);
-        return !hQuery.list().get(0).equals(BigInteger.ZERO);
+        List result_list = hibernateQuery(sqlQuery).setParameter("branchName", branchName).list();
+        return !result_list.get(0).equals(BigInteger.ZERO);
     }
 }

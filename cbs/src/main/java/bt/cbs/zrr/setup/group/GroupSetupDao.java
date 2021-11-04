@@ -34,22 +34,20 @@ public class GroupSetupDao extends BaseDao {
     @Transactional(rollbackFor = Exception.class)
     public void delete(int groupId) {
         sqlQuery = properties.getProperty("GroupSetupDao.delete");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery).setParameter("groupId",groupId);
-        hQuery.executeUpdate();
+        hibernateQuery(sqlQuery).setParameter("groupId",groupId).executeUpdate();
     }
 
     @Transactional(readOnly = true)
     public List<GroupSetupDTO> getGroupList() {
         sqlQuery = properties.getProperty("GroupSetupDao.getGroupList");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, GroupSetupDTO.class);
-        return hQuery.list();
+        return hibernateQuery(sqlQuery, GroupSetupDTO.class).list();
     }
 
     @Transactional(readOnly = true)
     public Boolean isGroupExist(String groupName) {
         sqlQuery = properties.getProperty("GroupSetupDao.isGroupExist");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery).setParameter("groupName", groupName);
-        return !hQuery.list().get(0).equals(BigInteger.ZERO);
+        List result_list= hibernateQuery(sqlQuery).setParameter("groupName", groupName).list();
+        return !result_list.get(0).equals(BigInteger.ZERO);
     }
 
     @Transactional(readOnly = true)
