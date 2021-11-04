@@ -22,11 +22,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" href="resources/startbootstrap/img/favicon.png" />
-    <title>Login :: RMA</title>
+    <title>Login :: ZRR</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link href="<c:url value='/resources/startbootstrap/vendor/fontawesome-free/css/all.min.css'/>" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<%--    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">--%>
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/sweetalert/sweetalert.css'/>"/>
     <!-- Custom styles for this template-->
     <link href="<c:url value='/resources/startbootstrap/css/sb-admin-2.min.css'/>" rel="stylesheet">

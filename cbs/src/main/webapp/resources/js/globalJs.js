@@ -22,6 +22,17 @@ function formatDate(d){
     return finalDate = `${day}/${month}/${year}`;
 }
 
+function isValidFile(ext,allowed){
+    for(let i in allowed){
+        if(allowed[i].toLowerCase() == ext.toLowerCase()){
+            return true;
+        }
+        warningMsg('Invalid file. Accepts only '+allowed.toString());
+        return false;
+    }
+
+}
+
 function check_file_size(size) {
     if(size > 5*1024*1024){ // 5MB
         warningMsg("File size is greater than 5 MB.");
