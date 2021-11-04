@@ -137,7 +137,7 @@
                     <h4 class="small font-weight-bold">Research Title  <span
                             class="float-right">Complete! <c:out value="${title.obj1}"/>/<c:out value="${users[3].value}"/> = </span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-info" role="progressbar" style="width:100%"
+                        <div class="progress-bar bg-info" role="progressbar" style="width:<c:out value="${title.obj1}"/>%"
                              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">Research Paper <span
