@@ -21,10 +21,10 @@ public class ResearchReviewService extends BaseService {
     }
 
     public ResponseMessage saveReviewerMarks(CurrentUser currentUser, String rComment,Integer researchNo, Integer researchId,
-                                             String[] assessmentCriteria, String[] weightage, String[] marksAllocated) {
+                                             String[] assessmentCriteria, String[] weightage, String marksAllocated) {
         researchReviewDAO.saveReviewerComments(rComment, researchId, currentUser);
         for (int i=0; i< assessmentCriteria.length; i++){
-            researchReviewDAO.saveReviewerMarks(researchNo,assessmentCriteria[i], weightage[i],marksAllocated[i], currentUser );
+            researchReviewDAO.saveReviewerMarks(researchNo,assessmentCriteria[i], weightage[i],marksAllocated, currentUser );
         }
         responseMessage.setStatus(SUCCESSFUL_STATUS);
         responseMessage.setText("Saved Successfully");
