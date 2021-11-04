@@ -26,13 +26,13 @@
                 <div class="col-lg-4">
                     <div class="input-group md-form form-sm form-2 pl-0 search">
                         <input type="month" class="form-control" name="monthId" id="monthId"/>
-                        <%--<form:select id="monthId"
-                                         class="form-control editable" name="monthId"
-                                         path="researchMonthList" required="true">
-                                <form:option value="">---Please select---</form:option>
-                                <form:options items="${researchMonthList}" itemValue="value"
-                                              itemLabel="text"/>
-                            </form:select>--%>
+<%--                        <form:select id="monthId"--%>
+<%--                                         class="form-control editable" name="monthId"--%>
+<%--                                         path="researchMonthList" required="true">--%>
+<%--                                <form:option value="">---Please select---</form:option>--%>
+<%--                                <form:options items="${researchMonthList}" itemValue="value"--%>
+<%--                                              itemLabel="text"/>--%>
+<%--                            </form:select>--%>
                         <div class="input-group-append">
                              <button class="input-group-text bg-info text-white lighten-3" id="searchBtn">
                                  <i class="fas fa-search text-grey" aria-hidden="true"></i></button>

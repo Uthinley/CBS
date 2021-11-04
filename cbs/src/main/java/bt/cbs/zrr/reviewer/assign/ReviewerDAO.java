@@ -22,7 +22,7 @@ public class ReviewerDAO extends BaseDao {
     private Query hQuery;
 
     @Transactional
-    public List<ResearchDTO> getResearchListForReview(Date dateFormat) {
+    public List<ResearchDTO> getResearchListForReview(String dateFormat) {
         sqlQuery = properties.getProperty("ReviewerDAO.getResearchListForReview");
         hQuery = (Query) hibernateQuery(sqlQuery, ResearchDTO.class)
                 .setParameter("dateFormat", dateFormat);
@@ -50,7 +50,7 @@ public class ReviewerDAO extends BaseDao {
     }
 
     @Transactional
-    public List<ResearchDTO> getAssignedResearchList(Date month) {
+    public List<ResearchDTO> getAssignedResearchList(String month) {
         sqlQuery = properties.getProperty("ReviewerDAO.getAssignedResearchList");
         hQuery = (Query) hibernateQuery(sqlQuery, ResearchDTO.class)
                 .setParameter("dateFormat", month);

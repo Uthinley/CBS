@@ -44,14 +44,14 @@ public class ReviewerController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/getResearchListForReview", method= RequestMethod.GET)
-    public List<ResearchDTO> getResearchListForReview(HttpServletRequest request, Date month){
+    public List<ResearchDTO> getResearchListForReview(HttpServletRequest request, String month){
         currentUser = getCurrentUser(request);
         return reviewerService.getResearchListForReview(month);
     }
 
     @ResponseBody
     @RequestMapping(value = "/getAssignedResearchList", method= RequestMethod.GET)
-    public List<ResearchDTO> getAssignedResearchList(HttpServletRequest request, Date month){
+    public List<ResearchDTO> getAssignedResearchList(HttpServletRequest request, String month){
         currentUser = getCurrentUser(request);
         return reviewerService.getAssignedResearchList(month);
     }

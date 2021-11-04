@@ -20,33 +20,33 @@ reviewer = (function () {
                 },
                 success: function (res) {
                     var row = "";
-                    for (var i in res){
-                        //nesGlobal.viewOrDownloadFile(res[i].filePath);
-                        row = row + '<tr>'+
-                            '<td></td>' +
-                            '<td>' + (res[i].research_number) + '</td>' +
-                            '<td>' + (res[i].researchTopic) + '</td>' +
-                            '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
-                            '<td><a data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-danger btn-circle text-white">\n' +
-'                                       <i class="fas fa-edit"></i>\n' +
-'                                  </a>' +
-                            '</td>' +
-                            // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
-                            // '<td>'+nesGlobal.viewOrDownloadFile(res[i].filePath)+'</td>' +
-                            // '<td>' + (res[i].wordCount) + '</td>' +
-                            // '<td>' + (res[i].status) + '</td>' +
-                            // '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
-                            // '<td class="d-none" id="status">' + (res[i].wordCount) + '</td>' +
-                            // '<td hidden>' + (res[i].researchId) + '</td>' +
-                            '</tr>'
+                        for (var i in res) {
+                            //nesGlobal.viewOrDownloadFile(res[i].filePath);
+                            row = row + '<tr>' +
+                                '<td></td>' +
+                                '<td>' + (res[i].research_number) + '</td>' +
+                                '<td>' + (res[i].researchTopic) + '</td>' +
+                                '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
+                                '<td><a data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-danger btn-circle text-white">\n' +
+                                '                                       <i class="fas fa-edit"></i>\n' +
+                                '                                  </a>' +
+                                '</td>' +
+                                // '<td> <a href="' + (res[i].filePath) + '">file</a></td>' +
+                                // '<td>'+nesGlobal.viewOrDownloadFile(res[i].filePath)+'</td>' +
+                                // '<td>' + (res[i].wordCount) + '</td>' +
+                                // '<td>' + (res[i].status) + '</td>' +
+                                // '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
+                                // '<td class="d-none" id="status">' + (res[i].wordCount) + '</td>' +
+                                // '<td hidden>' + (res[i].researchId) + '</td>' +
+                                '</tr>'
+                        }
+                        getAssignedResearchList($('#monthId').val());
+                        var cardTable = $('#researchListTbl');
+                        cardTable.dataTable().fnDestroy();
+                        cardTable.find('tbody').empty().prepend(row);
+                        $(cardTable).DataTable();
+                        // createDataTableWithButtons(cardTable);
                     }
-                    getAssignedResearchList($('#monthId').val());
-                    var cardTable = $('#researchListTbl');
-                    cardTable.dataTable().fnDestroy();
-                    cardTable.find('tbody').empty().prepend(row);
-                    $(cardTable).DataTable();
-                    // createDataTableWithButtons(cardTable);
-                }
             });
         });
     }

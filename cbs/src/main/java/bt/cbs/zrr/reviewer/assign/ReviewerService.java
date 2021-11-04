@@ -21,7 +21,7 @@ public class ReviewerService extends BaseService {
     @Autowired
     private ReviewerDAO reviewerDAO;
 
-    public List<ResearchDTO> getResearchListForReview(Date dateFormat) {
+    public List<ResearchDTO> getResearchListForReview(String dateFormat) {
         return reviewerDAO.getResearchListForReview(dateFormat);
     }
 //    public List<ResearchDTO> getAssingedResearchList(Date dateFormat) {
@@ -48,7 +48,7 @@ public class ReviewerService extends BaseService {
         return responseMessage;
     }
 
-    public List<ResearchDTO> getAssignedResearchList(Date month) {
+    public List<ResearchDTO> getAssignedResearchList(String month) {
         return reviewerDAO.getAssignedResearchList(month);
     }
 }

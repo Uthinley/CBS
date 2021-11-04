@@ -9,7 +9,8 @@ ReviewerDAO.getResearchListForReview = SELECT \
                                   `status`, \
                                   `CREATEDBY` AS createdBy, \
                                   `CREATEDDATE` AS createdDate \
-                              FROM `research_dtls` WHERE MONTH(CREATEDDATE)=DATE_FORMAT(:dateFormat, '%m') AND YEAR(CREATEDDATE)= DATE_FORMAT(:dateFormat, '%Y') AND status='S'
+                              FROM `research_dtls` WHERE research_month = :dateFormat AND STATUS='S'
+--                               MONTH(CREATEDDATE)=DATE_FORMAT(:dateFormat, '%m') AND YEAR(CREATEDDATE)= DATE_FORMAT(:dateFormat, '%Y') AND status='S'
 
 ReviewerDAO.getReviewerList = SELECT CONCAT(A.USRFULLNAME, "(",A.USREMAILID, ")" ) AS TEXT, A.USRUSERID AS VALUE FROM `sa_user` A \
                               INNER JOIN sa_user_group B \
@@ -39,5 +40,6 @@ ReviewerDAO.getAssignedResearchList = SELECT \
                                                       ON B.`reviewer_id` = C.`USRUSERID` \
                                            INNER JOIN `common_status` D \
                                                       ON D.`status_id` = A.status \
-                                      WHERE MONTH(A.CREATEDDATE)=DATE_FORMAT(:dateFormat, '%m') \
-                                      AND YEAR(A.CREATEDDATE)= DATE_FORMAT(:dateFormat, '%Y')
+                                      WHERE A.research_month = :dateFormat
+--                                       MONTH(A.CREATEDDATE)=DATE_FORMAT(:dateFormat, '%m') \
+--                                       AND YEAR(A.CREATEDDATE)= DATE_FORMAT(:dateFormat, '%Y')

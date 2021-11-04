@@ -42,7 +42,7 @@ public class ResearchReviewController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/saveReviewerMarks", method = RequestMethod.POST)
-    public ResponseMessage saveReviewerMarks(HttpServletRequest request, String rComment, Integer researchNo, Integer researchId, String[] assessmentCriteria, String weightage[], String marksAllocated[] ) throws IOException {
+    public ResponseMessage saveReviewerMarks(HttpServletRequest request, String rComment, Integer researchNo, Integer researchId, String[] assessmentCriteria, String[] weightage, String marksAllocated ) throws IOException {
         currentUser = getCurrentUser(request);
         return researchReviewService.saveReviewerMarks(currentUser, rComment, researchNo, researchId, assessmentCriteria, weightage, marksAllocated);
     }
