@@ -1,19 +1,15 @@
 package bt.cbs.zrr.auth;
 
 
-
 import bt.cbs.zrr.global.base.BaseDao;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Repository("loginDao")
 public class LoginDao extends BaseDao {
-
-    //region private variables
-    private Query hQuery;
-    //endregion
 
     //region public method
 
@@ -26,9 +22,10 @@ public class LoginDao extends BaseDao {
     @Transactional(readOnly = true)
     public LoginDTO login(String username) {
         sqlQuery = properties.getProperty("LoginDao.login");
-        hQuery = hibernateQuery(sqlQuery, LoginDTO.class);
-        hQuery.setParameter("username", username);
-        return (LoginDTO) (hQuery.list().isEmpty() ? null : hQuery.list().get(0));
+        List result_list = hibernateQuery(sqlQuery, LoginDTO.class)
+                .setParameter("username", username)
+                .list();
+        return (LoginDTO) (result_list.isEmpty() ? null : result_list.get(0));
     }
     //endregion
 }

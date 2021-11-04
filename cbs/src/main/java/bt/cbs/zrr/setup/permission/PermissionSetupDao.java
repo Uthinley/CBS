@@ -17,14 +17,15 @@ import java.util.List;
  * Purpose:
  * ====================================================================
  */
+@SuppressWarnings("unchecked")
 @Repository
 public class PermissionSetupDao extends BaseDao {
 
     @Transactional(readOnly = true)
     public BigDecimal getNextPermissionId() {
         sqlQuery = properties.getProperty("PermissionSetupDao.getNextPermissionId");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery);
-        return hQuery.list().isEmpty() ? BigDecimal.ONE : (BigDecimal) hQuery.list().get(0);
+        List result_list = hibernateQuery(sqlQuery).list();
+        return result_list.isEmpty() ? BigDecimal.ONE : (BigDecimal)result_list.get(0);
     }
 
     @Transactional
@@ -46,17 +47,17 @@ public class PermissionSetupDao extends BaseDao {
         } else {
             sqlQuery = properties.getProperty("PermissionSetupDao.getPermissionList");
         }
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, PermissionListDTO.class);
-        hQuery.setParameter("groupId", groupId).setParameter("status", status);
-        return hQuery.list();
+        return hibernateQuery(sqlQuery, PermissionListDTO.class).setParameter("groupId", groupId)
+                .setParameter("status", status).list();
     }
+
 
     @Transactional(readOnly = true)
     public BigDecimal getPermissionId(Integer groupId, String screenId) {
         sqlQuery = properties.getProperty("PermissionSetupDao.getPermissionId");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery);
-        hQuery.setParameter("groupId", groupId);
-        hQuery.setParameter("screenId", screenId);
-        return hQuery.list().isEmpty() ? null : (BigDecimal) hQuery.list().get(0);
+        List result_list = hibernateQuery(sqlQuery)
+                .setParameter("groupId", groupId)
+                .setParameter("screenId", screenId).list();
+        return result_list.isEmpty() ? null : (BigDecimal) result_list.get(0);
     }
 }

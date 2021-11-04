@@ -14,6 +14,7 @@ import java.util.List;
  * User setup Dao to save or retrieve values from db
  * =====================================================================================
  */
+@SuppressWarnings("unchecked")
 @Repository
 public class UserSetupDao extends BaseDao {
 
@@ -47,18 +48,17 @@ public class UserSetupDao extends BaseDao {
     @Transactional(readOnly = true)
     public UserSetupDTO getUserByUsername(String username) {
         sqlQuery = properties.getProperty("UserSetupDao.getUserByUsername");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery, UserSetupDTO.class)
-                .setParameter("username", username);
-        return hQuery.list().isEmpty() ? null : (UserSetupDTO) hQuery.list().get(0);
+        List result_list = hibernateQuery(sqlQuery, UserSetupDTO.class)
+                .setParameter("username", username).list();
+        return result_list.isEmpty() ? null : (UserSetupDTO) result_list.get(0);
     }
 
     @Transactional
     public void updateIsBadCredentialStatus(Date date, String userName) {
         sqlQuery = properties.getProperty("UserSetupDao.updateIsBadCredentialStatus");
-        org.hibernate.Query hQuery = hibernateQuery(sqlQuery)
+        hibernateQuery(sqlQuery)
                 .setParameter("userName", userName)
                 .setParameter("date", date)
-                .setParameter("isBadCredential", Boolean.FALSE);
-        hQuery.executeUpdate();
+                .setParameter("isBadCredential", Boolean.FALSE).executeUpdate();
     }
 }

@@ -2,7 +2,6 @@ package bt.cbs.zrr.setup.cPassword;
 
 import bt.cbs.zrr.setup.user.UserSetup;
 import bt.cbs.zrr.global.base.BaseDao;
-import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,10 +22,9 @@ public class ChangePasswordDao extends BaseDao {
     @Transactional(readOnly = false)
     public void changePassword(String userName, String password) {
         sqlQuery = properties.getProperty("ChangePasswordDao.changePassword");
-        Query hQuery = hibernateQuery(sqlQuery)
+        hibernateQuery(sqlQuery)
                 .setParameter("userName", userName)
-                .setParameter("password", password);
-        hQuery.executeUpdate();
+                .setParameter("password", password).executeUpdate();
     }
 
     @Transactional(readOnly = false)

@@ -21,7 +21,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h6 mb-0 text-gray-800">Dashboard for the month of November</h1>
+        <h1 class="h6 mb-0 text-gray-800">Dashboard</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><input type="month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>"/> </a>
     </div>
 <security:authorize access="hasAuthority('00-01-001-VIEW')">
@@ -190,9 +190,7 @@
             { y: 'Feb', a: 75  },
             { y: 'Mar', a: 50,  },
             { y: 'Apr', a: 75 },
-            { y: 'May', a: 50},
-            { y: 'June', a: 75 },
-            { y: 'Jul', a: 100 }],
+            { y: 'May', a: 100 }],
         xkey: 'y', //X - Axis
         parseTime: false,
         ykeys: ['a'],//Y-axis

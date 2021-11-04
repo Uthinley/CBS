@@ -18,7 +18,7 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf_parameterName" content="${_csrf.parameterName}"/>
-    <link rel="icon" type="image/png" href="resources/startbootstrap/img/favicon.png" />
+    <link rel="icon" type="image/png" href="<c:url value="/resources/startbootstrap/img/favicon.png"/>" />
     <title><sitemesh:write property="title"/></title>
     <jsp:include page="include/startbootstrap/css.jsp"/>
     <jsp:include page="include/globalConfig.jsp"/>

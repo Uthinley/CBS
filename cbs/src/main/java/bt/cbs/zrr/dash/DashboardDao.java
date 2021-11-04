@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 @Repository
 public class DashboardDao extends BaseDao {
 

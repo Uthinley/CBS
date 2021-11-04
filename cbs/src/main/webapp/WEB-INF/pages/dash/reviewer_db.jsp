@@ -104,6 +104,6 @@
 </div>
 <!-- Begin Page Content -->
 
-<script src="<c:url value='/resources/js/db/home.js'/>"></script>
+<%--<script src="<c:url value='/resources/js/db/home.js'/>"></script>--%>
 </body>
 </html>

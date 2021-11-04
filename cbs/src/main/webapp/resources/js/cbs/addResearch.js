@@ -88,6 +88,11 @@ research = (function () {
                 type: 'GET',
                 data: {research_month:$(this).val()},
                 success: function(res){
+                    if(jQuery.isEmptyObject(res)){
+                        warningMsg("Propose the research title and get approved from the approver for the selected month.")
+                        $('#researchTopic').val('');
+                        return;
+                    }
                     if(res.status != 'A'){
                         warningMsg("Your research title is not approved yet. Please wait until it is approved or contact the approver.")
                         $('#btnSave').prop('disabled',true);
@@ -104,6 +109,12 @@ research = (function () {
     function wordCountOnFileSelect(){
 
         $('#research_paper').bind('change', function () {
+            let filename = $(this).val().split('\\').pop();
+
+            if(!isValidFile(filename.split('.').pop(),['docx'])){
+                $(this).val('');
+                return;
+            }
             if(!check_file_size(this.files[0].size)){
                 $(this).val('');
                 return;
@@ -123,6 +134,7 @@ research = (function () {
             })
         });
     }
+
 
     return {
         init: init

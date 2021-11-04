@@ -25,7 +25,7 @@
     </button>
 
 
-    <div style="width: 100%;padding-top: 4px;"><a href="<c:url value="/home"/>" style="text-decoration: none" class="text-primary align-center"><h5>བཞི་ཆེན་ཞིབ་མཇུག་མ་ཡིག།</h5>
+    <div style="width: 100%;padding-top: 4px;"><a href="<c:url value="/home"/>" style="text-decoration: none" class="text-primary align-center"><h5>བཞི་ཆེན་ཞིབ་འཇུག་མ་ཡིག།</h5>
         <h5>Zhichen Research Registry (ZRR)</h5></a> &nbsp;&nbsp;</div>
 
     <%--<security:authorize access="hasRole('00-01-001-VIEW')">
