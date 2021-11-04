@@ -98,6 +98,19 @@
             </div>
         </div>
 
+        <c:if test="${title.obj3 > 0}">
+            <div class="row text-danger">
+                <div class="card  shadow h-100 py-2">
+                   <div class="card-body">
+                        The approver has returned back <b><c:out value="${title.obj3}"/> </b> title you choose. Please propose another title.
+                       <a href="<c:url value="/researchTopic/"/>"> Click here to check</a>
+                   </div>
+
+                </div>
+            </div>
+        </c:if>
+
+
     </security:authorize>
 </div>
 <%--<script src="<c:url value='/resources/js/db/home.js'/>"></script>--%>
