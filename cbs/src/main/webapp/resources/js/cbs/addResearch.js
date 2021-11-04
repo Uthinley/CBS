@@ -68,7 +68,7 @@ research = (function () {
                             '<td>' + (res[i].research_month) + '</td>' +
                             '<td>' + (res[i].researchTopic) + '</td>' +
                             '<td>' + (res[i].wordCount) + '</td>' +
-                            '<td>' + globalJs.viewOrDownloadFile(res[i].filePath) + '</td>' +
+                            '<td>' + globalJs.viewOrDownloadFile(res[i].filePath+'/'+res[i].research_paper_name) + '</td>' +
                             '<td> <span style="' + color + '">' + (res[i].statusName) + '</span></td>' +
                             '<td>' + isNull(res[i].reviewer_comment) + '</td>' +
                             '<td>' + isNull(formatDate(res[i].createdDate)) + '</td>' +
