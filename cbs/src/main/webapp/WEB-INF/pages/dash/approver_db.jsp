@@ -134,28 +134,43 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tasks completed in percentage</h6>
                 </div>
                 <div class="card-body">
-                    <h4 class="small font-weight-bold">Research Title  <span
-                            class="float-right">Complete! <c:out value="${title.obj1}"/>/<c:out value="${users[3].value}"/> = </span></h4>
+                    <c:set var="tResearcher" value="${users[3].value}" />
+                    <c:set var="titleS" value="${title.obj1}" />
+                    <c:set var="titleA" value="${title.obj2}" />
+                    <c:set var="paperS" value="${paper.obj1}" />
+                    <c:set var="paperR" value="${paper.obj2}" />
+                    <h4 class="small font-weight-bold">Research Title Received
+                        <span class="float-right">
+                            <c:out value="${titleS}"/> of <c:out value="${tResearcher}"/> =<c:out value="${(titleS*100)/tResearcher}"/>%
+                        </span>
+                    </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-info" role="progressbar" style="width:<c:out value="${title.obj1}"/>%"
+                        <div class="progress-bar bg-info" role="progressbar" style="width:<c:out value="${(titleS*100)/tResearcher}"/>%"
                              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Research Paper <span
-                            class="float-right">90%</span></h4>
+                    <h4 class="small font-weight-bold">Research Title Approved <span
+                            class="float-right">
+                        <c:out value="${titleA}"/> of <c:out value="${titleS}"/> =<c:out value="${(titleA*100)/titleS}"/>%
+                    </span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 90%"
-                             aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Research Title Approval <span
-                            class="float-right">20%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: <c:out value="${(titleA*100)/paperS}"/>%"
                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Research Paper Review <span
-                            class="float-right">40%</span></h4>
+                    <h4 class="small font-weight-bold">Research Paper Received <span
+                            class="float-right">
+                        <c:out value="${paperS}"/> of <c:out value="${tResearcher}"/> =<c:out value="${(paperS*100)/tResearcher}"/>%
+                    </span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                        <div class="progress-bar bg-success" role="progressbar" style="width: <c:out value="${(paperS*100)/tResearcher}"/>%"
+                             aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+
+                    <h4 class="small font-weight-bold">Research Paper Reviewed <span
+                            class="float-right">
+                        <c:out value="${paperR}"/> of <c:out value="${paperS}"/> =<c:out value="${(paperR*100)/paperS}"/>%
+                    </span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: <c:out value="${(paperR*100)/paperS}"/>%"
                              aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">Marks allocation <span
