@@ -60,7 +60,7 @@ public class ResearchService extends BaseService {
 
         }*/
 
-        Long wordCount =  CustomFileUtil.wordCount(rPaper.getInputStream());
+        Long wordCount =  CustomFileUtil.wordCount(rPaper);
         researchDTO.setWordCount(wordCount.intValue());
         researchDTO.setFilePath(filePath.substring(0,filePath.lastIndexOf("/")));
         researchDTO.setResearch_number(research_number);

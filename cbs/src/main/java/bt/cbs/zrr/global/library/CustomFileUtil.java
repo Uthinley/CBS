@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -44,16 +45,18 @@ public class CustomFileUtil {
         return rootPath;
     }
 
-    public static Long wordCount(InputStream inputStream) throws IOException {
+    public static Long wordCount(MultipartFile file) throws IOException {
         String line;
         Long count;
         /*POITextExtractor textExtractor;
         if (file.getName().endsWith(".docx")) {
-            XWPFDocument doc = new XWPFDocument(new FileInputStream(file));
+            XWPFDocument doc = new XWPFDocument(file.getInputStream());//.docx
             textExtractor = new XWPFWordExtractor(doc);
         }
         else if (file.getName().endsWith(".doc")) {
-            textExtractor = new WordExtractor(new FileInputStream(file));
+            HWPFDocument wordDoc = new HWPFDocument(new FileInputStream(lowerFilePath));
+            HWPFDocument doc = new HWPFDocument(file.getInputStream());//.doc
+            textExtractor = new WordExtractor(file.getInputStream());
         }
         else {
             throw new IllegalArgumentException("Not a MS Word file.");
@@ -63,8 +66,8 @@ public class CustomFileUtil {
                 .filter(s -> s.matches("^.*[\\p{L}\\p{N}].*$"))
                 .count();*/
 
-        try (XWPFDocument doc = new XWPFDocument(inputStream)) {
-            XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
+        try (XWPFDocument doc = new XWPFDocument(file.getInputStream())) {
+            //XWPFWordExtractor xwpfWordExtractor = new XWPFWordExtractor(doc);
 
             /*String docText = xwpfWordExtractor.getText();
             // find number of words in the document
@@ -72,18 +75,6 @@ public class CustomFileUtil {
             count = (long)doc.getProperties().getExtendedProperties().getUnderlyingProperties().getWords();
 
         }
-//        File convFile = new File(file.getOriginalFilename());
-//        convFile.createNewFile();
-//        FileOutputStream fos = new FileOutputStream(convFile);
-//        fos.write(file.getBytes());
-//        FileInputStream fis = new FileInputStream(convFile);
-//        byte[] bytesArray = new byte[(int)convFile.length()];
-//        fis.read(bytesArray);
-//        String s = new String(bytesArray);
-//        String [] data = s.split(" ");
-//         for(int i = 0; i< data.length; i++){
-//             count++;
-//         }
         return count;
     }
 
