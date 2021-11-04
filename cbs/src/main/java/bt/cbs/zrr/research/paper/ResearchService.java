@@ -107,7 +107,7 @@ public class ResearchService extends BaseService {
     private String generateResearchNumber(){
         Object nextRNumber = commonService.getNextID("research_dtls","research_number");
         String curYear = Integer.valueOf(Calendar.getInstance().get(Calendar.YEAR)).toString();
-        String curMonth = Integer.valueOf(Calendar.getInstance().get(Calendar.MONTH)).toString();
+        String curMonth = Integer.valueOf(Calendar.getInstance().get(Calendar.MONTH)+1).toString();
         if(curMonth.length()==1){
             curMonth='0'+curMonth;
         }
