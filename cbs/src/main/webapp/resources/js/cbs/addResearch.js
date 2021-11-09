@@ -15,6 +15,15 @@ research = (function () {
         getResearchList();
         getTitleForMonth();
         wordCountOnFileSelect();
+        findResearch();
+        action_btn();
+        editR();
+        deleteR();
+
+        let url      = window.location.href;
+        if(url.endsWith("#researchListTbl")){
+            $('#research-list-tab').click();
+        }
     }
 
     function save() {
@@ -50,28 +59,34 @@ research = (function () {
                 url: _baseURL() + '/getResearchList',
                 type: 'GET',
                 success: function (res) {
-                    var row = "";
-                    for (var i in res) {
+                    let row = "";
+                    for (let i in res) {
                         //nesGlobal.viewOrDownloadFile(res[i].filePath);
                         let color = "";
+                        let action = "<button class='action-btn'><i class='fas fa-user-edit'></i></button>";
                         if (res[i].status == 'T') {
                             color = "color:red";
                         } else if (res[i].status == 'S') {
                             color = "color:#5A1B0E";
                         } else if (res[i].status == 'R') {
+                            action ="<button class='action-btn' disabled title='Already reviewed. Cannot update or delete'><i class='fas fa-user-edit'></i></button>";
                             color = "color:green";
+                        }else if (res[i].status == 'U') {
+                            color = "color:gray";
                         }
                         color = color + ";font-weight:bold;";
                         row = row + '<tr>' +
-                            '<td></td>' +
-                            '<td>' + (res[i].research_number) + '</td>' +
+                            '<td><input type="hidden" class="id" value="'+res[i].researchId+'"/></td>' +
+                            '<td class="research_number">' + (res[i].research_number) + '</td>' +
                             '<td>' + (res[i].research_month) + '</td>' +
+                            '<td>' + (res[i].createdBy) + '</td>' +
                             '<td>' + (res[i].researchTopic) + '</td>' +
                             '<td>' + (res[i].wordCount) + '</td>' +
                             '<td>' + globalJs.viewOrDownloadFile(res[i].filePath+'/'+res[i].research_paper_name) + '</td>' +
                             '<td> <span style="' + color + '">' + (res[i].statusName) + '</span></td>' +
                             '<td>' + isNull(res[i].reviewer_comment) + '</td>' +
                             '<td>' + isNull(formatDate(res[i].createdDate)) + '</td>' +
+                            '<td>'+action+'</td>' +
                             '</tr>'
                     }
                     $('#researchListTbl').find('tbody').empty().prepend(row);
@@ -130,6 +145,73 @@ research = (function () {
                 processData: false,
                 success: function(res){
                     $('.word_count').text(res);
+                }
+            })
+        });
+    }
+
+    //to get a research by research number
+    function findResearch(){
+        $('#research_number').on('change',function(e){
+            e.preventDefault();
+            let research_number = $(this).val();
+            if(!research_number){
+               return;
+            }
+            $.ajax({
+                url: _baseURL() + '/findResearch',
+                type: 'GET',
+                data: {research_number:research_number},
+                success: function(res){
+                    populate(res);
+                    $('#btnSave').prop('disabled',true);
+                    $('#btnEdit').prop('disabled',false);
+                    $('#btnDelete').prop('disabled',false);
+                    $('#researchTopic').prop('disabled',true);
+                    $('#key_words').prop('disabled',true);
+                    $('#research_abstract').prop('disabled',true);
+                    $('#research_month').prop('disabled',true);
+                    $('#research_paper').prop('disabled',true);
+                    $('#research_number').prop('readonly',false);
+                }
+            })
+        });
+    }
+
+
+    function action_btn(){
+        $('body').on('click','.action-btn',function (e) {
+            $('#research_number').val($(this).closest('tr').find('.research_number').text()).change();
+            $('#form-tab').tab('show');
+        });
+    }
+
+    function editR(){
+        $('body').on('click','#btnEdit',function (e) {
+            $('#researchTopic').prop('disabled',false);
+            $('#key_words').prop('disabled',false);
+            $('#research_abstract').prop('disabled',false);
+            $('#research_month').prop('disabled',false);
+            $('#research_paper').prop('disabled',false);
+            $('#btnSave').prop('disabled',false);
+            $('#btnEdit').prop('disabled',true);
+            $('#actionType').val('M');
+        });
+    }
+
+    function deleteR(){
+        $('body').on('click','#btnDelete',function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: _baseURL() + '/delete',
+                type: 'POST',
+                data: {research_number: $('#research_number').val(),research_id: $('#researchId').val()},
+                success: function (res) {
+                    if (res.status == 1) {
+                        successMsg(res.text, _baseURL());
+                    } else {
+                        warningMsg(res.text);
+                    }
                 }
             })
         });

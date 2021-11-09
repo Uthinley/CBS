@@ -40,12 +40,18 @@ public class ResearchTopicService extends BaseService {
             responseMessage.setText("Please enter all the required fields.");
         }
 
-        ResearchTopicEntity topicEntity = convertDTOToEntity(topicDTO,currentUser);
-        topicDAO.save(topicEntity);
 
+        ResearchTopicEntity topicEntity = convertDTOToEntity(topicDTO,currentUser);
+        responseMessage.setText("Your research Title for the month of "+topicDTO.getResearch_month()+" is submitted successfully for approval.");
+
+        if(topicDTO.getActionType().equalsIgnoreCase("M")){
+            topicEntity.setResearch_topic_id(topicDTO.getResearch_topic_id());
+            responseMessage.setText("Your research Title for the month of "+topicDTO.getResearch_month()+" is re-submitted successfully.");
+
+        }
+        topicDAO.save(topicEntity);
         responseMessage.setStatus(SUCCESSFUL_STATUS);
-        responseMessage.setText("Your research Topic has been recorded for the month of "+topicDTO.getResearch_month()+" and forwarded for review.");
-        return responseMessage;
+         return responseMessage;
     }
 
     @Transactional(readOnly = true)

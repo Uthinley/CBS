@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <a href="<c:url value="/research/"/>" title="Click for detail"><i class="fas fa-clipboard-list fa-2x"></i></a>
+                            <a href="<c:url value="/research#researchListTbl"/>" title="Click for detail"><i class="fas fa-clipboard-list fa-2x"></i></a>
                         </div>
                     </div>
                 </div>

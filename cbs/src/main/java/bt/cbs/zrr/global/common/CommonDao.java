@@ -90,8 +90,9 @@ public class CommonDao extends BaseDao {
         return list.isEmpty()?null:list.get(0);
     }
 
-    public void saveUpdate(FileDetailEntity fileDetail) {
-        saveOrUpdate(fileDetail);
+    @Transactional
+    public void saveUpdate(Object obj) {
+        saveOrUpdate(obj);
     }
 
 }

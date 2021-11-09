@@ -48,7 +48,7 @@
                           class="row align-items-center" enctype="multipart/form-data">
                         <input id="csrf" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="hidden" name="actionType" id="actionType" value="C"/>
-                        <input type="text" name="id" id="id" hidden/>
+                        <input type="hidden" name="researchId" id="researchId"/>
 
                         <div class="col-lg-7">
 
@@ -66,6 +66,7 @@
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" name="research_number"
                                            id="research_number" readonly placeholder="Research Number">
+
                                 </div>
                             </div>
 
@@ -79,7 +80,7 @@
                                     <textarea class="form-control " name="key_words"
                                               id="key_words" required="true" placeholder="Key words ..."></textarea>
                                     <textarea class="form-control" name="research_abstract"
-                                              id="research_abstract" rows="6"
+                                              id="research_abstract" rows="10"
                                               placeholder="Enter the research abstract ..."></textarea>
                                 </div>
                             </div>
@@ -133,12 +134,14 @@
                                 <th>#</th>
                                 <th>Research Number</th>
                                 <th>Research Month</th>
+                                <th>Research Author</th>
                                 <th>Research Title</th>
                                 <th>Word Count</th>
                                 <th>Research Paper</th>
                                 <th>Status</th>
                                 <th>Reviewer's Comment</th>
                                 <th>Uploaded On</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>

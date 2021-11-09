@@ -90,6 +90,7 @@ function populate(data) {
         } else {
             $(
                 "input[type='text'][name='" + i + "'], " +
+                "input[type='month'][name='" + i + "'], " +
                 "input[type='hidden'][name='" + i + "'], " +
                 "input[type='checkbox'][name='" + i + "'], " +
                 "input[type='date'][name='" + i + "'], " +

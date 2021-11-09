@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class ResearchDTO {
 
+    private String actionType;
     private Integer researchId;
     private String researchTopic;
     private String research_abstract;
@@ -28,6 +29,14 @@ public class ResearchDTO {
     private String reviewer_comment;
     private String reviewerName;
     private Date assignedDate;
+
+    public String getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
+    }
 
     public String getReviewerName() {
         return reviewerName;

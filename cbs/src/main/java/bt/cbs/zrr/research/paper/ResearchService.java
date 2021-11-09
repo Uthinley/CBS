@@ -2,13 +2,12 @@ package bt.cbs.zrr.research.paper;
 
 import bt.cbs.zrr.global.base.BaseService;
 import bt.cbs.zrr.global.common.CommonService;
+import bt.cbs.zrr.global.common.DeleteHistory;
 import bt.cbs.zrr.global.dto.CurrentUser;
 import bt.cbs.zrr.global.dto.ResponseMessage;
 import bt.cbs.zrr.global.enumeration.UserGroup;
 import bt.cbs.zrr.global.library.CustomFileUtil;
-import bt.cbs.zrr.global.dto.GenericDTO;
 import bt.cbs.zrr.research.comment.ResearchCommentService;
-import bt.cbs.zrr.setup.user.UserSetupDTO;
 import bt.cbs.zrr.global.enumeration.ApplicationStatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,41 +39,57 @@ public class ResearchService extends BaseService {
             responseMessage.setStatus(UNSUCCESSFUL_STATUS);
             responseMessage.setText("Please choose file research paper to upload.");
         }
+        String research_number;
+        String file_name;
+        if(researchDTO.getActionType().equalsIgnoreCase("M")){
+            file_name = "MM_"+rPaper.getOriginalFilename();
+            research_number = researchDTO.getResearch_number();
+            responseMessage.setText("Your research is updated successfully  for research number <b>"+research_number+"</b> and forwarded for review.");
+
+        }else{
+            file_name = "NN_"+rPaper.getOriginalFilename();
+            research_number = generateResearchNumber();
+            responseMessage.setText("Your research has been recorded with research paper number <b>"+research_number+"</b> and forwarded for review.");
+
+        }
 
         String date = new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
-        String research_number = generateResearchNumber();
         String sub_folder = currentUser.getUserName() + "/" + date + "/" +research_number;
-
-
-
-        String filePath = CustomFileUtil.uploadFile(rPaper,sub_folder,rPaper.getOriginalFilename());
-        /*String sDocName;
-        StringBuilder supporting_documents_name =  new StringBuilder();
-        int i = 0;
-        for(MultipartFile sDocument: researchDTO.getSupporting_documents()){
-            if (i != 0) supporting_documents_name.append(",");
-            i++;
-            sDocName = "SD"+i+"_"+Objects.requireNonNull(sDocument.getOriginalFilename()).replace(",","");//remove comma in file name
-            supporting_documents_name.append(sDocName);
-            CustomFileUtil.uploadFile(sDocument,sub_folder,sDocName);
-
-        }*/
-
+        String filePath = CustomFileUtil.uploadFile(rPaper,sub_folder,file_name);
         Long wordCount =  CustomFileUtil.wordCount(rPaper);
+
         researchDTO.setWordCount(wordCount.intValue());
         researchDTO.setFilePath(filePath.substring(0,filePath.lastIndexOf("/")));
         researchDTO.setResearch_number(research_number);
         ResearchEntity researchEntity = convertDTOToEntity(researchDTO, currentUser);
-        researchEntity.setResearch_paper_name(rPaper.getOriginalFilename());
-        //researchEntity.setSupporting_documents_name(supporting_documents_name.toString());
+        researchEntity.setResearch_paper_name(file_name);
         researchDAO.save(researchEntity);
 
-        /*researchDTO.setPaper_version(researchEntity.getPaper_version());
-        researchDTO.setStatus(researchEntity.getStatus().toString());
-        commentService.save(researchDTO, currentUser);*/
 
         responseMessage.setStatus(SUCCESSFUL_STATUS);
-        responseMessage.setText("Your research has been recorded with research paper number <b>"+researchEntity.getResearch_number()+"</b> and forwarded for review.");
+        return responseMessage;
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<ResearchDTO> getResearchList(CurrentUser currentUser) {
+        if(currentUser.getGroupId() == UserGroup.RESEARCHER.value()) {
+            return researchDAO.getResearchList(currentUser.getUserName());
+        }
+        return researchDAO.getResearchList(null);
+    }
+
+    @Transactional(readOnly = true)
+    public ResearchDTO findResearch(String research_number) {
+        return researchDAO.findResearch(research_number);
+    }
+
+    @Transactional
+    public ResponseMessage delete(String research_number, String research_id, CurrentUser currentUser) {
+        researchDAO.delete(research_number);
+        commonService.saveAuditHistory("research_dtls",research_id,currentUser.getUserName());
+        responseMessage.setStatus(SUCCESSFUL_STATUS);
+        responseMessage.setText("Deleted successfully.");
         return responseMessage;
     }
 
@@ -83,8 +98,9 @@ public class ResearchService extends BaseService {
     private ResearchEntity convertDTOToEntity(ResearchDTO researchDTO, CurrentUser currentUser){
 
         ResearchEntity researchEntity = new ResearchEntity();
+
         researchEntity.setResearchTopic(researchDTO.getResearchTopic());
-//        researchEntity.setResearch_abstract(researchDTO.getResearch_abstract());
+        researchEntity.setResearchId(researchDTO.getResearchId());
         researchEntity.setResearch_abstract(researchDTO.getResearch_abstract());
         researchEntity.setKey_words(researchDTO.getKey_words());
         researchEntity.setFilepath(researchDTO.getFilePath());
@@ -123,42 +139,5 @@ public class ResearchService extends BaseService {
 
         return research_number;
 
-    }
-
-    @Transactional(readOnly = true)
-    public List<ResearchDTO> getResearchList(CurrentUser currentUser) {
-        if(currentUser.getGroupId() == UserGroup.RESEARCHER.value()) {
-            return researchDAO.getResearchList(currentUser.getUserName());
-        }
-        return researchDAO.getResearchList(null);
-    }
-
-    @Transactional(readOnly = true)
-    public List<ResearchDTO> geAllResearchList() {
-        return researchDAO.geAllResearchList();
-    }
-
-    @Transactional
-    public ResponseMessage saveReviewerComments(Integer researchId, String rComment, String statusId) {
-        researchDAO.saveReviewerComments(researchId, rComment, statusId);
-        responseMessage.setStatus(SUCCESSFUL_STATUS);
-        responseMessage.setText("Saved successfully");
-        return responseMessage;
-    }
-
-
-    @Transactional(readOnly = true)
-    public GenericDTO getSummaryReport() {
-        return researchDAO.getSummaryReport();
-    }
-
-    @Transactional(readOnly = true)
-    public List<UserSetupDTO> getResearcherList() {
-        return researchDAO.getResearcherList(1);
-    }
-
-    @Transactional(readOnly = true)
-    public List<ResearchDTO> getReviewedResearchList() {
-        return researchDAO.getReviewedResearchList(3);
     }
 }
