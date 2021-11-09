@@ -22,7 +22,7 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <h1 class="h6 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><input type="month" id="month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>"/> </a>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><b>Showing Data only for month of </b> <input type="month" id="month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>"/> </a>
     </div>
 <security:authorize access="hasAuthority('00-01-001-VIEW')">
     <div class="row">
@@ -202,9 +202,11 @@
 </security:authorize>
 </div>
 <script>
+    let month =window.location.search.split('=')[1];
+    if(month) $('#month').val(month);
 
     $('#month').on('change', function (e) {
-        window.location.href += "?month="+$('#month').val();
+        window.location= globalJs.baseURL+"dashboard?month="+$('#month').val();
         // window.location = 'your_url?data='+id;
     });
     new Morris.Line({

@@ -46,12 +46,9 @@ public class DashboardController extends BaseController {
 
 
         if(currentUser.getGroupId() == 1 || currentUser.getGroupId() == 2){ // admin and approver
-            List<DropdownDTO> users = dashboardService.getUserCount();
-            GenericDTO title = dashboardService.getTitleCount(currentUser,month);
-            GenericDTO paper = dashboardService.getPaperCount(currentUser,month);
-            model.addAttribute("users", users);
-            model.addAttribute("title", title);
-            model.addAttribute("paper", paper);
+            model.addAttribute("users", dashboardService.getUserCount());
+            model.addAttribute("title", dashboardService.getTitleCount(currentUser,month));
+            model.addAttribute("paper", dashboardService.getPaperCount(currentUser,month));
             modelAndView.setViewName("dash/approver_db");
         }else if(currentUser.getGroupId() == 3){ // reviewer
             model.addAttribute("assignedPaper", dashboardService.reviewerPaper(currentUser,null));
