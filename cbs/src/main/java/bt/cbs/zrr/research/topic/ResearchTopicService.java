@@ -55,11 +55,11 @@ public class ResearchTopicService extends BaseService {
     }
 
     @Transactional(readOnly = true)
-    public List gTopicList(String status, CurrentUser currentUser) {
-        if(currentUser.getGroupId() == UserGroup.RESEARCHER.value()){
-            return topicDAO.gTopicList(status, currentUser.getUserName());
+    public List gTopicList(String status, String research_month,CurrentUser currentUser) {
+        if(currentUser != null && currentUser.getGroupId() == UserGroup.RESEARCHER.value()){
+            return topicDAO.gTopicList(status, currentUser.getUserName(),research_month);
         }
-        return topicDAO.gTopicList(status, null);
+        return topicDAO.gTopicList(status, null,research_month);
 
     }
 

@@ -126,15 +126,16 @@
                 </security:authorize>
                 <security:authorize access="hasAuthority('02-01-004-VIEW')">
                 <div class="tab-pane" id="research-list" role="tabpanel" aria-labelledby="research-list-tab">
-                    <div class="table-responsive">
-                        <table class="table table-bordered css-serial table-responsive-sm" id="researchListTbl"
-                               width="100%" cellspacing="0">
+                    <div class="table-responsive" style="overflow-x: scroll;">
+                        <table class="table table-bordered css-serial table-responsive-sm" id="researchListTbl">
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Employee ID</th>
+                                <th>Research Author</th>
+                                <th>Position Title</th>
                                 <th>Research Number</th>
                                 <th>Research Month</th>
-                                <th>Research Author</th>
                                 <th>Research Title</th>
                                 <th>Word Count</th>
                                 <th>Research Paper</th>
@@ -156,6 +157,9 @@
     </div>
 </div>
 <script src="<c:url value='/resources/js/cbs/addResearch.js'/>"></script>
-<!-- /.container-fluid -->
+<script type="text/javascript" src="<c:url value='/resources/js/jszip.min.js' />"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/pdfmake.min.js' />"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/vfs_fonts.js' />"></script>
+
 </body>
 </html>

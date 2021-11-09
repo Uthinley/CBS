@@ -21,12 +21,4 @@ public class TitleApproveDAO extends BaseDao {
         return getCurrentSession().load(ResearchTopicEntity.class, id);
     }
 
-    @Transactional(readOnly = true)
-    public List gTopicList(String status, String userName) {
-        sqlQuery = properties.getProperty("ResearchTopicDAO.gTopicList");
-        return hibernateQuery(sqlQuery, ResearchTopicDTO.class)
-                .setParameter("userName",userName)
-                .setParameter("status",status).list();
-    }
-
 }

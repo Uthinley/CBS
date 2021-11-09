@@ -77,9 +77,11 @@ research = (function () {
                         color = color + ";font-weight:bold;";
                         row = row + '<tr>' +
                             '<td><input type="hidden" class="id" value="'+res[i].researchId+'"/></td>' +
+                            '<td>' + (res[i].employee_id) + '</td>' +
+                            '<td>' + (res[i].createdBy) + '</td>' +
+                            '<td>' + (res[i].position_title) + '</td>' +
                             '<td class="research_number">' + (res[i].research_number) + '</td>' +
                             '<td>' + (res[i].research_month) + '</td>' +
-                            '<td>' + (res[i].createdBy) + '</td>' +
                             '<td>' + (res[i].researchTopic) + '</td>' +
                             '<td>' + (res[i].wordCount) + '</td>' +
                             '<td>' + globalJs.viewOrDownloadFile(res[i].filePath+'/'+res[i].research_paper_name) + '</td>' +
@@ -89,7 +91,37 @@ research = (function () {
                             '<td>'+action+'</td>' +
                             '</tr>'
                     }
-                    $('#researchListTbl').find('tbody').empty().prepend(row);
+
+                    let tbl = $('#researchListTbl');
+                    tbl.dataTable().fnDestroy();
+                    tbl.find('tbody').empty().prepend(row);
+
+                    tbl.removeAttr('width').DataTable( {
+                        scrollY: "500px",
+                        scrollX:        true,
+                        scrollCollapse: true,
+                        paging: false,
+                        columnDefs: [
+                            { width: 200, targets: 6 }
+                        ],
+
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'csvHtml5',
+                                title: 'Research Papers'
+                            },
+                            {
+                                extend: 'excelHtml5',
+                                title: 'Research Papers'
+                            },
+                            {
+                                extend: 'pdfHtml5',
+                                title: 'Research Papers'
+                            }
+                        ],
+                        fixedColumns: true
+                    } );
                 }
             });
         });

@@ -22,7 +22,7 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <h1 class="h6 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><input type="month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>"/> </a>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><input type="month" id="month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>"/> </a>
     </div>
 <security:authorize access="hasAuthority('00-01-001-VIEW')">
     <div class="row">
@@ -133,11 +133,13 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Tasks completed in percentage</h6>
                 </div>
+                <%try{%>
                 <div class="card-body">
-                    <c:set var="tResearcher" value="${users[3].value}" />
-                    <c:set var="titleS" value="${title.obj1}" />
+
+                    <c:set var="tResearcher" value="${users[3].value eq 0 ? 1: users[3].value}" />
+                    <c:set var="titleS" value="${title.obj1 eq 0 ?1:title.obj1}" />
                     <c:set var="titleA" value="${title.obj2}" />
-                    <c:set var="paperS" value="${paper.obj1}" />
+                    <c:set var="paperS" value="${paper.obj1 eq 0 ?1:paper.obj1}" />
                     <c:set var="paperR" value="${paper.obj2}" />
                     <h4 class="small font-weight-bold">Research Title Received
                         <span class="float-right">
@@ -180,6 +182,8 @@
                              aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
+                <%}catch (Exception e){
+                }%>
             </div>
         </div>
 
@@ -198,6 +202,11 @@
 </security:authorize>
 </div>
 <script>
+
+    $('#month').on('change', function (e) {
+        window.location.href += "?month="+$('#month').val();
+        // window.location = 'your_url?data='+id;
+    });
     new Morris.Line({
         element: 'marks_line_chart',//Div id.
         data: [
