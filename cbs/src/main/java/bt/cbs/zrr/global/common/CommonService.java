@@ -42,6 +42,16 @@ public class CommonService {
     @Autowired
     private CommonDao commonDao;
 
+    @Transactional
+    public void saveAuditHistory(String table_name, String deleted_id, String deleted_by){
+        DeleteHistory deleteHistory =  new DeleteHistory();
+        deleteHistory.setTable_name(table_name);
+        deleteHistory.setDeleted_id(deleted_id);
+        deleteHistory.setDeleted_by(deleted_by);
+        deleteHistory.setDeleted_on(new Date());
+        commonDao.saveUpdate(deleteHistory);
+    }
+
     @Transactional(readOnly = true)
     public List<DropdownDTO> getScreenList() {
         return commonDao.getScreenList();

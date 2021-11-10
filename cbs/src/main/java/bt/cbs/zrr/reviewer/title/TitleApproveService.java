@@ -24,11 +24,6 @@ public class TitleApproveService extends BaseService {
         this.tApproveDao = tApproveDao;
     }
 
-    @Transactional(readOnly = true)
-    public List gTopicList(String status, String userName) {
-        return tApproveDao.gTopicList(status,userName);
-    }
-
     @Transactional
     public ResponseMessage save(CurrentUser currentUser, String status, String remarks, String[] research_title_ids) {
         if(status == null || research_title_ids == null || research_title_ids.length==0){

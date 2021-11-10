@@ -1,19 +1,3 @@
-ResearchDAO.getResearchList = SELECT research_id AS researchId,research_topic AS researchTopic, word_count AS wordCount, file_path AS filePath, CREATEDDATE AS createdDate, a.status,b.status_name AS statusName,a.research_month,a.research_number, a.reviewer_comment FROM research_dtls a LEFT JOIN common_status b ON a.status = b.status_id where (:userName is null or CREATEDBY =:userName)
-
-ResearchDAO.geAllResearchList = SELECT research_id AS researchId,research_topic AS researchTopic, word_count AS wordCount, file_path AS filePath, CREATEDDATE AS createdDate, CREATEDBY AS createdBy, C.status_name AS statusName FROM research_dtls A INNER JOIN `common_status` C ON C.status_id = A.status
-ResearchDAO.saveReviewerComments = UPDATE research_dtls SET status = :statusId, reviewer_comment =:rComment WHERE research_id = :researchId
-
-ResearchDAO.getResearcherList = SELECT A.USRUSERID userId,A.USRUSERNAME userName,A.USRFULLNAME fullName,A.USRUSERSTATUS userStatus,\
-                                A.USREMPLOYEEID employeeId,A.USREMAILID emailId,A.USRGROUPID groupId,B.GR_NAME groupName \
-                                FROM cbs_db.sa_user A INNER JOIN cbs_db.sa_user_group B ON A.USRGROUPID = B.GR_ID WHERE A.USRUSERSTATUS ='1' AND B.GR_NAME='Reviewer'
-
-ResearchDAO.getReviewedResearchList = SELECT research_id as researchId,research_topic as researchTopic, \
-                                word_count as wordCount, file_path as filePath, CREATEDBY as createdBy, CREATEDDATE as createdDate, status  from research_dtls where status = :statusCode
-
-ResearchDAO.getSummaryReport =SELECT COUNT(*) as obj1 FROM cbs_db.sa_user U INNER JOIN `sa_user_group` G ON G.GR_ID=U.USRGROUPID WHERE U.`USRUSERSTATUS`='1' AND G.GR_NAME='Reviewer'
--- SELECT \
---                               (select count(*) from cbs_db.research_dtls) as obj2, \
---                               (select count(*) from cbs_db.research_dtls where status="2") as obj3, \
---                               (((select count(*) from cbs_db.research_dtls where status="2")/ \
---                                 ((select count(*) from cbs_db.research_dtls where status="1") + \
---                                  (select count(*) from cbs_db.research_dtls where status="2")))*100) as obj4
+ResearchDAO.getResearchList = SELECT a.research_id AS researchId,a.research_topic AS researchTopic, a.word_count AS wordCount, a.file_path AS filePath, a.CREATEDDATE AS createdDate, a.status,b.status_name AS statusName,a.research_month,a.research_number, a.reviewer_comment, a.research_paper_name,U.USRFULLNAME AS createdBy,U.USREMPLOYEEID as employee_id,E.position_title FROM research_dtls a INNER JOIN sa_user U ON U.USRUSERNAME = A.CREATEDBY LEFT JOIN sa_employee_details E on E.employee_id = U.USREMPLOYEEID LEFT JOIN common_status b ON a.status = b.status_id where (:userName is null or A.CREATEDBY =:userName) order by A.research_number desc
+ResearchDAO.findResearch = SELECT a.research_id AS researchId,a.research_topic AS researchTopic, a.word_count AS wordCount, a.file_path AS filePath, a.CREATEDDATE AS createdDate, a.status,b.status_name AS statusName,a.research_month,a.research_number, a.reviewer_comment, a.research_paper_name,U.USRFULLNAME AS createdBy,a.key_words,a.research_abstract FROM research_dtls a INNER JOIN sa_user U ON U.USRUSERNAME = A.CREATEDBY LEFT JOIN common_status b ON a.status = b.status_id where  A.research_number =:research_number
+ResearchDAO.delete = DELETE FROM research_dtls a WHERE a.research_number = :research_number

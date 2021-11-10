@@ -146,7 +146,7 @@ titleApproval = (function () {
                                     '<td class="month">' + (res[i].research_month) + '</td>' +
                                     '<td class="title">' + (res[i].researchTopic ) + '</td>' +
                                     '<td><span style="' + color + '">' + (res[i].statusName) + '</span></td>' +
-                                    '<td>'+(globalJs.viewOrDownloadFile(res[i].filePath))+'</td>' +
+                                    '<td>'+(globalJs.viewOrDownloadFile(res[i].filePath+'/'+res[i].research_paper_name))+'</td>' +
                                     '<td>' + isNull(res[i].wordCount) + '</td>' +
                                     '<td>' + isNull(res[i].createdBy) + '</td>' +
                                     '<td hidden>' + isNull(res[i].research_number) + '</td>' +

@@ -26,6 +26,8 @@ public class ResearchTopicDTO {
     private String approver;
 
     private String status_name;
+    private String position_title;
+    private String employee_id;
 
     public String getActionType() {
         return actionType;
@@ -113,5 +115,21 @@ public class ResearchTopicDTO {
 
     public void setStatus_name(String status_name) {
         this.status_name = status_name;
+    }
+
+    public String getPosition_title() {
+        return position_title;
+    }
+
+    public void setPosition_title(String position_title) {
+        this.position_title = position_title;
+    }
+
+    public String getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(String employee_id) {
+        this.employee_id = employee_id;
     }
 }

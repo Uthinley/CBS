@@ -66,11 +66,13 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Employee ID</th>
+                                        <th>Research Author</th>
+                                        <th>Position Title</th>
                                         <th>Month</th>
                                         <th>Research Topic</th>
                                         <th>Status</th>
                                         <th>Approver's Comment</th>
-                                        <th>Owner</th>
                                         <th>Proposed On</th>
                                         <th>Action</th>
                                     </tr>
@@ -106,6 +108,8 @@
 </div>
 
 <script src="<c:url value='/resources/js/cbs/titleApprove.js'/>"></script>
-
+<script type="text/javascript" src="<c:url value='/resources/js/jszip.min.js' />"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/pdfmake.min.js' />"></script>
+<script type="text/javascript" src="<c:url value='/resources/js/vfs_fonts.js' />"></script>
 </body>
 </html>

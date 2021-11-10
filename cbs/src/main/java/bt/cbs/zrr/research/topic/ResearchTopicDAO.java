@@ -16,11 +16,12 @@ public class ResearchTopicDAO extends BaseDao {
     }
 
     @Transactional(readOnly = true)
-    public List gTopicList(String status, String userName) {
+    public List gTopicList(String status, String userName, String research_month) {
         sqlQuery = properties.getProperty("ResearchTopicDAO.gTopicList");
         return hibernateQuery(sqlQuery, ResearchTopicDTO.class)
                 .setParameter("userName",userName)
-                .setParameter("status",status).list();
+                .setParameter("status",status)
+                .setParameter("research_month",research_month).list();
     }
 
     @Transactional(readOnly = true)

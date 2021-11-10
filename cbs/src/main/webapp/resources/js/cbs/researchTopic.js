@@ -77,6 +77,7 @@ researchTopic = (function () {
         $('body').on('click','.re-propose-btn',function (e) {
 
             $('#actionType').val('M');
+            $('#research_topic_id').val($(this).closest('tr').find('.id').val());
             $('#research_month').val($(this).closest('tr').find('.month').text());
             $('#research_topic').val($(this).closest('tr').find('.title').text());
             $('#status').html('<option value="O">Re-Submit</option>');

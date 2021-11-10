@@ -7,7 +7,6 @@ import bt.cbs.zrr.global.dto.ResponseMessage;
 import bt.cbs.zrr.global.library.CustomFileUtil;
 import bt.cbs.zrr.research.topic.ResearchTopicDTO;
 import bt.cbs.zrr.research.topic.ResearchTopicService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -74,6 +73,13 @@ public class ResearchController extends BaseController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/findResearch", method= RequestMethod.GET)
+    public ResearchDTO getResearch(HttpServletRequest request, String research_number){
+        currentUser = getCurrentUser(request);
+        return researchService.findResearch(research_number);
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/getWordCount", method= RequestMethod.POST)
     public Long getWordCount(HttpServletRequest request,@RequestParam("file") MultipartFile file) throws IOException {
         return CustomFileUtil.wordCount(file);
@@ -83,5 +89,11 @@ public class ResearchController extends BaseController {
     @RequestMapping(value = "/getTitleForMonth", method= RequestMethod.GET)
     public ResearchTopicDTO getTitleForMonth(HttpServletRequest request, String research_month) throws IOException {
         return topicService.findTopic(research_month,getCurrentUser(request).getUserName());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete", method= RequestMethod.POST)
+    public ResponseMessage delete(HttpServletRequest request, String research_number, String research_id) throws IOException {
+        return researchService.delete(research_number,research_id,getCurrentUser(request));
     }
 }

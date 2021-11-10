@@ -22,7 +22,7 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
         <h1 class="h6 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><input type="month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>"/> </a>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><b>Showing Data only for month of </b> <input type="month" id="month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>"/> </a>
     </div>
 <security:authorize access="hasAuthority('00-01-001-VIEW')">
     <div class="row">
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <a href="<c:url value="/research/"/>" title="Click for detail"><i class="fas fa-clipboard-list fa-2x"></i></a>
+                            <a href="<c:url value="/research#researchListTbl"/>" title="Click for detail"><i class="fas fa-clipboard-list fa-2x"></i></a>
                         </div>
                     </div>
                 </div>
@@ -133,29 +133,46 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Tasks completed in percentage</h6>
                 </div>
+                <%try{%>
                 <div class="card-body">
-                    <h4 class="small font-weight-bold">Research Title  <span
-                            class="float-right">Complete! <c:out value="${title.obj1}"/>/<c:out value="${users[3].value}"/> = </span></h4>
+
+                    <c:set var="tResearcher" value="${users[3].value eq 0 ? 1: users[3].value}" />
+                    <c:set var="titleS" value="${title.obj1 eq 0 ?1:title.obj1}" />
+                    <c:set var="titleA" value="${title.obj2}" />
+                    <c:set var="paperS" value="${paper.obj1 eq 0 ?1:paper.obj1}" />
+                    <c:set var="paperR" value="${paper.obj2}" />
+                    <h4 class="small font-weight-bold">Research Title Received
+                        <span class="float-right">
+                            <c:out value="${titleS}"/> of <c:out value="${tResearcher}"/> =<c:out value="${(titleS*100)/tResearcher}"/>%
+                        </span>
+                    </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-info" role="progressbar" style="width:100%"
+                        <div class="progress-bar bg-info" role="progressbar" style="width:<c:out value="${(titleS*100)/tResearcher}"/>%"
                              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Research Paper <span
-                            class="float-right">90%</span></h4>
+                    <h4 class="small font-weight-bold">Research Title Approved <span
+                            class="float-right">
+                        <c:out value="${titleA}"/> of <c:out value="${titleS}"/> =<c:out value="${(titleA*100)/titleS}"/>%
+                    </span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 90%"
-                             aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Research Title Approval <span
-                            class="float-right">20%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: <c:out value="${(titleA*100)/paperS}"/>%"
                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Research Paper Review <span
-                            class="float-right">40%</span></h4>
+                    <h4 class="small font-weight-bold">Research Paper Received <span
+                            class="float-right">
+                        <c:out value="${paperS}"/> of <c:out value="${tResearcher}"/> =<c:out value="${(paperS*100)/tResearcher}"/>%
+                    </span></h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                        <div class="progress-bar bg-success" role="progressbar" style="width: <c:out value="${(paperS*100)/tResearcher}"/>%"
+                             aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+
+                    <h4 class="small font-weight-bold">Research Paper Reviewed <span
+                            class="float-right">
+                        <c:out value="${paperR}"/> of <c:out value="${paperS}"/> =<c:out value="${(paperR*100)/paperS}"/>%
+                    </span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: <c:out value="${(paperR*100)/paperS}"/>%"
                              aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">Marks allocation <span
@@ -165,6 +182,8 @@
                              aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
+                <%}catch (Exception e){
+                }%>
             </div>
         </div>
 
@@ -183,6 +202,13 @@
 </security:authorize>
 </div>
 <script>
+    let month =window.location.search.split('=')[1];
+    if(month) $('#month').val(month);
+
+    $('#month').on('change', function (e) {
+        window.location= globalJs.baseURL+"dashboard?month="+$('#month').val();
+        // window.location = 'your_url?data='+id;
+    });
     new Morris.Line({
         element: 'marks_line_chart',//Div id.
         data: [

@@ -139,7 +139,7 @@ public class CustomFileUtil {
                 break;
         }
 
-        response.addHeader("Content-Disposition", "attachment;filename=" + fileName);
+        response.addHeader("Content-Disposition", "attachment;filename=" + fileName.replace(",", " "));
         response.setContentLength(file.length);
         FileCopyUtils.copy(file, response.getOutputStream());
 

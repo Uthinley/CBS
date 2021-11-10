@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class ResearchDTO {
 
+    private String actionType;
     private Integer researchId;
     private String researchTopic;
     private String research_abstract;
@@ -28,6 +29,16 @@ public class ResearchDTO {
     private String reviewer_comment;
     private String reviewerName;
     private Date assignedDate;
+    private String position_title;
+    private String employee_id;
+
+    public String getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
+    }
 
     public String getReviewerName() {
         return reviewerName;
@@ -187,5 +198,21 @@ public class ResearchDTO {
 
     public void setReviewer_comment(String reviewer_comment) {
         this.reviewer_comment = reviewer_comment;
+    }
+
+    public String getPosition_title() {
+        return position_title;
+    }
+
+    public void setPosition_title(String position_title) {
+        this.position_title = position_title;
+    }
+
+    public String getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(String employee_id) {
+        this.employee_id = employee_id;
     }
 }

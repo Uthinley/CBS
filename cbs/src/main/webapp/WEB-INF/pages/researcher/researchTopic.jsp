@@ -39,6 +39,7 @@
                     <form id="researchTopicForm" method="post" action="" class="row align-items-center" >
                         <input id="csrf" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="hidden" name="actionType" id="actionType" value="C"/>
+                        <input type="hidden" name="research_topic_id" id="research_topic_id"/>
 
                         <div class="col-lg-12">
                             <div class="form-group row">

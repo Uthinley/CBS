@@ -87,17 +87,42 @@ titleApproval = (function () {
                                     color = color + ";font-weight:bold;";
                                     row = row + '<tr>' +
                                         '<td><input type="hidden" class="id" value="' + res[i].research_topic_id + '"/> </td>' +
+                                        '<td>' + (res[i].employee_id) + '</td>' +
+                                        '<td>' + (res[i].createdBy) + '</td>' +
+                                        '<td>' + (res[i].position_title) + '</td>' +
                                         '<td class="month">' + (res[i].research_month) + '</td>' +
                                         '<td class="title">' + (res[i].research_topic) + '</td>' +
                                         '<td><span style="' + color + '">' + (res[i].status_name) + '</span></td>' +
                                         '<td>' + isNull(res[i].remarks) + '</td>' +
-                                        '<td>' + isNull(res[i].createdBy) + '</td>' +
                                         '<td>' + (formatDate(res[i].createdDate)) + '</td>' +
                                         '<td>'+action+'</td>'+
                                         '</tr>'
                                 }
                                 let tbl = $('#research_title_list');
+                                tbl.dataTable().fnDestroy();
                                 tbl.find('tbody').empty().prepend(row);
+
+                                tbl.removeAttr('width').DataTable( {
+                                    scrollX:        true,
+                                    scrollCollapse: true,
+                                    paging: false,
+                                    dom: 'Bfrtip',
+                                    buttons: [
+                                        {
+                                            extend: 'csvHtml5',
+                                            title: 'Research Titles'
+                                        },
+                                        {
+                                            extend: 'excelHtml5',
+                                            title: 'Research Titles'
+                                        },
+                                        {
+                                            extend: 'pdfHtml5',
+                                            title: 'Research Titles'
+                                        }
+                                    ],
+                                    fixedColumns: true
+                                } );
                             }
                         });
                     }

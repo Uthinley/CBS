@@ -23,9 +23,11 @@ import java.util.List;
 public class TitleApproveController extends BaseController {
 
     private final TitleApproveService tApproveService;
+    private final ResearchTopicService topicService;
 
-    public TitleApproveController(TitleApproveService tApproveService) {
+    public TitleApproveController(TitleApproveService tApproveService, ResearchTopicService topicService) {
         this.tApproveService = tApproveService;
+        this.topicService = topicService;
     }
 
     @RequestMapping()
@@ -44,8 +46,8 @@ public class TitleApproveController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/gTopicList", method = RequestMethod.GET)
-    public List gTopicList(HttpServletRequest request, String status) {
-        return tApproveService.gTopicList(status.equalsIgnoreCase("ALL")?null:status,null);
+    public List gTopicList(HttpServletRequest request, String status, String research_month) {
+        return topicService.gTopicList(status.equalsIgnoreCase("ALL")?null:status,research_month,null);
     }
 
 }
