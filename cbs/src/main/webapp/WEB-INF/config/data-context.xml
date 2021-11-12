@@ -51,6 +51,7 @@
                 <value>classpath*:sql/ResearchTopicDAO.sql</value>
                 <value>classpath*:sql/ResearchReviewDAO.sql</value>
                 <value>classpath*:sql/DashboardDao.sql</value>
+                <value>classpath*:sql/EmployeeSetupDAO.sql</value>
             </list>
         </property>
     </bean>

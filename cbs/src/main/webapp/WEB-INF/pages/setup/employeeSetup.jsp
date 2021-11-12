@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: hp
@@ -24,7 +25,7 @@
             <div class="card-body">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form id="userSetupForm" method="post" action="<c:url value='/employeeSetup'/>">
+                        <form id="employeeSetupForm" method="post" action="<c:url value='/employeeSetup'/>">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" name="actionType" value="C" id="actionType"/>
 
@@ -123,6 +124,23 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label class="col-md-2 align-right required" for="phoneNumber">Status
+                                    : </label>
+
+                                <div class="col-md-4">
+<%--                                    <input type="text" name="status" id="status"--%>
+<%--                                           class="form-control input-sm editable" required>--%>
+                                    <form:select id="status"
+                                                 class="form-control input-sm editable"
+                                                 name="status"
+                                                 path="statusList">
+                                        <form:options items="${statusList}" itemValue="value"
+                                                      itemLabel="text"/>
+                                    </form:select>
+                                </div>
+                            </div>
+
                             <div class="form-group ">
                                 <input type="reset" id="btnReset" class="btn btn-primary"
                                        value="Reset">
@@ -146,20 +164,25 @@
     <security:authorize access="hasAuthority('01-01-006-VIEW')">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Employee List</h6>
+                <h6 class="m-0 font-weight-bold text-primary"><a id="employeeList">Employee List <i class="fa fa-arrow-right" aria-hidden="true"></i></a></h6>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered css-serial table-responsive-sm table-hover table-success" id="userListTbl" width="100%" cellspacing="0">
+            <div class="card-body " >
+                <div class="table-responsive elist" hidden>
+                    <table class="table table-bordered css-serial table-responsive-sm table-hover " id="employeeListTbl" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Employee ID</th>
                             <th>CID</th>
-                            <th>Full name</th>
+                            <th>First name</th>
+                            <th>Middle name</th>
+                            <th>Last name</th>
                             <th>Position title</th>
                             <th>Position level</th>
+                            <th>Agency</th>
+                            <th>Division</th>
                             <th>Email ID</th>
+                            <th>Phone Number</th>
                             <th>Status</th>
                         </tr>
                         </thead>

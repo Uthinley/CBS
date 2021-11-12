@@ -31,7 +31,7 @@ public class EmployeeSetup extends BaseEntity implements Serializable {
     private String lastName;
     @NotNull
     @Column(name = "cid")
-    private Integer cid;
+    private String cid;
     @NotNull
     @Column(name = "position_title")
     private String positionTitle;
@@ -46,10 +46,22 @@ public class EmployeeSetup extends BaseEntity implements Serializable {
     private String division;
     @NotNull
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private String phoneNumber;
     @NotNull
     @Column(name = "email")
     private String email;
+
+    @NotNull
+    @Column(name = "status")
+    private Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public String getEmployeeId() {
         return employeeId;
@@ -83,11 +95,11 @@ public class EmployeeSetup extends BaseEntity implements Serializable {
         this.lastName = lastName;
     }
 
-    public Integer getCid() {
+    public String getCid() {
         return cid;
     }
 
-    public void setCid(Integer cid) {
+    public void setCid(String cid) {
         this.cid = cid;
     }
 
@@ -123,11 +135,11 @@ public class EmployeeSetup extends BaseEntity implements Serializable {
         this.division = division;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

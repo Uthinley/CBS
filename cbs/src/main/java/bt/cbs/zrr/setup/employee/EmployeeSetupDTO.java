@@ -10,15 +10,33 @@ public class EmployeeSetupDTO {
     private String firstName;
     private String secondName;
     private String lastName;
-    private Integer cid;
+    private String cid;
     private String positionTitle;
     private String positionLevel;
     private String agency;
     private String division;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private String email;
+    private Integer status;
+    private String statusName;
     private String createdBy;
     private Date createdDate;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
+    }
 
     public String getEmployeeId() {
         return employeeId;
@@ -52,11 +70,11 @@ public class EmployeeSetupDTO {
         this.lastName = lastName;
     }
 
-    public Integer getCid() {
+    public String getCid() {
         return cid;
     }
 
-    public void setCid(Integer cid) {
+    public void setCid(String cid) {
         this.cid = cid;
     }
 
@@ -92,11 +110,11 @@ public class EmployeeSetupDTO {
         this.division = division;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
