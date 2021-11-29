@@ -1,5 +1,5 @@
 /**
- * Created by RMA on 3/25/2020.
+ * Created by RMA on 10/25/2021.
  */
 
 titleApproval = (function () {
@@ -91,6 +91,7 @@ titleApproval = (function () {
                                         '<td>' + (res[i].createdBy) + '</td>' +
                                         '<td>' + (res[i].position_title) + '</td>' +
                                         '<td class="month">' + (res[i].research_month) + '</td>' +
+                                        '<td class="objectives">' + isNull(res[i].objectives) + '</td>' +
                                         '<td class="title">' + (res[i].research_topic) + '</td>' +
                                         '<td><span style="' + color + '">' + (res[i].status_name) + '</span></td>' +
                                         '<td>' + isNull(res[i].remarks) + '</td>' +

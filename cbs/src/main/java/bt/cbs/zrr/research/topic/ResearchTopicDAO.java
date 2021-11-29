@@ -25,11 +25,16 @@ public class ResearchTopicDAO extends BaseDao {
     }
 
     @Transactional(readOnly = true)
-    public ResearchTopicDTO findTopic(String research_month, String userName) {
+    public List<ResearchTopicDTO> findTopic(String research_month, String userName) {
         sqlQuery = properties.getProperty("ResearchTopicDAO.findTopic");
         List list = hibernateQuery(sqlQuery, ResearchTopicDTO.class)
                 .setParameter("userName",userName)
                 .setParameter("research_month",research_month).list();
-        return list.isEmpty()?null:(ResearchTopicDTO)list.get(0);
+        return list.isEmpty()?null:list;
+    }
+
+    @Transactional
+    public void delete(String title_id) {
+        deleteE(getCurrentSession().get(ResearchTopicEntity.class,Integer.parseInt(title_id)));
     }
 }

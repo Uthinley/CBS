@@ -17,6 +17,7 @@ public class ResearchTopicDTO {
     private String actionType;
     private Integer research_topic_id;
     private String research_month;
+    private String objectives;
     private String research_topic;
     private String status;
     private String remarks;
@@ -59,6 +60,14 @@ public class ResearchTopicDTO {
 
     public void setResearch_topic(String research_topic) {
         this.research_topic = research_topic;
+    }
+
+    public String getObjectives() {
+        return objectives;
+    }
+
+    public void setObjectives(String objectives) {
+        this.objectives = objectives;
     }
 
     public String getStatus() {

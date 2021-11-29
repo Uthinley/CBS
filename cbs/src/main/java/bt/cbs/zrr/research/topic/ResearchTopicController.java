@@ -48,8 +48,14 @@ public class ResearchTopicController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/findTopic", method = RequestMethod.GET)
-    public ResearchTopicDTO findTopic(HttpServletRequest request,String research_month) {
+    public List<ResearchTopicDTO> findTopic(HttpServletRequest request,String research_month) {
         return topicService.findTopic(research_month,getCurrentUser(request).getUserName());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete", method= RequestMethod.POST)
+    public ResponseMessage delete(HttpServletRequest request, String title_id) throws IOException {
+        return topicService.delete(title_id,getCurrentUser(request));
     }
 
 }

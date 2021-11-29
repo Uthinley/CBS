@@ -31,6 +31,9 @@ public class ResearchTopicService extends BaseService {
     @Autowired
     private ResearchTopicDAO topicDAO;
 
+    @Autowired
+    private CommonService commonService;
+
 
     @Transactional
     public ResponseMessage save(CurrentUser currentUser, ResearchTopicDTO topicDTO) throws IOException {
@@ -44,10 +47,13 @@ public class ResearchTopicService extends BaseService {
         ResearchTopicEntity topicEntity = convertDTOToEntity(topicDTO,currentUser);
         responseMessage.setText("Your research Title for the month of "+topicDTO.getResearch_month()+" is submitted successfully for approval.");
 
-        if(topicDTO.getActionType().equalsIgnoreCase("M")){
+        if(topicDTO.getActionType().equalsIgnoreCase("R")){
             topicEntity.setResearch_topic_id(topicDTO.getResearch_topic_id());
             responseMessage.setText("Your research Title for the month of "+topicDTO.getResearch_month()+" is re-submitted successfully.");
 
+        }else if(topicDTO.getActionType().equalsIgnoreCase("M")){
+            topicEntity.setResearch_topic_id(topicDTO.getResearch_topic_id());
+            responseMessage.setText("Research title is edited successfully.");
         }
         topicDAO.save(topicEntity);
         responseMessage.setStatus(SUCCESSFUL_STATUS);
@@ -64,8 +70,23 @@ public class ResearchTopicService extends BaseService {
     }
 
     @Transactional(readOnly = true)
-    public ResearchTopicDTO findTopic(String research_month, String userName) {
+    public List<ResearchTopicDTO> findTopic(String research_month, String userName) {
         return topicDAO.findTopic(research_month,userName);
+    }
+
+
+    @Transactional
+    public ResponseMessage delete(String title_id, CurrentUser currentUser) {
+        if(title_id== null || title_id.isEmpty()){
+            responseMessage.setStatus(UNSUCCESSFUL_STATUS);
+            responseMessage.setText("Nothing to delete. Try again!!!.");
+            return responseMessage;
+        }
+        topicDAO.delete(title_id);
+        commonService.saveAuditHistory("research_dtls",title_id,currentUser.getUserName());
+        responseMessage.setStatus(SUCCESSFUL_STATUS);
+        responseMessage.setText("Deleted successfully.");
+        return responseMessage;
     }
 
     private ResearchTopicEntity convertDTOToEntity(ResearchTopicDTO topicDTO, CurrentUser currentUser){
@@ -73,6 +94,7 @@ public class ResearchTopicService extends BaseService {
         ResearchTopicEntity topicEntity = new ResearchTopicEntity();
         topicEntity.setResearch_month(topicDTO.getResearch_month());
         topicEntity.setResearch_topic(topicDTO.getResearch_topic());
+        topicEntity.setObjectives(topicDTO.getObjectives());
         topicEntity.setStatus(topicDTO.getStatus());
         topicEntity.setRemarks(topicDTO.getRemarks());
         topicEntity.setCreatedBy(currentUser.getUserName());

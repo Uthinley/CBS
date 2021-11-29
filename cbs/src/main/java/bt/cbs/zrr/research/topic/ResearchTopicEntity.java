@@ -29,6 +29,9 @@ public class ResearchTopicEntity extends BaseEntity {
     @Column(name = "research_topic")
     private String research_topic;
 
+    @Column(name = "objectives")
+    private String objectives;
+
     @Column(name = "status")
     private String status;
 
@@ -94,5 +97,13 @@ public class ResearchTopicEntity extends BaseEntity {
 
     public void setApprover(String approver) {
         this.approver = approver;
+    }
+
+    public String getObjectives() {
+        return objectives;
+    }
+
+    public void setObjectives(String objectives) {
+        this.objectives = objectives;
     }
 }

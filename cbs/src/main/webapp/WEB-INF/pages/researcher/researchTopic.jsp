@@ -48,7 +48,16 @@
 
                                 <div class="col-md-5">
                                     <input type="month" class="form-control " name="research_month"
-                                           id="research_month" required="true" placeholder="Month" value="<%=new SimpleDateFormat("YYYY-MM").format(new Date())%>">
+                                           id="research_month" required="true" placeholder="Month">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="align-right col-md-2 required">Objectives</label>
+
+                                <div class="col-md-9">
+                            <textarea class="form-control " name="objectives" id="objectives" required="true"
+                                      placeholder="Research objectives ..."></textarea>
                                 </div>
                             </div>
 
@@ -92,11 +101,13 @@
                         <tr>
                             <th>#</th>
                             <th>Research Month</th>
+                            <th>Objectives</th>
                             <th>Research Topic</th>
                             <th>Status</th>
                             <th>Approver's Comment</th>
                             <th>Owner</th>
                             <th>Proposed On</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>

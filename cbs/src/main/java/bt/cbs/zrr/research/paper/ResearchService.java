@@ -27,9 +27,6 @@ public class ResearchService extends BaseService {
     @Autowired
     private CommonService commonService;
 
-    @Autowired
-    private ResearchCommentService commentService;
-
 
     @Transactional
     public ResponseMessage save(CurrentUser currentUser, ResearchDTO researchDTO) throws IOException {

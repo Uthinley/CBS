@@ -49,6 +49,7 @@
                         <input id="csrf" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="hidden" name="actionType" id="actionType" value="C"/>
                         <input type="hidden" name="researchId" id="researchId"/>
+                        <input type="hidden" name="title_id" id="title_id"/>
 
                         <div class="col-lg-7">
 
@@ -58,15 +59,18 @@
 
                                 <label class="align-right col-md-3 required">Research Month</label>
 
-                                <div class="col-md-5">
+                                <div class="col-md-5 input-group">
                                     <input type="month" class="form-control " name="research_month"
                                            id="research_month" required="true" placeholder="Month">
+                                    <div class="input-group-append">
+                                        <button type="button" class="input-group-text bg-info text-white lighten-3" id="btn_search_title">
+                                            <i class="fas fa-search text-grey" aria-hidden="true"></i></button>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" name="research_number"
                                            id="research_number" readonly placeholder="Research Number">
-
                                 </div>
                             </div>
 
@@ -114,10 +118,11 @@
                             <div class="h1 mb-0 font-weight-bold text-secondary word_count">0</div>
                         </div>
                         <div class="col-lg-12 form-group row">
-                            <input type="reset" id="btnReset" class="btn btn-primary offset-3" value="Reset">
+                            <input type="button" id="btnSearch" value="Search" class="btn btn-primary offset-2">
+                            <input type="reset" id="btnReset" class="btn btn-primary" value="Reset">
                             <input type="button" id="btnEdit" value="Edit" class="btn btn-primary"
                                    disabled>
-                            <input type="submit" id="btnSave" value="Save" class="btn btn-primary">
+                            <input type="submit" id="btnSave" value="Save" class="btn btn-primary" disabled>
                             <input type="button" id="btnDelete" value="Delete" class="btn btn-primary"
                                    disabled>
                         </div>
@@ -155,7 +160,38 @@
         </div>
 
     </div>
+    <div class="modal fade bd-example-modal-lg" id="title_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Research Title</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover" id="tbl_title_modal">
+                        <thead>
+                        <th></th>
+                        <th>Research Month</th>
+                        <th>Research Title</th>
+                        <th>Status</th>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="btn_OK" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <script src="<c:url value='/resources/js/cbs/addResearch.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/jszip.min.js' />"></script>
 <script type="text/javascript" src="<c:url value='/resources/js/pdfmake.min.js' />"></script>

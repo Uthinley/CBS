@@ -25,7 +25,7 @@
 <%--          <p style="text-align: center;font-size: small">Royal Monetary Authority of Bhutan</p>--%>
         </div>
         <div class="col-md-4 img">
-            <img width="30%" height="30%" src="<c:url value="/resources/startbootstrap/img/logoZRR.jpg"/>"/>
+            <img width="30%" height="30%" src="<c:url value="/resources/startbootstrap/img/logoZRR.jpg"/>" class="login-img"/>
         </div>
         <div id="login-column" class="col-md-8">
             <form id="login-form" class="form-horizontal" action="<c:url value='/auth'/>" method="post">

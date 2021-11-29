@@ -143,67 +143,7 @@
 <%--        </div>--%>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" id="reviewerModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Reviewer Comment:</h5>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control" id="researchId" hidden>
-                    <div class="form-group">
-                        <label for="researchTopic">Research Title</label>
-<%--                        <input type="text" class="form-control" id="researchTopic">--%>
-                        <textarea class="form-control" id="researchTopic" name="rComment" rows="2" readonly></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="researchTopic">Author</label>
-                        <input type="text" class="form-control" id="name" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="rComment">Reviewer comments</label>
-                        <textarea class="form-control" id="rComment" name="rComment" rows="12"></textarea>
-                    </div>
-                    <%--TODO-- for the different status--%>
-<%--                    <div class="form-group">--%>
-<%--                        <label class="required" for="statusId">Status</label>--%>
-<%--                        <select class="form-control required" id="statusId" name="statusId">--%>
-<%--                            <option>--------SELECT----------</option>--%>
-<%--                            <option value="2">Reviewed</option>--%>
-<%--                            <option value="3">Return</option>--%>
-<%--                            <option value="4">Approve</option>--%>
-<%--                        </select>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-group">--%>
-<%--                        <label for="aStatus">Status</label>--%>
-<%--                        <form:select id="aStatus"--%>
-<%--                                     class="form-control editable" name="aStatus"--%>
-<%--                                     path="applicationStatusCode">--%>
-<%--                            <form:options items="${applicationStatusCode}" itemValue="value"--%>
-<%--                                          itemLabel="text"/>--%>
-<%--                        </form:select>--%>
-<%--                    </div>--%>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="reviwerSubmitBtn" class="btn btn-primary">Post</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="totalResearcherSection" hidden>
-        <jsp:include page="researcher/totalResearcher.jsp"></jsp:include>
-    </div>
-    <div id="submittedResearchSection" hidden>
-        <jsp:include page="researcher/submittedResearch.jsp"></jsp:include>
-    </div>
-    <div id="reviewedResearchSection" hidden>
-        <jsp:include page="researcher/reviewedResearch.jsp"></jsp:include>
-    </div>
+
 </security:authorize>
 </div>
 <script src="<c:url value='/resources/js/db/home.js'/>"></script>

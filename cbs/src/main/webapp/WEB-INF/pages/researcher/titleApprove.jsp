@@ -70,6 +70,7 @@
                                         <th>Research Author</th>
                                         <th>Position Title</th>
                                         <th>Month</th>
+                                        <th>Objectives</th>
                                         <th>Research Topic</th>
                                         <th>Status</th>
                                         <th>Approver's Comment</th>

@@ -87,7 +87,7 @@ public class ResearchController extends BaseController {
 
     @ResponseBody
     @RequestMapping(value = "/getTitleForMonth", method= RequestMethod.GET)
-    public ResearchTopicDTO getTitleForMonth(HttpServletRequest request, String research_month) throws IOException {
+    public List<ResearchTopicDTO> getTitleForMonth(HttpServletRequest request, String research_month) throws IOException {
         return topicService.findTopic(research_month,getCurrentUser(request).getUserName());
     }
 

@@ -43,7 +43,7 @@ table td {
     padding: 5px 15px 5px 15px;
     border-radius: 5px;
     box-shadow: 0px 0px 12px #999999 inset;
-    margin: 5% auto 0px;
+    margin: 10% auto 0px;
 }
 
 .disclaimer {
@@ -171,8 +171,13 @@ legend.required:after {
     color: #fff;
     text-align: center;
 }
-
+@media (max-width:629px) {
+    #login-box .login-img {
+        display: none;
+    }
+}
 @media (min-width: 320px) {
+
     .main-header .branch-name, .box-header .box-title {
         font-size: 12px;
     }

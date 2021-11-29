@@ -19,11 +19,17 @@ research = (function () {
         action_btn();
         editR();
         deleteR();
+        choose_title();
 
         let url      = window.location.href;
         if(url.endsWith("#researchListTbl")){
             $('#research-list-tab').click();
         }
+
+        $('#btnSearch').on('click',function(){
+            $('#research_number').prop('readonly',false);
+            $('#btnEdit').prop('disabled',false);
+        })
     }
 
     function save() {
@@ -32,7 +38,6 @@ research = (function () {
                 submitHandler: function (form) {
                     let data = new FormData($(formId)[0]);
                     data.append('research_paper', $('input[type=file]')[0].files[0]);
-                    // data.append('supporting_documents', $('input[type=file]')[0].files[1]);
                     $.ajax({
                         url: _baseURL() + '/save',
                         type: 'POST',
@@ -129,34 +134,80 @@ research = (function () {
     }
 
     function getTitleForMonth(){
-        $('#research_month').on('change',function(){
+        $('#btn_search_title').on('blur',function(){
+            let research_month = $('#research_month');
+            if(!research_month.val()){
+                research_month.focus();
+                return;
+            }
             $.ajax({
                 url: _baseURL() + '/getTitleForMonth',
                 type: 'GET',
-                data: {research_month:$(this).val()},
+                data: {research_month:research_month.val()},
                 success: function(res){
+
                     if(jQuery.isEmptyObject(res)){
                         warningMsg("Propose the research title and get approved from the approver for the selected month.")
                         $('#researchTopic').val('');
                         return;
                     }
-                    if(res.status != 'A'){
-                        warningMsg("Your research title is not approved yet. Please wait until it is approved or contact the approver.")
-                        $('#btnSave').prop('disabled',true);
-                        $('#researchTopic').val('');
-                        return;
+                    let tr = '';
+                    for(let i in res){
+                        tr = tr+'<tr>'+
+                            '<td><input type="radio" name="research_topic_id" value="'+res[i].research_topic_id+'"/>' +
+                            '<input type="hidden" class="status" value="'+res[i].status+'"/></td>'+
+                            '<td class="month">'+res[i].research_month+'</td>'+
+                            '<td class="title">'+res[i].research_topic+'</td>'+
+                            '<td>'+res[i].status_name+'</td>'+
+                            '</tr>';
                     }
-                    $('#researchTopic').text(res.research_topic);
-                    $('#btnSave').prop('disabled',false);
+
+                    $('#tbl_title_modal').find('tbody').empty().append(tr);
+                    $('#title_modal').modal('show');
                 }
             })
         });
     }
 
-    function wordCountOnFileSelect(){
+    function choose_title(){
+        $('#btn_OK').bind('click', function () {
+            let checked = $('input[name=research_topic_id]:checked');
+            $('#researchTopic').val('');
+            $('#title_id').text('');
+            $('#btnSave').prop('disabled',true);
+            let sTr = checked.closest('tr');
 
+            if(!sTr.find('.status').val()){
+                warningMsg("Please choose at least one title.");
+                return;
+            }
+            switch(sTr.find('.status').val()){
+                case 'A':
+                    $('#researchTopic').val(sTr.find('.title').text());
+                    $('#title_id').val(checked.val());
+                    $('#btnSave').prop('disabled',false);
+                    break;
+                case 'Z':
+                    warningMsg("Research paper already submitted.");
+                    break;
+                default:
+                    warningMsg("Research title not approved yet.");
+                    break;
+            }
+
+            $('#title_modal').modal('hide');
+        });
+    }
+
+
+    function wordCountOnFileSelect(){
         $('#research_paper').bind('change', function () {
             let filename = $(this).val().split('\\').pop();
+            if(filename.length > 200){
+                $(this).val('');
+                warningMsg("The length of file name exceeds max limit. Please shorten it and re-choose the file.");
+                return;
+            }
 
             if(!isValidFile(filename.split('.').pop(),['docx'])){
                 $(this).val('');
@@ -195,6 +246,10 @@ research = (function () {
                 type: 'GET',
                 data: {research_number:research_number},
                 success: function(res){
+                    if(jQuery.isEmptyObject(res)){
+                        warningMsg("No research paper found with research number: "+research_number);
+                        return;
+                    }
                     populate(res);
                     $('#btnSave').prop('disabled',true);
                     $('#btnEdit').prop('disabled',false);
@@ -223,7 +278,7 @@ research = (function () {
             $('#researchTopic').prop('disabled',false);
             $('#key_words').prop('disabled',false);
             $('#research_abstract').prop('disabled',false);
-            $('#research_month').prop('disabled',false);
+            $('#research_month').prop('readonly',true);
             $('#research_paper').prop('disabled',false);
             $('#btnSave').prop('disabled',false);
             $('#btnEdit').prop('disabled',true);
@@ -234,18 +289,33 @@ research = (function () {
     function deleteR(){
         $('body').on('click','#btnDelete',function (e) {
             e.preventDefault();
-            $.ajax({
-                url: _baseURL() + '/delete',
-                type: 'POST',
-                data: {research_number: $('#research_number').val(),research_id: $('#researchId').val()},
-                success: function (res) {
-                    if (res.status == 1) {
-                        successMsg(res.text, _baseURL());
-                    } else {
-                        warningMsg(res.text);
-                    }
+
+            swal({
+                title: "Confirmation",
+                text: "Are you sure to delete the research paper",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Yes',
+                cancelButtonText: "Cancel",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if(isConfirm){
+                    $.ajax({
+                        url: _baseURL() + '/delete',
+                        type: 'POST',
+                        data: {research_number: $('#research_number').val(), research_id: $('#researchId').val()},
+                        success: function (res) {
+                            if (res.status == 1) {
+                                successMsg(res.text, _baseURL());
+                            } else {
+                                warningMsg(res.text);
+                            }
+                        }
+                    })
                 }
-            })
+            });
         });
     }
 

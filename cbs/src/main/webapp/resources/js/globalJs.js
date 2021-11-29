@@ -383,7 +383,7 @@ function confirmMsg(msg) {
         confirmButtonText: 'Yes, I am sure!',
         cancelButtonText: "No, cancel it!",
         closeOnConfirm: false,
-        closeOnCancel: false
+        closeOnCancel: true
     }, function (isConfirm) {
         return isConfirm;
     });

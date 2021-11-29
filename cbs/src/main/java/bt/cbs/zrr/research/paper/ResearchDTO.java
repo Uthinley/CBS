@@ -31,6 +31,7 @@ public class ResearchDTO {
     private Date assignedDate;
     private String position_title;
     private String employee_id;
+    private String title_id;
 
     public String getActionType() {
         return actionType;
@@ -214,5 +215,13 @@ public class ResearchDTO {
 
     public void setEmployee_id(String employee_id) {
         this.employee_id = employee_id;
+    }
+
+    public String getTitle_id() {
+        return title_id;
+    }
+
+    public void setTitle_id(String title_id) {
+        this.title_id = title_id;
     }
 }
