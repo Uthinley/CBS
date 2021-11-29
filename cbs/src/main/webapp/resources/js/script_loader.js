@@ -13,6 +13,9 @@ var loadScript = function () {
     if (document.URL.search("groupSetup") > 1) {
         scriptLoader("setup/groupSetup");
     }
+    if (document.URL.search("employeeSetup") > 1) {
+        scriptLoader("setup/employeeSetup");
+    }
     /*if (document.URL.search("research") > 1) {
         scriptLoader("cbs/addResearch");
     }

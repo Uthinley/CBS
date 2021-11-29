@@ -58,6 +58,9 @@
                 <security:authorize access="hasAuthority('01-01-004-VIEW')">
                     <a class="collapse-item" href="<c:url value="/passwordPolicy"/>">Password policy</a>
                 </security:authorize>
+                <security:authorize access="hasAuthority('01-01-005-VIEW')">
+                    <a class="collapse-item" href="<c:url value="/employeeSetup"/>">Employee setup</a>
+                </security:authorize>
             </div>
         </div>
     </li>
